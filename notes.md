@@ -1,12 +1,16 @@
 # CS 260 Notes
 
-[My startup - Simon](https://simon.cs260.click)
+[Example startup - Simon](https://simon.cs260.click)
 
 ## Helpful links
 
 - [Course instruction](https://github.com/webprogramming260)
 - [Canvas](https://byu.instructure.com)
 - [MDN](https://developer.mozilla.org)
+
+## Markdown
+
+In markdown you can link to images and even headings in the same file.
 
 ## AWS
 
