@@ -2,7 +2,7 @@
 
 [My Notes](notes.md)
 
-Psychic Questions is a web application that helps people get to know eachother by asking questions. Each person is asked four questions. Then they see how everyone else responded to their questions. They can see the actual response for three of the questions, and they must use that information to guess the answer of the fourth.
+Psychic Questions is a web application that provides a fun activity for a group of people to engage and connect with one another. Each person is asked four questions. Then they see everyone else's responses. They see the actual response for three of the questions, and they must use that information to guess the fourth response. People get points for correctly guessing everyone else's responses.
 
 > [!NOTE]
 > This is a template for your startup application. You must modify this `README.md` file for each phase of your development. You only need to fill in the section for each deliverable when that deliverable is submitted in Canvas. Without completing the section for a deliverable, the TA will not know what to look for when grading your submission. Feel free to add additional information to each deliverable description, but make sure you at least have the list of rubric items and a description of what you did for each item.
