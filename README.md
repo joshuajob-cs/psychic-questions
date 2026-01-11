@@ -19,7 +19,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ### Elevator pitch
 
-Psychic questions is a sensational get-to-know-you game that you can play with your friends or classmates on any device. Is your friend a nerd? A jock? An actor? Some weird mesh of all 3? You've been given psychic powers to see how your friend responded to 3 interesting questions. You use these responses to figure out what else they said. Now you know everything about them. Or do you...
+Psychic questions is a sensational get-to-know-you game that you can play with your friends or classmates on any device. Is your friend a nerd? A jock? An actor? Some weird mesh of all 3? You've been given psychic powers to see how your friend responded to 3 interesting questions. You use these responses to figure out what else they said. Now you know everything about them! Or *do* you...
 
 ### Design
 
