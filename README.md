@@ -2,7 +2,7 @@
 
 [My Notes](notes.md)
 
-Psychic Questions is a web application that provides a fun activity for a group of people to engage and connect with one another. Each person is asked four questions. Then they see everyone else's responses. They see the actual response for three of the questions, and they must use that information to guess the fourth response. People get points for correctly guessing everyone else's responses.
+Psychic Questions is a web application that provides a fun activity for a group of people to engage and connect with one another. Each person is asked four questions. Then they must guess everyone else's responses. The guesser goes through the four questions one at a time, and recieves feedback on what the correct answer was each time. For the first question they rely on random guesswork, but on the fourth question they can make an educated "psychic" guess based on the other three responses. Players win points by guessing correctly.
 
 ## 🚀 Specification Deliverable
 
@@ -19,7 +19,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ### Elevator pitch
 
-Psychic questions is a sensational get-to-know-you game that you can play with your friends or classmates on any device. Is your friend a nerd? A jock? An actor? Some weird mesh of all 3? You've been given psychic powers to see how your friend responded to 3 interesting questions. You use these responses to figure out what else they said. Now you know everything about them! Or *do* you...
+Psychic questions is a sensational get-to-know-you game that you can play with your friends or classmates on any device. Is your friend a nerd? A jock? An actor? Some weird mesh of all 3? Everything you learn about them gets you deeper into their head, strengthening your psychic powers! Now you know everything about them! Or *do* you...
 
 ### Design
 
