@@ -6,13 +6,13 @@ Psychic Questions is a web application that provides a fun activity for a group 
 
 ## 🚀 Specification Deliverable
 
-For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
+For this deliverable I did the following:
 
-- [ ] Proper use of Markdown
-- [ ] A concise and compelling elevator pitch
-- [ ] Description of key features
-- [ ] Description of how you will use each technology
-- [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
+- [x] Proper use of Markdown
+- [x] A concise and compelling elevator pitch
+- [x] Description of key features
+- [x] Description of how you will use each technology
+- [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
 
@@ -62,23 +62,25 @@ sequenceDiagram
 
 ### Key features
 
-- Login authentication screen
-- Join code that allows each player to join
-- Asks users questions and sends their name and their responses to a server
+- Login authentication screen with securely stored password
+- Join code allows each player to join
+- Join screen shows number of players who have joined
+- Waiting screen is displayed when waiting for other players responses
+- Asks users questions and sends their names and their responses to a server
 - Each player recieves the questions and answers of other players from the server
-- Questions and possible responses are randomized
+- Randomizes questions and possible responses
 - Point system
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Structure of each screen (login screen, question screen, guessing screen)
-- **CSS** - Make each screen look good (login screen, question screen, guessing screen)
-- **React** - Users can type in username and password, click to navigate between screens, scroll to look at all of the avaliable information on a screen, type in answers to questions, and click to select the correct response to a question
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - Structure each screen (login screen, question screen, guessing screen).
+- **CSS** - Make each screen look good (login screen, question screen, guessing screen).
+- **React** - Users type in username and password, click to navigate between screens, scroll to look at all of the avaliable information on a screen, type in answers to questions, and click to select the correct response to a question.
+- **Service** - Information is formatted correctly before being stored in server. Questions and answers are randomized.
+- **DB/Login** - Securely stores credentials in database. Stores questions and answers for each individual. Stores point values of each player connecte dto their name.
+- **WebSocket** - Broadcast message when users first enter the game, when users finish answering the questions, and when users finish guessing, so that everybody stays on the same page and goes from one phase to the next at the same time.
 
 ## 🚀 AWS deliverable
 
