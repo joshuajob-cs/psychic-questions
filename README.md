@@ -23,13 +23,13 @@ Psychic questions is a sensational get-to-know-you game that you can play with y
 
 ### Design
 
-![Login screen has option to login with username and password to create a new game, login with code to join a game, or sign up if you do not have an account yet.](Drawings/Login.jpg)
-![When someone logs in either to start a game or join a game, a game code is displayed along with the number of players that have joined and a list of their names.](Drawings/Join.jpg)
-![Each player must type in their name as they join.](Drawings/Join2.jpg)
-![At the beggining of the game four questions are displayed one at a time for each player to answer.](Drawings/AnswerYourself.jpg)
-![On this screen a player is trying to guess how Jake responded to a question. The player has four possible answer choices. The player's points are displayed in the upper right corner. The screen is scrollable after the player has answered their first question, so that they can look at the questions they have already answered.](Drawings/GuessOthersAnswers.jpg)
-![On this screen, a player has guessed how Jake responded to a question, and the correct answer is displayed.](Drawings/GuessOthersAnswers2.jpg)
-![A screen is shown with the name of the winner, how many times they were able to answer the fourth question correctly, and how many total points they had.](Drawings/Winner.jpg)
+<img src=Drawings/Login.jpg alt="Login screen has option to login with username and password to create a new game, login with code to join a game, or sign up if you do not have an account yet." height="500"/> <img src=Drawings/Join.jpg alt="When someone logs in either to start a game or join a game, a game code is displayed along with the number of players that have joined and a list of their names." height="500"/> <img src=Drawings/Join2.jpg alt="Each player must type in their name as they join." height="500"/>
+
+<img src=Drawings/AnswerYourself.jpg alt="At the beggining of the game four questions are displayed one at a time for each player to answer." height="500"/>
+
+<img src=Drawings/GuessOthersAnswers.jpg alt="On this screen a player is trying to guess how Jake responded to a question. The player has four possible answer choices. The player's points are displayed in the upper right corner. The screen is scrollable after the player has answered their first question, so that they can look at the questions they have already answered.]" height="500"/> <img src=Drawings/GuessOthersAnswers2.jpg alt="On this screen, a player has guessed how Jake responded to a question, and the correct answer is displayed." height="500"/>
+
+<img src="Drawings/Winner.jpg" alt="A screen is shown with the name of the winner, how many times they were able to answer the fourth question correctly, and how many total points they had." height="500"/>
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
