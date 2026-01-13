@@ -6,9 +6,6 @@ Psychic Questions is a web application that provides a fun activity for a group 
 
 ## 🚀 Specification Deliverable
 
-> [!NOTE]
-> Fill in this sections as the submission artifact for this deliverable. You can refer to this [example](https://github.com/webprogramming260/startup-example/blob/main/README.md) for inspiration.
-
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [ ] Proper use of Markdown
@@ -44,28 +41,41 @@ Whomever gets the most points wins!
 
 <img src="Drawings/Winner.jpg" alt="A screen is shown with the name of the winner, how many times they were able to answer the fourth question correctly, and how many total points they had." height="500"/>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+In the sequence diagram each player interacts with the server to send in and recieve questions/responses.
 
 ```mermaid
 sequenceDiagram
-    actor You
-    actor Website
-    You->>Website: Replace this with your design
+    actor Charles
+    actor Jenny
+    actor Tasha
+    actor Service
+    actor Server
+    Charles->>Service: Responses to questions
+    Jenny->>Service: Responses to questions
+    Tasha->>Service: Responses to questions
+    Service->>Server: Responses formatted for server
+    Server->>Service: Responses randomized
+    Service->>Charles: Questions to guess the response to
+    Service->>Jenny: Questions to guess the response to
+    Service->>Tasha: Questions to guess the response to
 ```
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Login authentication screen
+- Join code that allows each player to join
+- Asks users questions and sends their name and their responses to a server
+- Each player recieves the questions and answers of other players from the server
+- Questions and possible responses are randomized
+- Point system
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
+- **HTML** - Structure of each screen (login screen, question screen, guessing screen)
+- **CSS** - Make each screen look good (login screen, question screen, guessing screen)
+- **React** - Users can type in username and password, click to navigate between screens, scroll to look at all of the avaliable information on a screen, type in answers to questions, and click to select the correct response to a question
 - **Service** - Description here
 - **DB/Login** - Description here
 - **WebSocket** - Description here
