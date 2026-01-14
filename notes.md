@@ -16,8 +16,7 @@ In markdown you can link to images and even headings in the same file.
 
 ssh -i [path_to_key] ubuntu@54.145.245.144  
 http://54.145.245.144  
-I needed a 'paid account' for a domain name
-For some reason the subdomain works and not the root. I have tried deleting it and reregistering it.
+I needed a 'paid account' for a domain name. The subdomain worked correctly after like 5 minutes, but the root domain I had to wat all night long for it to finally work correctly.
 
 ## Caddy
 
