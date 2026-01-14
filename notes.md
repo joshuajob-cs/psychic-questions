@@ -14,8 +14,10 @@ In markdown you can link to images and even headings in the same file.
 
 ## AWS
 
-ssh -i [path_to_key] ubuntu@54.145.245.144
-http://54.145.245.144
+ssh -i [path_to_key] ubuntu@54.145.245.144  
+http://54.145.245.144  
+I needed a 'paid account' for a domain name
+For some reason the subdomain works and not the root. I have tried deleting it and reregistering it.
 
 ## Caddy
 
