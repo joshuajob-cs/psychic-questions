@@ -14,7 +14,8 @@ In markdown you can link to images and even headings in the same file.
 
 ## AWS
 
-ssh -i [path_to_key] ubuntu@54.198.107.97
+ssh -i [path_to_key] ubuntu@54.145.245.144
+http://54.145.245.144
 
 ## Caddy
 
