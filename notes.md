@@ -24,9 +24,14 @@ No problems worked just like it said in the [instruction](https://github.com/web
 
 ## HTML
 
-This was easy. I was careful to use the correct structural elements such as header, footer, main, nav, and form. The links between the three views work great using the `a` element.
-
-The part I didn't like was the duplication of the header and footer code. This is messy, but it will get cleaned up when I get to React.
+```html
+<meta charset="UTF-8">
+```
+I can add emojis and extra characters
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0">: 
+```
+Matches width to device width when the website shows up on a phone. Changes the Zoom to the default setting (100%).
 
 ## CSS
 
