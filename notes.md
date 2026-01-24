@@ -38,6 +38,22 @@ Matches width to device width when the website shows up on a phone. Changes the 
 * Padding vs. Margin: Padding is inside a shape, margin is outside.  
 * Strong is the same as bold except screen readers will emphasize it.
 
+```css
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+```
+
+The first line turns the object into a flex box. This makes it possible to center and align the items within the flex box. The second line centers it horizontally. The third line centers it vertically. The Fourth line sets the height of the object to be at least the height of the screen (rather than the height of the content)
+
+```css
+width: 100%;
+max-width: 500px;
+```
+
+Try to fill the whole screen (100%) but don't go above 500 pixels.
+
 ## React Part 1: Routing
 
 Setting up Vite and React was pretty simple. I had a bit of trouble because of conflicting CSS. This isn't as straight forward as you would find with Svelte or Vue, but I made it work in the end. If there was a ton of CSS it would be a real problem. It sure was nice to have the code structured in a more usable way.
