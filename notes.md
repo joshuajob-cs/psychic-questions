@@ -33,6 +33,13 @@ I can add emojis and extra characters
 ```
 Matches width to device width when the website shows up on a phone. Changes the Zoom to the default setting (100%).
 
+```html
+<input type="radio" id="answer-a" name="question-3">
+<label for="answer-a">How to swim</label>
+```
+
+Radio makes it a multiple choice question. ID connects it to label, so that clicking the words is the same as hitting the circle. Name groups it with other possible answers, so that you can only answer one of them.
+
 ## CSS
 
 * Padding vs. Margin: Padding is inside a shape, margin is outside.  
@@ -53,6 +60,13 @@ max-width: 500px;
 ```
 
 Try to fill the whole screen (100%) but don't go above 500 pixels.
+
+```css
+box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+```
+
+box-shadow: offset-x offset-y blur-radius color(r, g, b, opacity);
+
 
 ## React Part 1: Routing
 
