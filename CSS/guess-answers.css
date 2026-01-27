@@ -1,0 +1,49 @@
+body {
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+#player-name {
+  font-size: 24px;
+  font-weight: bold;
+}
+#points {
+  text-align: right;
+}
+#points-label {
+  font-size: 14px;
+  color: #666;
+}
+#points-value {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+}
+.question {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.question-text {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.answer {
+  font-size: 16px;
+  color: #555;
+  margin: 5px 0;
+}
+.answer-choices {
+  margin-top: 15px;
+}
+.choice {
+  margin: 10px 0;
+}
