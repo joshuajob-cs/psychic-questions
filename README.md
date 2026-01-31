@@ -92,15 +92,15 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I will use a 3rd party API that determines whose answers were similar to eachother. When someone is guessing the reponses of the person who is most like them, they get a "similarity score" that tells them how closely related their answers are.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - I wrote HTML for each page of the application.
+- [x] **Proper HTML element usage** - I used BODY, NAV, MAIN, HEADER, FOOTER and other HTML tags appropriately.
+- [x] **Links** - Links to travel to each page of the application.
+- [x] **Text** - Questions for the user.
+- [x] **3rd party API placeholder** - I will use a 3rd party API that determines whose answers were similar to eachother. When someone is guessing the reponses of the person who is most like them, they get a "similarity score" that tells them how closely related their answers are.
+- [x] **Images** - Images to inspire you.
+- [x] **Login placeholder** - Created login page with username and password.
+- [x] **DB data placeholder** - Player scores and responses stored in database.
+- [x] **WebSocket placeholder** - Websocket used to know how many other players are joined. Sends a message as soon as they join.
 
 ## 🚀 CSS deliverable
 
