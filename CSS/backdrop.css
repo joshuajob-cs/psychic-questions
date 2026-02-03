@@ -1,7 +1,16 @@
 body {
-  background: linear-gradient(to bottom, yellow, lavender);
   height: 100vh;
   font-family: "Palatino Linotype", serif;
+}
+
+header {
+  background-color: indigo;
+  color: white;
+  padding: 1rem;
+}
+
+main {
+  background: linear-gradient(to bottom, yellow, lavender);
   text-align: center;
   display: flex;
   flex-direction: column;
