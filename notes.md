@@ -72,6 +72,13 @@ box-shadow: offset-x offset-y blur-radius color(r, g, b, opacity);
 
 - rem is an alternative to px that is based on font size.
 
+```css
+position: fixed;
+bottom: 0;
+```
+
+Pins a footer to the bottom
+
 ## React Part 1: Routing
 
 Setting up Vite and React was pretty simple. I had a bit of trouble because of conflicting CSS. This isn't as straight forward as you would find with Svelte or Vue, but I made it work in the end. If there was a ton of CSS it would be a real problem. It sure was nice to have the code structured in a more usable way.
