@@ -25,16 +25,19 @@ No problems worked just like it said in the [instruction](https://github.com/web
 ## HTML
 
 ```html
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 ```
+
 I can add emojis and extra characters
+
 ```html
-<meta name="viewport" content="width=device-width, initial-scale=1.0">: 
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />:
 ```
+
 Matches width to device width when the website shows up on a phone. Changes the Zoom to the default setting (100%).
 
 ```html
-<input type="radio" id="answer-a" name="question-3">
+<input type="radio" id="answer-a" name="question-3" />
 <label for="answer-a">How to swim</label>
 ```
 
@@ -42,8 +45,8 @@ Radio makes it a multiple choice question. ID connects it to label, so that clic
 
 ## CSS
 
-* Padding vs. Margin: Padding is inside a shape, margin is outside.  
-* Strong is the same as bold except screen readers will emphasize it.
+- Padding vs. Margin: Padding is inside a shape, margin is outside.
+- Strong is the same as bold except screen readers will emphasize it.
 
 ```css
 display: flex;
@@ -62,11 +65,12 @@ max-width: 500px;
 Try to fill the whole screen (100%) but don't go above 500 pixels.
 
 ```css
-box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 ```
 
 box-shadow: offset-x offset-y blur-radius color(r, g, b, opacity);
 
+- rem is an alternative to px that is based on font size.
 
 ## React Part 1: Routing
 
