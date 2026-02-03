@@ -1,5 +1,7 @@
 body {
-  background-color: yellow;
+  background: linear-gradient(to bottom, yellow, lavender);
+  height: 100vh;
+  font-family: "Palatino Linotype", serif;
   text-align: center;
   display: flex;
   flex-direction: column;
