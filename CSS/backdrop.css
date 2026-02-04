@@ -43,6 +43,7 @@ footer {
 
 .screen-rotater {
   display: flex;
+  gap: 3rem;
 }
 
 @media (orientation: portrait) {
