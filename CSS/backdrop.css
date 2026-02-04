@@ -1,6 +1,8 @@
 body {
   height: 100vh;
   font-family: "Palatino Linotype", serif;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
@@ -10,6 +12,7 @@ header {
 }
 
 main {
+  flex: 1; /* Reffering to the flex in body */
   background: linear-gradient(to bottom, yellow, lavender);
   text-align: center;
   display: flex;
@@ -22,9 +25,7 @@ footer {
   background-color: indigo;
   color: white;
   padding: 0.5rem;
-  position: fixed;
   width: 100%;
-  bottom: 0;
 }
 
 .btn-primary {
