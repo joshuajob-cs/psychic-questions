@@ -43,6 +43,9 @@ Matches width to device width when the website shows up on a phone. Changes the 
 
 Radio makes it a multiple choice question. ID connects it to label, so that clicking the words is the same as hitting the circle. Name groups it with other possible answers, so that you can only answer one of them.
 
+This is how you deploy:
+./deployFiles.sh -k <yourpemkey> -h joshuajob-cs.click -s startup
+
 ## CSS
 
 - Padding vs. Margin: Padding is inside a shape, margin is outside.
