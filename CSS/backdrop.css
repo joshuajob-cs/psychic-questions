@@ -40,3 +40,23 @@ footer {
   border: 2px solid darkviolet;
   border-radius: 0.375rem;
 }
+
+.screen-rotater {
+  display: flex;
+}
+
+@media (orientation: portrait) {
+  .screen-rotater {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (orientation: landscape) {
+  .screen-rotater {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}
