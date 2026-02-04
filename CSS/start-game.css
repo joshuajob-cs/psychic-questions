@@ -4,3 +4,9 @@
   background-color: gray;
   border-radius: 4px;
 }
+
+.grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
