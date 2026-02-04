@@ -17,6 +17,7 @@ header {
 main {
   flex: 1; /* Reffering to the flex in body */
   background: linear-gradient(to bottom, yellow, lavender);
+  padding: 1rem;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -43,21 +44,23 @@ footer {
 
 .screen-rotater {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 3rem;
 }
 
 @media (orientation: portrait) {
   .screen-rotater {
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
   }
 }
 
 @media (orientation: landscape) {
   .screen-rotater {
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
   }
+}
+
+input {
+  margin: 10px;
 }
