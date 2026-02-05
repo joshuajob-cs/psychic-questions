@@ -4,10 +4,9 @@
 body {
   margin: 0;
   min-height: 100vh;
-  /*font-family: "Palatino Linotype", serif;*/
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 100;
+  font-weight: 300;
   font-style: normal;
   display: flex;
   flex-direction: column;
@@ -46,16 +45,17 @@ h1,
 h2,
 h3 {
   font-family: "Playwrite NZ Basic", cursive;
-  font-optical-sizing: auto;
   font-weight: 400;
-  font-style: normal;
 }
 
 .basic-font {
   font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 100;
-  font-style: normal;
+  font-weight: 300;
+}
+
+.heavy-basic {
+  font-family: "Inter", sans-serif;
+  font-weight: 900;
 }
 
 .btn-primary {
