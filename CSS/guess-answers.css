@@ -13,12 +13,12 @@
 }
 #points-label {
   font-size: 14px;
-  color: dimgray;
+  color: white;
 }
 #points-value {
   font-size: 32px;
   font-weight: bold;
-  color: darkslategray;
+  color: whitesmoke;
 }
 .question {
   background-color: lightskyblue;
