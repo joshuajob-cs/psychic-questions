@@ -1,12 +1,15 @@
 .player {
   padding: 10px;
-  margin: 5px 0;
-  background-color: gray;
+  background-color: silver;
   border-radius: 4px;
 }
 
 .grid {
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(100px, max-content));
+  gap: 1rem;
+  justify-content: center;
+  align-content: start;
+  align-items: center;
 }
