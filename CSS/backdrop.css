@@ -1,7 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Playwrite+NZ+Basic:wght@100..400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playwrite+NZ+Basic&display=swap");
+
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: "Palatino Linotype", serif;
+  /*font-family: "Palatino Linotype", serif;*/
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
   display: flex;
   flex-direction: column;
 }
@@ -32,6 +39,23 @@ footer {
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
   position: relative;
   z-index: 1;
+}
+
+.fancy-font,
+h1,
+h2,
+h3 {
+  font-family: "Playwrite NZ Basic", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.basic-font {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
 }
 
 .btn-primary {
