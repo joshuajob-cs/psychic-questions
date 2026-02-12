@@ -1,13 +1,14 @@
 import React from "react";
 import { AuthHeader } from "./auth-header";
 import { AuthFooter } from "./auth-footer";
+import "./join.css";
 
 export function Join() {
   return (
     <>
       <AuthHeader />
       <main>
-        <div className="screen-rotater">
+        <div className="screen-rotater" id="join-rotater">
           <div>
             <h1>Join Game</h1>
             <form action="/enter-name">
