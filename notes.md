@@ -95,7 +95,7 @@ Allows you to stack elements (higher z index on top)
 2. class -> className
 3. import css
 
-chmod +x deployReact.sh
+chmod +x deployReact.sh  
 ./deployReact.sh -k <yourpemkey> -h joshuajob-cs.click -s startup
 
 ## React Part 2: Reactivity
