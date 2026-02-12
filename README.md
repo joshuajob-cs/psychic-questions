@@ -155,3 +155,5 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
 - [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
 - [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+
+*Except where otherwise noted, this project is licensed under the MIT License. The Elephant.png file is not covered under the MIT license. I want to reserve the rights of the Elephant.png for my own logos/branding.*
