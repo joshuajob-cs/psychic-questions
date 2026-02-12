@@ -8,7 +8,7 @@ export function Login() {
       <AuthHeader />
       <main>
         <h1>Login</h1>
-        <form action="enter-name">
+        <form action="/enter-name">
           <div>
             <input type="text" placeholder="Username" required />
           </div>

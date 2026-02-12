@@ -1,9 +1,40 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import { Title } from "../join/title";
+import { Footer } from "../join/shared-footer";
+import "./start-game.css";
 
 export function StartGame() {
   return (
-    <main>
-      <div>StartGame displayed here</div>
-    </main>
+    <>
+      <header>
+        <Title />
+        <h4 className="basic-font">Mystery User's Game</h4>
+      </header>
+      <main>
+        <div>
+          <h1>Game Code</h1>
+          <h2 className="basic-font">
+            <strong>ACXLDE</strong>
+          </h2>
+        </div>
+        <h3 className="basic-font">Players: 26</h3>
+        <div className="grid">
+          <div className="player">Charles</div>
+          <div className="player">Jenny</div>
+          <div className="player">Tasha</div>
+          <div className="player">Bob</div>
+          <div className="player">Skyler</div>
+          <div className="player">Robin</div>
+          <div className="player">Billy Bob Jones Jr.</div>
+        </div>
+        <NavLink to="/ask-questions">
+          <button>Start</button>
+        </NavLink>
+      </main>
+      <footer>
+        <Footer />
+      </footer>
+    </>
   );
 }

@@ -10,7 +10,7 @@ export function EnterName() {
       </header>
       <main>
         <h1>Name</h1>
-        <form action="start-game">
+        <form action="/start-game">
           <div>
             <input type="text" required />
           </div>

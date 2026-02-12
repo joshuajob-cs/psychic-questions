@@ -8,7 +8,7 @@ export function SignUp() {
       <AuthHeader />
       <main>
         <h1>Sign Up</h1>
-        <form action="enter-name">
+        <form action="/enter-name">
           <div>
             <input type="text" placeholder="Username" required />
           </div>
