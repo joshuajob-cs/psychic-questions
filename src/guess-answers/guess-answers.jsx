@@ -8,39 +8,46 @@ export function GuessAnswers() {
     <>
       <header>
         <Title />
+        <div id="points-container">
+          <div id="player-name">Jake</div>
+          <div id="points">
+            <div id="points-label">Points</div>
+            <div id="points-value">35</div>
+          </div>
+        </div>
       </header>
       <main>
-        <h2 class="heavy-basic">Lily's Questions</h2>
-        <h3 class="basic-font">You are 50% alike</h3>
-        <div class="question">
-          <div class="light-fancy">What is your greatest fear?</div>
-          <div class="answer">Answer: Sandwiches</div>
+        <h2 className="heavy-basic">Lily's Questions</h2>
+        <h3 className="basic-font">You are 50% alike</h3>
+        <div className="question">
+          <div className="light-fancy">What is your greatest fear?</div>
+          <div className="answer">Answer: Sandwiches</div>
         </div>
-        <div class="question">
-          <div class="light-fancy">
+        <div className="question">
+          <div className="light-fancy">
             What is something that is difficult for you to remember?
           </div>
-          <div class="answer">Answer: Math</div>
+          <div className="answer">Answer: Math</div>
         </div>
         <form action="/winner">
-          <div class="question">
-            <div class="light-fancy">
+          <div className="question">
+            <div className="light-fancy">
               What do you think everyone should learn?
             </div>
-            <div class="answer-choices">
-              <div class="choice">
+            <div className="answer-choices">
+              <div className="choice">
                 <input type="radio" id="answer-a" name="question-3" />
                 <label for="answer-a">How to swim</label>
               </div>
-              <div class="choice">
+              <div className="choice">
                 <input type="radio" id="answer-b" name="question-3" />
                 <label for="answer-b">Be a good person</label>
               </div>
-              <div class="choice">
+              <div className="choice">
                 <input type="radio" id="answer-c" name="question-3" />
                 <label for="answer-c">Nothing</label>
               </div>
-              <div class="choice">
+              <div className="choice">
                 <input type="radio" id="answer-d" name="question-3" />
                 <label for="answer-d">Pay attention and listen</label>
               </div>
