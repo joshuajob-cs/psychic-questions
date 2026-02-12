@@ -18,7 +18,7 @@ export function Join() {
             </form>
           </div>
           <img
-            src="HTML/Brain.png"
+            src="Brain.png"
             width="300"
             alt="You climb up a latter to reach a brain"
           />
