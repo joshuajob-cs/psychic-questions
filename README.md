@@ -22,7 +22,7 @@ Psychic questions is a sensational get-to-know-you game that you can play with y
 
 One user must create an account and sign in to start the game. All of the other players can join with the join code. Each player can see a list of all of the players who have joined. Players must type in their name to join the game.
 
-<img src=Drawings/Login.jpg alt="Login screen has option to login with username and password to create a new game, login with code to join a game, or sign up if you do not have an account yet." height="500"/> <img src=Drawings/Join.jpg alt="When someone logs in either to start a game or join a game, a game code is displayed along with the number of players that have joined and a list of their names." height="500"/> <img src=Drawings/Join2.jpg alt="Each player must type in their name as they join." height="500"/>
+<img src=Drawings/Login.jpg alt="Login screen has option to login with username and password to create a new game, login with code to join a game, or sign up if you do not have an account yet." height="300"/> <img src=Drawings/Join.jpg alt="When someone logs in either to start a game or join a game, a game code is displayed along with the number of players that have joined and a list of their names." height="300"/> <img src=Drawings/Join2.jpg alt="Each player must type in their name as they join." height="300"/>
 
 Each player must answer four questions about themselves to start off the game.
 
@@ -35,7 +35,7 @@ Question 2: 10 points
 Question 3: 25 points  
 Question 4: 50 points  
 
-<img src=Drawings/GuessOthersAnswers.jpg alt="On this screen a player is trying to guess how Jake responded to a question. The player has four possible answer choices. The player's points are displayed in the upper right corner. The screen is scrollable after the player has answered their first question, so that they can look at the questions they have already answered.]" height="500"/> <img src=Drawings/GuessOthersAnswers2.jpg alt="On this screen, a player has guessed how Jake responded to a question, and the correct answer is displayed." height="500"/>
+<img src=Drawings/GuessOthersAnswers.jpg alt="On this screen a player is trying to guess how Jake responded to a question. The player has four possible answer choices. The player's points are displayed in the upper right corner. The screen is scrollable after the player has answered their first question, so that they can look at the questions they have already answered.]" height="400"/> <img src=Drawings/GuessOthersAnswers2.jpg alt="On this screen, a player has guessed how Jake responded to a question, and the correct answer is displayed." height="400"/>
 
 Whomever gets the most points wins!
 
@@ -117,9 +117,9 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Bundled using Vite** - I did not complete this part of the deliverable.
-- [ ] **Components** - I did not complete this part of the deliverable.
-- [ ] **Router** - I did not complete this part of the deliverable.
+- [x] **Bundled using Vite** - I did not complete this part of the deliverable.
+- [x] **Components** - I did not complete this part of the deliverable.
+- [x] **Router** - I did not complete this part of the deliverable.
 
 ## 🚀 React part 2: Reactivity deliverable
 
