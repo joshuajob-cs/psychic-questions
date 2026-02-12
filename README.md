@@ -106,12 +106,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Visually appealing colors and layout. No overflowing elements.** - I did not complete this part of the deliverable.
-- [ ] **Use of a CSS framework** - I did not complete this part of the deliverable.
-- [ ] **All visual elements styled using CSS** - I did not complete this part of the deliverable.
-- [ ] **Responsive to window resizing using flexbox and/or grid display** - I did not complete this part of the deliverable.
-- [ ] **Use of a imported font** - I did not complete this part of the deliverable.
-- [ ] **Use of different types of selectors including element, class, ID, and pseudo selectors** - I did not complete this part of the deliverable.
+- [x] **Visually appealing colors and layout. No overflowing elements.** - Resizes to make sure nothing overflows.
+- [x] **Use of a CSS framework** - Dropdown menu.
+- [x] **All visual elements styled using CSS** - Very beautiful and mysterious.
+- [x] **Responsive to window resizing using flexbox and/or grid display** - Used flex on most pages and grid for players entering their names.
+- [x] **Use of a imported font** - Imported two fonts.
+- [x] **Use of different types of selectors including element, class, ID, and pseudo selectors** - Used all of these throughut the application. Used the hover pseudo selector.
 
 ## 🚀 React part 1: Routing deliverable
 
