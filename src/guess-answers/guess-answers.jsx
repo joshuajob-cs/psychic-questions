@@ -20,18 +20,18 @@ export function GuessAnswers() {
         <h2 className="heavy-basic">Lily's Questions</h2>
         <h3 className="basic-font">You are 50% alike</h3>
         <div className="question">
-          <div className="light-fancy">What is your greatest fear?</div>
+          <div className="fancy-font">What is your greatest fear?</div>
           <div className="answer">Answer: Sandwiches</div>
         </div>
         <div className="question">
-          <div className="light-fancy">
+          <div className="fancy-font">
             What is something that is difficult for you to remember?
           </div>
           <div className="answer">Answer: Math</div>
         </div>
         <form action="/winner">
           <div className="question">
-            <div className="light-fancy">
+            <div className="fancy-font">
               What do you think everyone should learn?
             </div>
             <div className="answer-choices">
