@@ -33,20 +33,29 @@ export default function App() {
               </button>
               <ul className="dropdown-menu" aria-labelledby="accountDropdown">
                 <li>
-                  <a className="dropdown-item" href="HTML/login.html">
-                    Login
-                  </a>
+                  <NavLink className="dropdown-item" to="">
+                    Join
+                  </NavLink>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="HTML/sign-up.html">
+                  <NavLink className="dropdown-item" to="login">
+                    Login
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="sign-up">
                     Sign Up
-                  </a>
+                  </NavLink>
                 </li>
               </ul>
             </div>
           </nav>
         </header>
-        <main>App content goes here</main>
+        <Routes>
+          <Route path="/" element={<Join />} exact />
+          <Route path="/login" element={<Login />} />
+          <Route path="/sign-up" element={<SignUp />} />
+        </Routes>
         <footer>
           <h2>
             <a id="github-link" href="https://github.com/joshuajob-cs/startup">
