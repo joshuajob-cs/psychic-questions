@@ -1,9 +1,9 @@
 import React from "react";
 
-export function SignUp() {
+export function Login() {
   return (
     <main>
-      <div>SignUp displayed here</div>
+      <div>Login displayed here</div>
     </main>
   );
 }
