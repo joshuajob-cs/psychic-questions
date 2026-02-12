@@ -55,8 +55,15 @@ export default function App() {
           <Route path="/" element={<Join />} exact />
           <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/ask-questions" element={<AskQuestions />} />
+          <Route path="/enter-name" element={<EnterName />} />
+          <Route path="/guess-answers" element={<GuessAnswers />} />
+          <Route path="/start-game" element={<StartGame />} />
+          <Route path="/waiting" element={<Waiting />} />
+          <Route path="/winner" element={<Winner />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+
         <footer>
           <h2>
             <a id="github-link" href="https://github.com/joshuajob-cs/startup">

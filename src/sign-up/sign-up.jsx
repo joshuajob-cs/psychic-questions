@@ -4,7 +4,7 @@ export function SignUp() {
   return (
     <main>
       <h1>Sign Up</h1>
-      <form action="enter-name.html">
+      <form action="enter-name">
         <div>
           <input type="text" placeholder="Username" required />
         </div>

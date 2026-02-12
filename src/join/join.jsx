@@ -6,7 +6,7 @@ export function Join() {
       <div className="screen-rotater">
         <div>
           <h1>Join Game</h1>
-          <form action="HTML/enter-name.html">
+          <form action="enter-name">
             <input type="text" placeholder="Join Code" required />
             <div>
               <button type="submit">Join</button>
