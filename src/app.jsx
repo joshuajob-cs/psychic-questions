@@ -55,6 +55,7 @@ export default function App() {
           <Route path="/" element={<Join />} exact />
           <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <footer>
           <h2>
@@ -66,5 +67,13 @@ export default function App() {
         </footer>
       </div>
     </BrowserRouter>
+  );
+}
+
+function NotFound() {
+  return (
+    <main>
+      <h1>404 Error. I'm not psychic. You are. I'm confused.</h1>
+    </main>
   );
 }
