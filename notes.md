@@ -91,7 +91,12 @@ Allows you to stack elements (higher z index on top)
 
 ## React Part 1: Routing
 
-Setting up Vite and React was pretty simple. I had a bit of trouble because of conflicting CSS. This isn't as straight forward as you would find with Svelte or Vue, but I made it work in the end. If there was a ton of CSS it would be a real problem. It sure was nice to have the code structured in a more usable way.
+1. Copy over
+2. class -> className
+3. import css
+
+chmod +x deployReact.sh
+./deployReact.sh -k <yourpemkey> -h joshuajob-cs.click -s startup
 
 ## React Part 2: Reactivity
 
