@@ -1,10 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { Title } from "./title";
 
 export function AuthHeader() {
   return (
     <header>
-      <h3>🔮 Psychic Questions 🤔</h3>
+      <Title />
       <nav>
         <div className="dropdown">
           <button

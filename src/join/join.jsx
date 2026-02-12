@@ -1,5 +1,6 @@
 import React from "react";
 import { AuthHeader } from "./auth-header";
+import { AuthFooter } from "./auth-footer";
 
 export function Join() {
   return (
@@ -23,6 +24,7 @@ export function Join() {
           />
         </div>
       </main>
+      <AuthFooter />
     </>
   );
 }

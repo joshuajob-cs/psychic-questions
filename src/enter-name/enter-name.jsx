@@ -1,10 +1,12 @@
 import React from "react";
+import { Title } from "../join/title";
+import { Footer } from "../join/shared-footer";
 
 export function EnterName() {
   return (
     <>
       <header>
-        <h3>🔮 Psychic Questions 🤔</h3>
+        <Title />
       </header>
       <main>
         <h1>Name</h1>
@@ -15,6 +17,9 @@ export function EnterName() {
           <button type="submit">Submit</button>
         </form>
       </main>
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 }

@@ -30,14 +30,6 @@ export default function App() {
           <Route path="/winner" element={<Winner />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <footer>
-          <h2>
-            <a id="github-link" href="https://github.com/joshuajob-cs/startup">
-              GitHub
-            </a>
-          </h2>
-          <p>&copy; 2026 Psychic Questions</p>
-        </footer>
       </div>
     </BrowserRouter>
   );
