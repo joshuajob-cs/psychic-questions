@@ -117,9 +117,9 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [x] **Bundled using Vite** - I did not complete this part of the deliverable.
-- [x] **Components** - I did not complete this part of the deliverable.
-- [x] **Router** - I did not complete this part of the deliverable.
+- [x] **Bundled using Vite** - The whole application uses Vite.
+- [x] **Components** - Has all of the CSS components from earlier and the HTML jas been deleted and replaced with JSX
+- [x] **Router** - See routing in app.jsx
 
 ## 🚀 React part 2: Reactivity deliverable
 
