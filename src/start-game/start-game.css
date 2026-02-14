@@ -17,5 +17,10 @@
 #header-rotater {
   gap: 1rem;
   justify-content: space-between;
-  /* align-items: center; */
+}
+
+@media (orientation: landscape) {
+  #header-rotater {
+    align-items: center;
+  }
 }
