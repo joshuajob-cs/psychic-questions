@@ -7,3 +7,8 @@
 #header-rotater {
   gap: 1rem;
 }
+
+#shrinkable {
+  max-width: 300px;
+  min-width: 100px;
+}
