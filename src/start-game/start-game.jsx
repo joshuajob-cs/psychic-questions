@@ -7,9 +7,9 @@ import "./start-game.css";
 export function StartGame() {
   return (
     <>
-      <header>
+      <header className="screen-rotater" id="header-rotater">
         <Title />
-        <h4 className="basic-font">Mystery User's Game</h4>
+        <h5 className="basic-font">Mystery User's Game</h5>
       </header>
       <main>
         <div>
