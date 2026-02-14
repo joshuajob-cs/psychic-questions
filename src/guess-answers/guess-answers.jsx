@@ -6,7 +6,7 @@ import "./guess-answers.css";
 export function GuessAnswers() {
   return (
     <>
-      <header className="screen-rotater" id="between-header">
+      <header id="between-header">
         <Title />
         <div id="points-container">
           <div id="player-name">Jake</div>
