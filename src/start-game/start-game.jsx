@@ -3,12 +3,11 @@ import { NavLink } from "react-router-dom";
 import { Title } from "../join/title";
 import { Footer } from "../join/shared-footer";
 import "./start-game.css";
-import "./between-header.css";
 
 export function StartGame() {
   return (
     <>
-      <header className="screen-rotater between-header">
+      <header className="screen-rotater" id="between-header">
         <Title />
         <h5 className="basic-font">Mystery User's Game</h5>
       </header>

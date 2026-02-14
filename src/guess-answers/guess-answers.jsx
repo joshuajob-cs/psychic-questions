@@ -2,12 +2,11 @@ import React from "react";
 import { Title } from "../join/title";
 import { Footer } from "../join/shared-footer";
 import "./guess-answers.css";
-import "../start-game/between-header.css";
 
 export function GuessAnswers() {
   return (
     <>
-      <header className="screen-rotater between-header">
+      <header className="screen-rotater" id="between-header">
         <Title />
         <div id="points-container">
           <div id="player-name">Jake</div>

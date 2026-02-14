@@ -13,3 +13,14 @@
   align-content: start;
   align-items: center;
 }
+
+#between-header {
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+@media (orientation: landscape) {
+  #between-header {
+    align-items: center;
+  }
+}
