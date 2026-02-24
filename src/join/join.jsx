@@ -2,7 +2,6 @@ import React from "react";
 import { AuthHeader } from "./auth-header";
 import { AuthFooter } from "./auth-footer";
 import "./join.css";
-import { useState } from "react";
 
 export function Join() {
   return (
