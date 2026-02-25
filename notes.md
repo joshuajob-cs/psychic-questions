@@ -100,6 +100,12 @@ chmod +x deployReact.sh
 
 ## React Part 2: Reactivity
 
+```jsx
+import React from "react";
+```
+
+On every file or it breaks, and it is annoying.
+
 This was a lot of fun to see it all come together. I had to keep remembering to use React state instead of just manipulating the DOM directly.
 
 Handling the toggling of the checkboxes was particularly interesting.

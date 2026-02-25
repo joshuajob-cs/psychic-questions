@@ -1,6 +1,7 @@
 import React from "react";
 import { AuthHeader } from "./auth-header";
 import { AuthFooter } from "./auth-footer";
+import { InputTester } from "./input-tester";
 import "./join.css";
 
 export function Join() {
@@ -15,9 +16,11 @@ export function Join() {
               <input type="text" placeholder="Join Code" required />
               <div>
                 <button type="submit">Join</button>
+                <InputTester />
               </div>
             </form>
           </div>
+          <InputTester />
           <img
             id="shrinkable"
             src="Brain.png"
