@@ -25,10 +25,7 @@ export function Join() {
                 <button type="submit">Join</button>
               </div>
             </form>
-            <form onSubmit={handleSubmit}>
-              <button type="submit">Submit</button>
-              {submitted && <p style={{ color: "red" }}>Wrong button</p>}
-            </form>
+            <InputTester />
           </div>
           <img
             id="shrinkable"

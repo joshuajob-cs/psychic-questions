@@ -6,18 +6,19 @@ import { useState } from "react";
 // Print text? Invalid input? Below the box?
 
 export function InputTester() {
-  const [code, setCode] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
-  const isValid = /^\d{6}$/.test(code);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
 
   return (
     <>
-      <input
-        value={code}
-        onChange={(e) => setCode(e.target.value)}
-        placeholder="Enter 6-digit code"
-      />
-      {!isValid && code.length > 0 && <p>Code must be 6 digits</p>}
+      <form onSubmit={handleSubmit}>
+        <button type="submit">Submit</button>
+        {submitted && <p style={{ color: "red" }}>Wrong button</p>}
+      </form>
     </>
   );
 }
