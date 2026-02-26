@@ -104,28 +104,13 @@ chmod +x deployReact.sh
 import React from "react";
 ```
 
-On every file or it breaks, and it is annoying.
-
-This was a lot of fun to see it all come together. I had to keep remembering to use React state instead of just manipulating the DOM directly.
-
-Handling the toggling of the checkboxes was particularly interesting.
+Put this on every file or it breaks, and it is annoying.
 
 ```jsx
-<div className="input-group sound-button-container">
-  {calmSoundTypes.map((sound, index) => (
-    <div key={index} className="form-check form-switch">
-      <input
-        className="form-check-input"
-        type="checkbox"
-        value={sound}
-        id={sound}
-        onChange={() => togglePlay(sound)}
-        checked={selectedSounds.includes(sound)}
-      ></input>
-      <label className="form-check-label" htmlFor={sound}>
-        {sound}
-      </label>
-    </div>
-  ))}
-</div>
+const handleSubmit = (e) => {
+  e.preventDefault();
+  setSubmitted(true);
+};
 ```
+
+The value e is past in as a parameter. e means event. e.preventDefault stops the page from reloading.

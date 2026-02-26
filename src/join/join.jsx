@@ -5,12 +5,7 @@ import { InputTester } from "./input-tester";
 import "./join.css";
 
 export function Join() {
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
+  const [isValid, setIsValid] = useState(false);
 
   return (
     <>
@@ -25,7 +20,9 @@ export function Join() {
                 <button type="submit">Join</button>
               </div>
             </form>
-            <InputTester />
+            <InputTester checker={setIsValid} />
+            <p>isValid</p>
+            {isValid && <p style={{ color: "green" }}>Wrong button</p>}
           </div>
           <img
             id="shrinkable"
