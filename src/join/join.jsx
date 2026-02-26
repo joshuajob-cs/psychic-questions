@@ -22,7 +22,7 @@ export function Join() {
             </form>
             <InputTester checker={setIsValid} />
             <p>isValid</p>
-            {isValid && <p style={{ color: "green" }}>Wrong button</p>}
+            {"hi" === "his" && <p style={{ color: "green" }}>Wrong button</p>}
           </div>
           <img
             id="shrinkable"
