@@ -14,15 +14,7 @@ export function Join() {
         <div className="screen-rotater" id="join-rotater">
           <div>
             <h1>Join Game</h1>
-            <form action="/enter-name">
-              <input type="text" placeholder="Join Code" required />
-              <div>
-                <button type="submit">Join</button>
-              </div>
-            </form>
-            <InputTester checker={setIsValid} />
-            <p>isValid</p>
-            {"hi" === "his" && <p style={{ color: "green" }}>Wrong button</p>}
+            <InputTester />
           </div>
           <img
             id="shrinkable"
