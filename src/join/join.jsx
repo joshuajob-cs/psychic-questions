@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { AuthHeader } from "./auth-header";
 import { AuthFooter } from "./auth-footer";
 import { InputTester } from "./input-tester";
 import "./join.css";
 
 export function Join() {
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
   return (
     <>
       <AuthHeader />
@@ -16,11 +23,13 @@ export function Join() {
               <input type="text" placeholder="Join Code" required />
               <div>
                 <button type="submit">Join</button>
-                <InputTester />
               </div>
             </form>
+            <form onSubmit={handleSubmit}>
+              <button type="submit">Submit</button>
+              {submitted && <p style={{ color: "red" }}>Wrong button</p>}
+            </form>
           </div>
-          <InputTester />
           <img
             id="shrinkable"
             src="Brain.png"
