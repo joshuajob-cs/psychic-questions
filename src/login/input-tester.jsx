@@ -4,12 +4,13 @@ import { useNavigate } from "react-router-dom";
 
 export function InputTester() {
   const [submitted, setSubmitted] = useState(false);
-  const [code, setCode] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const go = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (code === "ABCDE") {
+    if (username === "john" && password === "doe") {
       go("/enter-name");
     }
     setSubmitted(true);
@@ -21,23 +22,23 @@ export function InputTester() {
         <div>
           <input
             type="text"
-            onChange={(e) => setCode(e.target.value)}
+            onChange={(e) => setUsername(e.target.value)}
             placeholder="Username"
             required
           />
-          {submitted && code !== "ABCDE" && (
-            <p style={{ color: "red" }}>The code is ABCDE</p>
-          )}
         </div>
         <div>
           <input
             type="password"
-            onChange={(e) => setCode(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
             required
           />
-          {submitted && code !== "ABCDE" && (
-            <p style={{ color: "red" }}>The code is ABCDE</p>
+          {submitted && (username !== "john" || password !== "doe") && (
+            <p style={{ color: "red" }}>
+              Invalid username or password. (Hint: the correct username is
+              "john" and the correct password is "doe")
+            </p>
           )}
         </div>
         <div>
