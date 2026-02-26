@@ -1,6 +1,7 @@
 import React from "react";
 import { AuthHeader } from "../join/auth-header";
 import { AuthFooter } from "../join/auth-footer";
+import { InputTester } from "./input-tester";
 
 export function Login() {
   return (
@@ -17,6 +18,7 @@ export function Login() {
           </div>
           <button type="submit">Login</button>
         </form>
+        <InputTester />
       </main>
       <AuthFooter />
     </>
