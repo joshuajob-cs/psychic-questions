@@ -2,6 +2,8 @@ import React from "react";
 import { Title } from "../join/title";
 import { Footer } from "../join/shared-footer";
 
+//Create a context that stores the name, so everything else can access it.
+
 export function EnterName() {
   return (
     <>

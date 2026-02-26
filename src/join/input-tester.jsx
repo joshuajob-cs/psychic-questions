@@ -24,9 +24,7 @@ export function InputTester() {
           placeholder="Join Code"
           required
         />
-        {submitted && code !== "ABCDE" && (
-          <p style={{ color: "red" }}>The code is ABCDE</p>
-        )}
+        {submitted && <p style={{ color: "red" }}>The code is ABCDE</p>}
         <div>
           <button type="submit">Join</button>
         </div>

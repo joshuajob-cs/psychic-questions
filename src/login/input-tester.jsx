@@ -34,7 +34,7 @@ export function InputTester() {
             placeholder="Password"
             required
           />
-          {submitted && (username !== "john" || password !== "doe") && (
+          {submitted && (
             <p style={{ color: "red" }}>
               Invalid username or password. (Hint: the correct username is
               "john" and the correct password is "doe")
