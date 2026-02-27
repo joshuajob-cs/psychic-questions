@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export function InputTester() {
-  const [submitted, setSubmitted] = useState(false);
+  const [badEntry, setBadEntry] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const go = useNavigate();
@@ -12,8 +12,9 @@ export function InputTester() {
     e.preventDefault();
     if (username === "john" && password === "doe") {
       go("/enter-name");
+    } else {
+      setBadEntry(true);
     }
-    setSubmitted(true);
   };
 
   return (
@@ -34,7 +35,7 @@ export function InputTester() {
             placeholder="Password"
             required
           />
-          {submitted && (
+          {badEntry && (
             <p style={{ color: "red" }}>
               Invalid username or password. (Hint: the correct username is
               "john" and the correct password is "doe")

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export function InputTester() {
-  const [submitted, setSubmitted] = useState(false);
+  const [badEntry, setBadEntry] = useState(false);
   const [code, setCode] = useState("");
   const go = useNavigate();
 
@@ -11,8 +11,9 @@ export function InputTester() {
     e.preventDefault();
     if (code === "ABCDE") {
       go("/enter-name");
+    } else {
+      setBadEntry(true);
     }
-    setSubmitted(true);
   };
 
   return (
@@ -24,7 +25,7 @@ export function InputTester() {
           placeholder="Join Code"
           required
         />
-        {submitted && <p style={{ color: "red" }}>The code is ABCDE</p>}
+        {badEntry && <p style={{ color: "red" }}>The code is ABCDE</p>}
         <div>
           <button type="submit">Join</button>
         </div>
