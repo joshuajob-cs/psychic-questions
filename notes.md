@@ -123,3 +123,9 @@ The value e is past in as a parameter. e means event. e.preventDefault stops the
 ```
 
 Controlled vs. Uncontrolled. If I set the value to code then I can change the code from outside the function and it will automatically adjust value. So value is controlled. If I don't set the value to code the value will only be adjusted when I type stuff in the text box, and therefore it is uncontrolled.
+
+```jsx
+export const ShareVars = ({ children }) => {};
+```
+
+The word children automatically takes anything inside the <> </> as input.
