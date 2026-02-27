@@ -8,18 +8,17 @@ import "./start-game.css";
 
 export function StartGame() {
   const { user } = useContext(Context);
-  console.log("User from context:", user);
   return (
     <>
       <header className="screen-rotater" id="between-header">
         <Title />
-        <h5 className="basic-font"> {user.name} Mystery User's Game</h5>
+        <h5 className="basic-font"> {user.username}'s Game</h5>
       </header>
       <main>
         <div>
           <h1>Game Code</h1>
           <h2 className="basic-font">
-            <strong>ACXLDE</strong>
+            <strong>ABCDE</strong>
           </h2>
         </div>
         <h3 className="basic-font">Players: 26</h3>
@@ -30,7 +29,7 @@ export function StartGame() {
           <div className="player">Bob</div>
           <div className="player">Skyler</div>
           <div className="player">Robin</div>
-          <div className="player">Billy Bob Jones Jr.</div>
+          <div className="player">{user.name}</div>
         </div>
         <NavLink to="/ask-questions">
           <button>Start</button>

@@ -1,18 +1,21 @@
 import React from "react";
 import { Title } from "../join/title";
 import { Footer } from "../join/shared-footer";
+import { useContext } from "react";
+import { Context } from "../context";
 import "./guess-answers.css";
 
 export function GuessAnswers() {
+  const { user } = useContext(Context);
   return (
     <>
       <header id="between-header">
         <Title />
         <div id="points-container">
-          <div id="player-name">Jake</div>
+          <div id="player-name">{user.name}</div>
           <div id="points">
             <div id="points-label">Points</div>
-            <div id="points-value">35</div>
+            <div id="points-value">{user.score}</div>
           </div>
         </div>
       </header>

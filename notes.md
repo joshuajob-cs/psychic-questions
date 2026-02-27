@@ -129,3 +129,5 @@ export const ShareVars = ({ children }) => {};
 ```
 
 The word children automatically takes anything inside the <> </> as input.
+
+For debugging I needed to Ctrl + Shift + k (open dev tools), and then manually delete storage sometimes because local storage keeps it stored across sessions.
