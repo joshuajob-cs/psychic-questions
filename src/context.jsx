@@ -6,9 +6,9 @@ export const Context = createContext();
 
 export const ShareVars = ({ children }) => {
   const [user, setUser] = useLocalStorage("user", {
-    name: "",
-    username: "",
-    score: 0,
+    name: "hello",
+    username: "hello",
+    score: 10,
   });
 
   return (

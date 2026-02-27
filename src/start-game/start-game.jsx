@@ -8,6 +8,7 @@ import "./start-game.css";
 
 export function StartGame() {
   const { user } = useContext(Context);
+  console.log("User from context:", user);
   return (
     <>
       <header className="screen-rotater" id="between-header">
