@@ -11,6 +11,10 @@ export function InputForm({
 }) {
   const [badEntry, setBadEntry] = useState(false);
   const [input, setInput] = useState("");
+
+  const [inputs, setInputs] = useState(
+    Object.fromEntries(inputSpecs.map((spec) => [spec.name, ""])),
+  );
   const go = useNavigate();
 
   const handleSubmit = (e) => {
