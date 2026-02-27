@@ -10,8 +10,6 @@ export function InputForm({
   save, // function to save the input value
 }) {
   const [badEntry, setBadEntry] = useState(false);
-  const [input, setInput] = useState("");
-
   const [inputs, setInputs] = useState(
     Object.fromEntries(inputSpecs.map((spec) => [spec.name, ""])),
   );
@@ -19,10 +17,10 @@ export function InputForm({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const isValid = validate ? validate(input) : true;
+    const isValid = validate ? validate(inputs) : true;
 
     if (isValid) {
-      if (save) save(input);
+      if (save) save(inputs);
       go(successRoute);
     } else {
       setBadEntry(true);
