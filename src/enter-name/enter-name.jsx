@@ -1,8 +1,7 @@
 import React from "react";
 import { Title } from "../join/title";
 import { Footer } from "../join/shared-footer";
-
-//Create a context that stores the name, so everything else can access it.
+import { InputCollector } from "./input-collector";
 
 export function EnterName() {
   return (
@@ -12,12 +11,7 @@ export function EnterName() {
       </header>
       <main>
         <h1>Name</h1>
-        <form action="/start-game">
-          <div>
-            <input type="text" required />
-          </div>
-          <button type="submit">Submit</button>
-        </form>
+        <InputCollector />
       </main>
       <footer>
         <Footer />

@@ -5,8 +5,6 @@ import { InputTester } from "./input-tester";
 import "./join.css";
 
 export function Join() {
-  const [isValid, setIsValid] = useState(false);
-
   return (
     <>
       <AuthHeader />
