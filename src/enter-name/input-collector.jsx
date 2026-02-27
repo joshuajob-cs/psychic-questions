@@ -9,10 +9,12 @@ export function InputCollector() {
   return (
     <>
       <InputForm
-        inputSpecs={{ name: "name", type: "text", placeholder: "" }}
+        inputSpecs={[{ name: "name", type: "text", placeholder: "" }]}
         successRoute="/start-game"
         buttonText="Submit"
-        save={(input) => setUser((prevUser) => ({ ...prevUser, name: input }))}
+        save={(inputs) =>
+          setUser((prevUser) => ({ ...prevUser, name: inputs.name }))
+        }
       />
     </>
   );
