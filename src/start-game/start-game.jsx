@@ -2,14 +2,17 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { Title } from "../join/title";
 import { Footer } from "../join/shared-footer";
+import { useContext } from "react";
+import { Context } from "../context";
 import "./start-game.css";
 
 export function StartGame() {
+  const { user } = useContext(Context);
   return (
     <>
       <header className="screen-rotater" id="between-header">
         <Title />
-        <h5 className="basic-font">Mystery User's Game</h5>
+        <h5 className="basic-font"> {user.name} Mystery User's Game</h5>
       </header>
       <main>
         <div>

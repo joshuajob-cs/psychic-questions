@@ -13,7 +13,7 @@ import { GuessAnswers } from "./guess-answers/guess-answers";
 import { StartGame } from "./start-game/start-game";
 import { Waiting } from "./waiting/waiting";
 import { Winner } from "./winner/winner";
-import { Context, ShareVars } from "./context";
+import { ShareVars } from "./context";
 
 export default function App() {
   return (
