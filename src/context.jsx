@@ -3,9 +3,11 @@ import { createContext, useState, useEffect } from "react";
 export const Context = createContext();
 
 export const shareVars = ({ app }) => {
-  const [username, setUsername] = useState("");
+  const [user, setUser] = useLocalStorage("user", {
+    name: "",
+    username: "",
+    score: 0,
+  });
 
-  return (
-    <Context.Provider value={{ username, setUsername }}>{app}</Context.Provider>
-  );
+  return <Context.Provider value={{ user, setUser }}>{app}</Context.Provider>;
 };
