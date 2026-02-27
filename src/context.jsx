@@ -1,5 +1,6 @@
 import React from "react";
 import { createContext } from "react";
+import useLocalStorage from "./storage";
 
 export const Context = createContext();
 
