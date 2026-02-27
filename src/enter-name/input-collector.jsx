@@ -29,7 +29,7 @@ export function InputCollector() {
           />
         </div>
         <div>
-          <button type="submit">Login</button>
+          <button type="submit">Submit</button>
         </div>
       </form>
     </>
