@@ -15,6 +15,13 @@ export function InputForm({
   );
   const go = useNavigate();
 
+  const handleChange = (e) => {
+    setInputs((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const isValid = validate ? validate(inputs) : true;
@@ -30,13 +37,18 @@ export function InputForm({
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <input
-          name={inputSpecs.name}
-          type={inputSpecs.type}
-          placeholder={inputSpecs.placeholder}
-          onChange={(e) => setInput(e.target.value)}
-          required
-        />
+        {inputSpecs.map((spec) => (
+          <div key={spec.name}>
+            <input
+              name={spec.name}
+              value={inputs[spec.name]}
+              type={spec.type}
+              placeholder={spec.placeholder}
+              onChange={handleChange}
+              required
+            />
+          </div>
+        ))}
       </div>
       {badEntry && errorMessage && (
         <p style={{ color: "red" }}>{errorMessage}</p>
