@@ -7,6 +7,7 @@ export function InputForm({
   errorMessage, // message to show if validate fails
   buttonText, // text for submit button
   validate, // function to validate the input
+  save, // function to save the input value
 }) {
   const [badEntry, setBadEntry] = useState(false);
   const [input, setInput] = useState("");
@@ -17,6 +18,7 @@ export function InputForm({
     const isValid = validate ? validate(input) : true;
 
     if (isValid) {
+      if (save) save(input);
       go(successRoute);
     } else {
       setBadEntry(true);
@@ -25,7 +27,7 @@ export function InputForm({
 
   return (
     <form onSubmit={handleSubmit}>
-      <div key={inputSpecs.name}>
+      <div>
         <input
           name={inputSpecs.name}
           type={inputSpecs.type}
