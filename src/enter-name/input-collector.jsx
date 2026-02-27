@@ -1,37 +1,19 @@
 import React from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
+import { InputForm } from "../join/input-form";
 import { Context } from "../context";
 
 export function InputCollector() {
-  const [name, setName] = useState("");
-  const go = useNavigate();
   const { setUser } = useContext(Context);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setUser((prevUser) => ({
-      ...prevUser,
-      name: name,
-    }));
-    go("/start-game");
-  };
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input
-            type="text"
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <button type="submit">Submit</button>
-        </div>
-      </form>
+      <InputForm
+        inputSpecs={{ name: "name", type: "text", placeholder: "" }}
+        successRoute="/start-game"
+        buttonText="Submit"
+        save={(input) => setUser((prevUser) => ({ ...prevUser, name: input }))}
+      />
     </>
   );
 }
