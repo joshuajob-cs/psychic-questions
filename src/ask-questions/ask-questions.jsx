@@ -20,7 +20,7 @@ export function AskQuestions() {
     e.preventDefault();
     setAnswer("");
     if (quesIndex < questions.length - 1) {
-      setQuesIndex(quesIndex + 1);
+      setQuesIndex((prev) => prev + 1);
     } else {
       go("/guess-answers");
     }

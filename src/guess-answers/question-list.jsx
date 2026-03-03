@@ -36,7 +36,7 @@ export function QuestionList() {
     checkAnswer(quesIndex - 1);
     setSelected(null);
     if (quesIndex < questions.length) {
-      setQuesIndex(quesIndex + 1);
+      setQuesIndex((prev) => prev + 1);
     } else {
       go("/winner");
     }
