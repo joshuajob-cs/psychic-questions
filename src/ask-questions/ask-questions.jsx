@@ -14,7 +14,6 @@ const questions = [
 export function AskQuestions() {
   const go = useNavigate();
   const [quesIndex, setQuesIndex] = useState(0);
-
   function handleNext(e) {
     e.preventDefault();
     if (quesIndex < questions.length - 1) {
@@ -32,12 +31,14 @@ export function AskQuestions() {
       <main>
         <div className="container">
           <h2 className="basic-font">Your Questions</h2>
-          <h1>Who do you aspire to be like?</h1>
-          <form action="/guess-answers">
+          <h1>{questions[quesIndex]}</h1>
+          <form onSubmit={handleNext}>
             <textarea placeholder="Enter your answer here..."></textarea>
-            <div>Q: 1/4</div>
+            <div>
+              Q: {quesIndex + 1}/{questions.length}
+            </div>
             <div className="button-container">
-              <button>Next →</button>
+              <button type="submit">Next →</button>
             </div>
           </form>
         </div>
