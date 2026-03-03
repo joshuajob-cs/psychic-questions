@@ -1,36 +1,3 @@
-#between-header {
-  display: flex;
-  gap: 1rem;
-  justify-content: space-between;
-  align-items: center;
-}
-#points-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: darkmagenta;
-  padding: 0.7rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-#points {
-  background-color: indigo;
-  padding: 0.3rem;
-  border-radius: 8px;
-}
-#player-name {
-  font-size: 24px;
-  font-weight: bold;
-}
-#points-label {
-  font-size: 14px;
-  color: white;
-}
-#points-value {
-  font-size: 32px;
-  font-weight: bold;
-  color: whitesmoke;
-}
 .question {
   background-color: lightskyblue;
   padding: 20px;
