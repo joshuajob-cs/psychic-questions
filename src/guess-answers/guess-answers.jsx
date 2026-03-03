@@ -49,9 +49,13 @@ export function GuessAnswers() {
         {questions.slice(0, quesIndex).map((question, i) => (
           <div className="question" key={i}>
             <div className="fancy-font">{question}</div>
-            <div className="answer">
-              Answer: {possibleAnswers[i][correctAnswers[i]]}
-            </div>
+            {i < quesIndex - 1 ? (
+              <div className="answer">
+                Answer: {possibleAnswers[i][correctAnswers[i]]}
+              </div>
+            ) : (
+              <div className="answer-choices">{}</div>
+            )}
           </div>
         ))}
         {quesIndex < questions.length && (
