@@ -18,9 +18,12 @@ export function InputTester() {
         validate={(inputs) =>
           inputs.username === "john" && inputs.password === "doe"
         }
-        save={(inputs) =>
-          setUser((prevUser) => ({ ...prevUser, username: inputs.username }))
-        }
+        save={(inputs) => {
+          const gameCode = Array.from({ length: 5 }, () =>
+            String.fromCharCode(65 + Math.floor(Math.random() * 26))
+          ).join("");
+          setUser((prevUser) => ({ ...prevUser, username: inputs.username, gameCode }));
+        }}
       />
     </>
   );

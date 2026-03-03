@@ -16,9 +16,16 @@ export function InputCollector() {
         buttonText="Sign Up"
         errorMessage="John is already taken."
         validate={(inputs) => inputs.username !== "john"}
-        save={(inputs) =>
-          setUser((prevUser) => ({ ...prevUser, username: inputs.username }))
-        }
+        save={(inputs) => {
+          const gameCode = Array.from({ length: 5 }, () =>
+            String.fromCharCode(65 + Math.floor(Math.random() * 26)),
+          ).join("");
+          setUser((prevUser) => ({
+            ...prevUser,
+            username: inputs.username,
+            gameCode,
+          }));
+        }}
       />
     </>
   );
