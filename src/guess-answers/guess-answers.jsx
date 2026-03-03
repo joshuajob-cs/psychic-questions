@@ -12,7 +12,14 @@ const questions = [
   "What do you think everyone should learn?",
 ];
 
-const answers = ["My Mom", "Sandwiches", "Math", "How to swim"];
+const correctAnswers = [0, 0, 0, 0];
+
+const possibleAnswers = [
+  ["My Mom", "My Dad", "A celebrity", "Nobody"],
+  ["Sandwiches", "Heights", "Spiders", "The dark"],
+  ["Math", "Names", "Passwords", "Dates"],
+  ["How to swim", "Be a good person", "Nothing", "Pay attention and listen"],
+];
 
 export function GuessAnswers() {
   const { user } = useContext(Context);
