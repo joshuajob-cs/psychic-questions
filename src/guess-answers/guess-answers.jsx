@@ -1,12 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { Title } from "../join/title";
 import { Footer } from "../join/shared-footer";
 import { useContext } from "react";
 import { Context } from "../context";
 import "./guess-answers.css";
 
+const questions = [
+  "Who do you aspire to be like?",
+  "What is your greatest fear?",
+  "What is something that is difficult for you to remember?",
+  "What do you think everyone should learn?",
+];
+
+const answers = ["My Mom", "Sandwiches", "Math", "How to swim"];
+
 export function GuessAnswers() {
   const { user } = useContext(Context);
+  const [quesIndex, setQuesIndex] = useState(1);
+
+  function handleNext() {
+    if (quesIndex < questions.length) {
+      setQuesIndex(quesIndex + 1);
+    }
+  }
+
   return (
     <>
       <header id="between-header">
@@ -22,42 +39,15 @@ export function GuessAnswers() {
       <main>
         <h2 className="heavy-basic">Lily's Questions</h2>
         <h3 className="basic-font">You are 50% alike</h3>
-        <div className="question">
-          <div className="fancy-font">What is your greatest fear?</div>
-          <div className="answer">Answer: Sandwiches</div>
-        </div>
-        <div className="question">
-          <div className="fancy-font">
-            What is something that is difficult for you to remember?
+        {questions.slice(0, quesIndex).map((question, i) => (
+          <div className="question" key={i}>
+            <div className="fancy-font">{question}</div>
+            <div className="answer">Answer: {answers[i]}</div>
           </div>
-          <div className="answer">Answer: Math</div>
-        </div>
-        <form action="/winner">
-          <div className="question">
-            <div className="fancy-font">
-              What do you think everyone should learn?
-            </div>
-            <div className="answer-choices">
-              <div className="choice">
-                <input type="radio" id="answer-a" name="question-3" />
-                <label for="answer-a">How to swim</label>
-              </div>
-              <div className="choice">
-                <input type="radio" id="answer-b" name="question-3" />
-                <label for="answer-b">Be a good person</label>
-              </div>
-              <div className="choice">
-                <input type="radio" id="answer-c" name="question-3" />
-                <label for="answer-c">Nothing</label>
-              </div>
-              <div className="choice">
-                <input type="radio" id="answer-d" name="question-3" />
-                <label for="answer-d">Pay attention and listen</label>
-              </div>
-            </div>
-          </div>
-          <button type="submit">Next</button>
-        </form>
+        ))}
+        {quesIndex < questions.length && (
+          <button onClick={handleNext}>Next</button>
+        )}
       </main>
       <footer>
         <Footer />
