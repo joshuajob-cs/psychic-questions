@@ -9,8 +9,6 @@ Extra stuff I will do if I get the time:
 
 To do list (hopeful) before the end of this phase:
 
-- The number of players should be a variable that actually coincides with how many there are
-- React should be able to parse through a list and Put all of these in the grid
 - Four questions should be asked and each time the number should change
 - It should start by just asking one question and then ask more and expand/shrink accordingly
 - points should be a variable that goes up when you answer the questions correctly

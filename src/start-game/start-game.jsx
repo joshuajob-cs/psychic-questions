@@ -30,7 +30,7 @@ export function StartGame() {
             <strong>ABCDE</strong>
           </h2>
         </div>
-        <h3 className="basic-font">Players: 26</h3>
+        <h3 className="basic-font">Players: {players.length + 1}</h3>
         <div className="grid">
           {players.map((name) => (
             <div className="player" key={name}>
