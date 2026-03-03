@@ -8,7 +8,8 @@ export const ShareVars = ({ children }) => {
   const [user, setUser] = useLocalStorage("user", {
     name: "josh",
     username: "jjob",
-    score: 3,
+    score: 10,
+    gameCode: "ABCDE",
   });
 
   return (

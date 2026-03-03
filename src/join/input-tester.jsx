@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { InputForm } from "./input-form";
+import { Context } from "../context";
 
 export function InputTester() {
+  const { user, setUser } = useContext(Context);
   return (
     <>
       <InputForm
@@ -16,6 +18,7 @@ export function InputTester() {
         errorMessage="Invalid join code. Correct code is ABCDE."
         buttonText="Join"
         validate={(inputs) => inputs.joinCode === "ABCDE"}
+        save={() => setUser({ ...user, score: 0 })}
       />
     </>
   );
