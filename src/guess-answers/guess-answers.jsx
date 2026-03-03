@@ -54,24 +54,32 @@ export function GuessAnswers() {
                 Answer: {possibleAnswers[i][correctAnswers[i]]}
               </div>
             ) : (
-              <div className="answer-choices">
-                {possibleAnswers[i].map((choice, j) => (
-                  <div className="choice" key={j}>
-                    <input
-                      type="radio"
-                      id={`q${i}-a${j}`}
-                      name={`question-${i}`}
-                    />
-                    <label htmlFor={`q${i}-a${j}`}>{choice}</label>
-                  </div>
-                ))}
-              </div>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleNext();
+                }}
+              >
+                <div className="answer-choices">
+                  {possibleAnswers[i].map((choice, j) => (
+                    <div className="choice" key={j}>
+                      <input
+                        type="radio"
+                        id={`q${i}-a${j}`}
+                        name={`question-${i}`}
+                        required
+                      />
+                      <label htmlFor={`q${i}-a${j}`}>{choice}</label>
+                    </div>
+                  ))}
+                </div>
+                {quesIndex < questions.length && (
+                  <button type="submit">Next</button>
+                )}
+              </form>
             )}
           </div>
         ))}
-        {quesIndex < questions.length && (
-          <button onClick={handleNext}>Next</button>
-        )}
       </main>
       <footer>
         <Footer />
