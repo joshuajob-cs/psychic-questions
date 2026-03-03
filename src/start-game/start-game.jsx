@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { Title } from "../join/title";
 import { Footer } from "../join/shared-footer";
-import { useContext } from "react";
 import { Context } from "../context";
 import "./start-game.css";
 
@@ -16,6 +15,17 @@ export function StartGame() {
     "Skyler",
     "Robin",
   ]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // This will be replaced with WebSocket messages
+      const userName = `User-${Math.floor(Math.random() * 100)}`;
+      setPlayers((prev) => [...prev, userName]);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
       <header className="screen-rotater" id="between-header">
