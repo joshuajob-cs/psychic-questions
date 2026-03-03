@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Title } from "../join/title";
 import { Footer } from "../join/shared-footer";
 import { useContext } from "react";
 import { Context } from "../context";
 import "./start-game.css";
+
+const [players, setPlayers] = useState([
+  "Charles",
+  "Jenny",
+  "Tasha",
+  "Bob",
+  "Skyler",
+  "Robin",
+]);
 
 export function StartGame() {
   const { user } = useContext(Context);
@@ -23,12 +32,11 @@ export function StartGame() {
         </div>
         <h3 className="basic-font">Players: 26</h3>
         <div className="grid">
-          <div className="player">Charles</div>
-          <div className="player">Jenny</div>
-          <div className="player">Tasha</div>
-          <div className="player">Bob</div>
-          <div className="player">Skyler</div>
-          <div className="player">Robin</div>
+          {players.map((name) => (
+            <div className="player" key={name}>
+              {name}
+            </div>
+          ))}
           <div className="player">{user.name}</div>
         </div>
         <NavLink to="/ask-questions">
