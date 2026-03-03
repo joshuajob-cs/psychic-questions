@@ -15,10 +15,10 @@ const questions = [
 const correctAnswers = [0, 0, 0, 0];
 
 const possibleAnswers = [
-  ["My Mom", "My Dad", "A celebrity", "Nobody"],
-  ["Sandwiches", "Heights", "Spiders", "The dark"],
+  ["My Mom", "My Dad", "A Celebrity", "Nobody"],
+  ["Sandwiches", "Heights", "Spiders", "The Dark"],
   ["Math", "Names", "Passwords", "Dates"],
-  ["How to swim", "Be a good person", "Nothing", "Pay attention and listen"],
+  ["How to Swim", "Be a Good Person", "Nothing", "Pay Attention and Listen"],
 ];
 
 export function GuessAnswers() {
@@ -54,7 +54,18 @@ export function GuessAnswers() {
                 Answer: {possibleAnswers[i][correctAnswers[i]]}
               </div>
             ) : (
-              <div className="answer-choices">{}</div>
+              <div className="answer-choices">
+                {possibleAnswers[i].map((choice, j) => (
+                  <div className="choice" key={j}>
+                    <input
+                      type="radio"
+                      id={`q${i}-a${j}`}
+                      name={`question-${i}`}
+                    />
+                    <label htmlFor={`q${i}-a${j}`}>{choice}</label>
+                  </div>
+                ))}
+              </div>
             )}
           </div>
         ))}
