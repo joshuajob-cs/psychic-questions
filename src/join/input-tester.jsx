@@ -15,9 +15,9 @@ export function InputTester() {
           },
         ]}
         successRoute="/enter-name"
-        errorMessage="Invalid join code. Correct code is ABCDE."
+        errorMessage={`Invalid join code. Correct code is ${user.gameCode}.`}
         buttonText="Join"
-        validate={(inputs) => inputs.joinCode === "ABCDE"}
+        validate={(inputs) => inputs.joinCode === user.gameCode}
         save={() => setUser({ ...user, score: 0 })}
       />
     </>
