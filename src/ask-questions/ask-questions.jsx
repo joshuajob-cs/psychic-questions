@@ -14,8 +14,11 @@ const questions = [
 export function AskQuestions() {
   const go = useNavigate();
   const [quesIndex, setQuesIndex] = useState(0);
+  const [answer, setAnswer] = useState("");
+
   function handleNext(e) {
     e.preventDefault();
+    setAnswer("");
     if (quesIndex < questions.length - 1) {
       setQuesIndex(quesIndex + 1);
     } else {
@@ -33,7 +36,7 @@ export function AskQuestions() {
           <h2 className="basic-font">Your Questions</h2>
           <h1>{questions[quesIndex]}</h1>
           <form onSubmit={handleNext}>
-            <textarea placeholder="Enter your answer here..."></textarea>
+            <textarea placeholder="Enter your answer here..." value={answer} onChange={(e) => setAnswer(e.target.value)}></textarea>
             <div>
               Q: {quesIndex + 1}/{questions.length}
             </div>
