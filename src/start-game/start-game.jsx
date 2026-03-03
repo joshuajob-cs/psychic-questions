@@ -26,7 +26,7 @@ export function StartGame() {
         <div>
           <h1>Game Code</h1>
           <h2 className="basic-font">
-            <strong>ABCDE</strong>
+            <strong>{user.gameCode}</strong>
           </h2>
         </div>
         <h3 className="basic-font">Players: {players.length + 1}</h3>
