@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./ask-questions.css";
 import { Title } from "../join/title";
 import { Footer } from "../join/shared-footer";
@@ -11,6 +12,18 @@ const questions = [
 ];
 
 export function AskQuestions() {
+  const go = useNavigate();
+  const [quesIndex, setQuesIndex] = useState(0);
+
+  function handleNext(e) {
+    e.preventDefault();
+    if (quesIndex < questions.length - 1) {
+      setQuesIndex(quesIndex + 1);
+    } else {
+      go("/guess-answers");
+    }
+  }
+
   return (
     <>
       <header>
