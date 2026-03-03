@@ -3,6 +3,13 @@ import "./ask-questions.css";
 import { Title } from "../join/title";
 import { Footer } from "../join/shared-footer";
 
+const questions = [
+  "Who do you aspire to be like?",
+  "What is your greatest fear?",
+  "What is something that is difficult for you to remember?",
+  "What do you think everyone should learn?",
+];
+
 export function AskQuestions() {
   return (
     <>

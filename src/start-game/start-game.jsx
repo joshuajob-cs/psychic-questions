@@ -6,17 +6,16 @@ import { useContext } from "react";
 import { Context } from "../context";
 import "./start-game.css";
 
-const [players, setPlayers] = useState([
-  "Charles",
-  "Jenny",
-  "Tasha",
-  "Bob",
-  "Skyler",
-  "Robin",
-]);
-
 export function StartGame() {
   const { user } = useContext(Context);
+  const [players, setPlayers] = useState([
+    "Charles",
+    "Jenny",
+    "Tasha",
+    "Bob",
+    "Skyler",
+    "Robin",
+  ]);
   return (
     <>
       <header className="screen-rotater" id="between-header">
