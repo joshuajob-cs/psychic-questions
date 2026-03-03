@@ -1,13 +1,11 @@
 import React from "react";
-import { Title } from "../join/title";
 import { Footer } from "../join/shared-footer";
+import { PointHeader } from "../guess-answers/point-header";
 
 export function Winner() {
   return (
     <>
-      <header>
-        <Title />
-      </header>
+      <PointHeader />
       <main>
         <h1>The winner is Jenny!</h1>
         <h2>With 70 points</h2>
