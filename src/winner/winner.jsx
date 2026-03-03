@@ -1,14 +1,21 @@
 import React from "react";
+import { useContext } from "react";
 import { Footer } from "../join/shared-footer";
 import { PointHeader } from "../guess-answers/point-header";
+import { Context } from "../context";
 
 export function Winner() {
+  const { user } = useContext(Context);
+  const isWinner = user.score > 70;
+  const winnerName = isWinner ? user.name : "Jenny";
+  const winnerPoints = isWinner ? user.score : 70;
+
   return (
     <>
       <PointHeader />
       <main>
-        <h1>The winner is Jenny!</h1>
-        <h2>With 70 points</h2>
+        <h1>The winner is {winnerName}!</h1>
+        <h2>With {winnerPoints} points</h2>
         <img
           src="Elephant.png"
           width="300"
