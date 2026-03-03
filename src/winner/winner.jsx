@@ -10,7 +10,7 @@ export function Winner() {
       </header>
       <main>
         <h1>The winner is Jenny!</h1>
-        <h2>With 95 points</h2>
+        <h2>With 70 points</h2>
         <img
           src="Elephant.png"
           width="300"
