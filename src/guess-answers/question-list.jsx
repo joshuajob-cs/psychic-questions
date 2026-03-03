@@ -11,6 +11,8 @@ export const questions = [
 
 export const correctAnswers = [0, 0, 0, 0];
 
+const pointValues = [5, 10, 25, 50];
+
 export const possibleAnswers = [
   ["My Mom", "My Dad", "A Celebrity", "Nobody"],
   ["Sandwiches", "Heights", "Spiders", "The Dark"],
@@ -26,7 +28,7 @@ export function QuestionList() {
 
   function checkAnswer(i) {
     if (selected === correctAnswers[i]) {
-      setUser({ ...user, score: user.score + 5 });
+      setUser({ ...user, score: user.score + pointValues[i] });
     }
   }
 
