@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { Context } from "../context";
 
 export const questions = [
   "Who do you aspire to be like?",
@@ -19,9 +20,19 @@ export const possibleAnswers = [
 
 export function QuestionList() {
   const [quesIndex, setQuesIndex] = useState(1);
+  const [selected, setSelected] = useState(null);
+  const { user, setUser } = useContext(Context);
   const go = useNavigate();
 
+  function checkAnswer(i) {
+    if (selected === correctAnswers[i]) {
+      setUser({ ...user, score: user.score + 5 });
+    }
+  }
+
   function handleNext() {
+    checkAnswer(quesIndex - 1);
+    setSelected(null);
     if (quesIndex < questions.length) {
       setQuesIndex(quesIndex + 1);
     } else {
@@ -50,6 +61,7 @@ export function QuestionList() {
                   id={`q${i}-a${j}`}
                   name={`question-${i}`}
                   required
+                  onChange={() => setSelected(j)}
                 />
                 <label htmlFor={`q${i}-a${j}`}>{choice}</label>
               </div>
