@@ -23,11 +23,15 @@ function setAuthCookie(res, username) {
   });
 }
 
-app.post("/auth/create", (req, res) => {
+app.post("/auth/sign-up", (req, res) => {
   const { username, password } = req.body;
-  users.push({ username, password });
-  setAuthCookie(res, username);
-  res.send({ username });
+  if (getUser(username)) {
+    res.status(409).send({ msg: "Username already taken" });
+  } else {
+    users.push({ username, password });
+    setAuthCookie(res, username);
+    res.send({ username });
+  }
 });
 
 app.post("/auth/login", (req, res) => {
