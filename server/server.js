@@ -9,9 +9,7 @@ app.use(cookieParser());
 const users = [];
 const tokens = {};
 
-app.post("/auth/create", (req, res) => {
-  const { username, password } = req.body;
-  users.push({ username, password });
+function setAuthCookie(res, username) {
   const token = uuid.v4();
   tokens[token] = username;
   res.cookie("token", token, {
@@ -19,6 +17,12 @@ app.post("/auth/create", (req, res) => {
     httpOnly: true,
     sameSite: "strict",
   });
+}
+
+app.post("/auth/create", (req, res) => {
+  const { username, password } = req.body;
+  users.push({ username, password });
+  setAuthCookie(res, username);
   res.send({ username });
 });
 
@@ -26,13 +30,7 @@ app.post("/auth/login", (req, res) => {
   const { username, password } = req.body;
   const user = users.find((nextUser) => nextUser.username === username);
   if (user && user.password === password) {
-    const token = uuid.v4();
-    tokens[token] = username;
-    res.cookie("token", token, {
-      secure: true,
-      httpOnly: true,
-      sameSite: "strict",
-    });
+    setAuthCookie(res, username);
     res.send({ username });
   } else {
     res.status(401).send({ msg: "Unauthorized" });
