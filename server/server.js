@@ -27,6 +27,16 @@ app.post("/auth/login", (req, res) => {
   }
 });
 
+app.get("/auth/user", (req, res) => {
+  const token = req.headers["authorization"];
+  const username = tokens[token];
+  if (username) {
+    res.send({ username });
+  } else {
+    res.status(401).send({ msg: "Unauthorized" });
+  }
+});
+
 const port = 3000;
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
