@@ -9,6 +9,10 @@ app.use(cookieParser());
 const users = [];
 const tokens = {};
 
+function getUser(username) {
+  return users.find((nextUser) => nextUser.username === username);
+}
+
 function setAuthCookie(res, username) {
   const token = uuid.v4();
   tokens[token] = username;
@@ -28,7 +32,7 @@ app.post("/auth/create", (req, res) => {
 
 app.post("/auth/login", (req, res) => {
   const { username, password } = req.body;
-  const user = users.find((nextUser) => nextUser.username === username);
+  const user = getUser(username);
   if (user && user.password === password) {
     setAuthCookie(res, username);
     res.send({ username });
