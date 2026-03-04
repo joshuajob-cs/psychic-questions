@@ -125,8 +125,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
+- [x] **All functionality implemented or mocked out** - Storage is mocked out. Checks if you have the correct join code. The username and name you type in are stored for the rest of the app. Your score is stored. Websocket is mocked out with players being added and the jsx handling it correctly. Questions page correctly switches between questions, and answers page correctly adds new answers. Checks if your answer is correct and gives you points accordingly. Compares your points to anotehr player to see if you won. 
+- [x] **Hooks** - I did not complete this part of the deliverable.
 
 ## 🚀 Service deliverable
 
