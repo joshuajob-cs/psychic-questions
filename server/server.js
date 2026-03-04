@@ -44,10 +44,10 @@ app.post("/auth/sign-up", async (req, res) => {
   }
 });
 
-app.post("/auth/login", (req, res) => {
+app.post("/auth/login", async (req, res) => {
   const { username, password } = req.body;
   const user = getUser(username);
-  if (user && user.password === password) {
+  if (user && (await bcrypt.compare(password, user.password))) {
     setAuthCookie(res, username);
     res.send({ username });
   } else {
