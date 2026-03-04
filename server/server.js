@@ -7,20 +7,16 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-const users = [];
+const users = {};
 const tokens = {};
 
 function getUser(username) {
-  return users.find((nextUser) => nextUser.username === username);
+  return users[username];
 }
 
 async function createUser(username, password) {
   const passwordHash = await bcrypt.hash(password, 10);
-  const user = {
-    username: username,
-    password: passwordHash,
-  };
-  users.push(user);
+  users[username] = { username, password: passwordHash };
 }
 
 function setAuthCookie(res, username) {
@@ -67,8 +63,7 @@ app.delete("/auth/delete", (req, res) => {
   const username = tokens[token];
   if (username) {
     delete tokens[token];
-    const index = users.findIndex((nextUser) => nextUser.username === username);
-    users.splice(index, 1);
+    delete users[username];
     res.clearCookie("token");
     res.send({});
   } else {
