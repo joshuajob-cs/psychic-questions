@@ -131,3 +131,19 @@ export const ShareVars = ({ children }) => {};
 The word children automatically takes anything inside the <> </> as input.
 
 For debugging I needed to Ctrl + Shift + k (open dev tools), and then manually delete storage sometimes because local storage keeps it stored across sessions.
+
+## Service
+
+- Do `node server/server.js` to run server
+
+Then I can type in the URL: http://localhost:3000/
+
+When I go to the website it will automatically send a GET/ request to my server, which I can process with:
+
+```js
+app.get("/", (req, res) => {
+  res.send("Running the server");
+});
+```
+
+- res is the response to the request
