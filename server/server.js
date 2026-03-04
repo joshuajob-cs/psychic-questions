@@ -1,8 +1,10 @@
 const express = require("express");
 const uuid = require("uuid");
+const cookieParser = require("cookie-parser");
 const app = express();
 
 app.use(express.json());
+app.use(cookieParser());
 
 const users = [];
 const tokens = {};
@@ -12,7 +14,12 @@ app.post("/auth/create", (req, res) => {
   users.push({ username, password });
   const token = uuid.v4();
   tokens[token] = username;
-  res.send({ token });
+  res.cookie("token", token, {
+    secure: true,
+    httpOnly: true,
+    sameSite: "strict",
+  });
+  res.send({ username });
 });
 
 app.post("/auth/login", (req, res) => {
@@ -21,14 +28,19 @@ app.post("/auth/login", (req, res) => {
   if (user && user.password === password) {
     const token = uuid.v4();
     tokens[token] = username;
-    res.send({ token });
+    res.cookie("token", token, {
+      secure: true,
+      httpOnly: true,
+      sameSite: "strict",
+    });
+    res.send({ username });
   } else {
     res.status(401).send({ msg: "Unauthorized" });
   }
 });
 
 app.get("/auth/user", (req, res) => {
-  const token = req.headers["authorization"];
+  const token = req.cookies["token"];
   const username = tokens[token];
   if (username) {
     res.send({ username });
