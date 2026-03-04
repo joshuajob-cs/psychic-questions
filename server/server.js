@@ -62,6 +62,20 @@ app.post("/auth/logout", (req, res) => {
   res.send({});
 });
 
+app.delete("/auth/delete", (req, res) => {
+  const token = req.cookies["token"];
+  const username = tokens[token];
+  if (username) {
+    delete tokens[token];
+    const index = users.findIndex((nextUser) => nextUser.username === username);
+    users.splice(index, 1);
+    res.clearCookie("token");
+    res.send({});
+  } else {
+    res.status(401).send({ msg: "Unauthorized" });
+  }
+});
+
 app.get("/auth/user", (req, res) => {
   const token = req.cookies["token"];
   const username = tokens[token];
