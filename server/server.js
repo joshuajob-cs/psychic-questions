@@ -45,6 +45,13 @@ app.post("/auth/login", (req, res) => {
   }
 });
 
+app.post("/auth/logout", (req, res) => {
+  const token = req.cookies["token"];
+  delete tokens[token];
+  res.clearCookie("token");
+  res.send({});
+});
+
 app.get("/auth/user", (req, res) => {
   const token = req.cookies["token"];
   const username = tokens[token];
