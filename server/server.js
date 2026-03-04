@@ -1,6 +1,7 @@
 const express = require("express");
 const uuid = require("uuid");
 const cookieParser = require("cookie-parser");
+const bcrypt = require("bcryptjs");
 const app = express();
 
 app.use(express.json());
@@ -13,6 +14,15 @@ function getUser(username) {
   return users.find((nextUser) => nextUser.username === username);
 }
 
+async function createUser(username, password) {
+  const passwordHash = await bcrypt.hash(password, 10);
+  const user = {
+    username: username,
+    password: passwordHash,
+  };
+  users.push(user);
+}
+
 function setAuthCookie(res, username) {
   const token = uuid.v4();
   tokens[token] = username;
@@ -23,12 +33,12 @@ function setAuthCookie(res, username) {
   });
 }
 
-app.post("/auth/sign-up", (req, res) => {
+app.post("/auth/sign-up", async (req, res) => {
   const { username, password } = req.body;
   if (getUser(username)) {
     res.status(409).send({ msg: "Username already taken" });
   } else {
-    users.push({ username, password });
+    await createUser(username, password);
     setAuthCookie(res, username);
     res.send({ username });
   }
