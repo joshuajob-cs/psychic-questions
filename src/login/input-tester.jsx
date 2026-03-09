@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { InputForm } from "../join/input-form";
+import { InputForm } from "../components/input-form";
 import { Context } from "../context";
 
 export function InputTester() {

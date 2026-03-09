@@ -1,5 +1,5 @@
 import React from "react";
-import { Title } from "../join/title";
+import { Title } from "../components/title";
 import { useContext } from "react";
 import { Context } from "../context";
 import "./point-header.css";

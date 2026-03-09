@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ask-questions.css";
-import { Title } from "../join/title";
-import { Footer } from "../join/shared-footer";
+import { Title } from "../components/title";
+import { Footer } from "../components/shared-footer";
 
 const questions = [
   "Who do you aspire to be like?",

@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { Footer } from "../join/shared-footer";
+import { Footer } from "../components/shared-footer";
 import { PointHeader } from "../guess-answers/point-header";
 import { Context } from "../context";
 

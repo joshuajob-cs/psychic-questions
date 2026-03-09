@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { Title } from "../join/title";
-import { Footer } from "../join/shared-footer";
+import { Title } from "../components/title";
+import { Footer } from "../components/shared-footer";
 import { Context } from "../context";
 import "./start-game.css";
 

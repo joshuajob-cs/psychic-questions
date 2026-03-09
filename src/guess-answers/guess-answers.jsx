@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Footer } from "../join/shared-footer";
+import { Footer } from "../components/shared-footer";
 import { QuestionList } from "./question-list";
 import { PointHeader } from "./point-header";
 import "./guess-answers.css";

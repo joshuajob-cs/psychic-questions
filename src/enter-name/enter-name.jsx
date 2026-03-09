@@ -1,6 +1,6 @@
 import React from "react";
-import { Title } from "../join/title";
-import { Footer } from "../join/shared-footer";
+import { Title } from "../components/title";
+import { Footer } from "../components/shared-footer";
 import { InputCollector } from "./input-collector";
 
 export function EnterName() {

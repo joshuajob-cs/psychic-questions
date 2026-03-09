@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Title } from "../join/title";
+import { Title } from "./title";
 import "../join/join.css";
 
 export function AuthHeader() {

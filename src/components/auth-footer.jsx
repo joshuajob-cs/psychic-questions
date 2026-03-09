@@ -1,5 +1,5 @@
 import React from "react";
-import { Footer } from "../join/shared-footer";
+import { Footer } from "./shared-footer";
 
 export function AuthFooter() {
   return (
