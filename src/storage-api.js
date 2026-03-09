@@ -31,3 +31,13 @@ export async function login(username, password) {
 
   return data;
 }
+
+export async function logout() {
+  const res = await fetch(`${STORAGE_URL}/auth/logout`, {
+    method: "DELETE",
+  });
+
+  if (!res.ok) {
+    throw new Error("Could not log out :(");
+  }
+}

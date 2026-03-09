@@ -51,7 +51,7 @@ app.post("/auth/login", async (req, res) => {
   }
 });
 
-app.post("/auth/logout", (req, res) => {
+app.delete("/auth/logout", (req, res) => {
   const token = req.cookies["token"];
   delete tokens[token];
   res.clearCookie("token");
