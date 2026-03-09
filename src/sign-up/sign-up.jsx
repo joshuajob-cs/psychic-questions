@@ -1,6 +1,6 @@
 import React from "react";
-import { AuthHeader } from "../join/auth-header";
-import { AuthFooter } from "../join/auth-footer";
+import { AuthHeader } from "../components/auth-header";
+import { AuthFooter } from "../components/auth-footer";
 import { InputCollector } from "./input-collector";
 
 export function SignUp() {

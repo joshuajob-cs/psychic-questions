@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { AuthHeader } from "./auth-header";
-import { AuthFooter } from "./auth-footer";
+import { AuthHeader } from "../components/auth-header";
+import { AuthFooter } from "../components/auth-footer";
 import { InputTester } from "./input-tester";
 import "./join.css";
 
