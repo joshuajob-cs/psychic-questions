@@ -10,7 +10,23 @@ export async function signup(username, password) {
   const data = await res.json();
 
   if (!res.ok) {
-    throw new Error(data.msg || "Could not sign up :(");
+    throw new Error(data.msg || "Something went wrong during sign-up.");
+  }
+
+  return data;
+}
+
+export async function login(username, password) {
+  const res = await fetch(`${STORAGE_URL}/auth/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, password }),
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.msg || "Something went wrong during login.");
   }
 
   return data;
