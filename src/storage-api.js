@@ -41,3 +41,25 @@ export async function logout() {
     throw new Error("Could not log out :(");
   }
 }
+
+export async function deleteUser() {
+  const res = await fetch(`${STORAGE_URL}/auth/delete`, {
+    method: "DELETE",
+  });
+
+  if (!res.ok) {
+    throw new Error("Could not delete account :(");
+  }
+}
+
+export async function getUser() {
+  const res = await fetch(`${STORAGE_URL}/auth/user`);
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.msg || "Could not get user :(");
+  }
+
+  return data;
+}
