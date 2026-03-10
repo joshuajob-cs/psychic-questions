@@ -15,7 +15,7 @@ app.use("/auth", authService);
 app.use("/game", gameService);
 app.use("/question", questionService);
 
-const port = 3000;
+const port = 4000;
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });

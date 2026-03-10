@@ -1,7 +1,5 @@
-const STORAGE_URL = "http://localhost:3000";
-
 export async function signup(username, password) {
-  const res = await fetch(`${STORAGE_URL}/auth/sign-up`, {
+  const res = await fetch(`/auth/sign-up`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
@@ -18,7 +16,7 @@ export async function signup(username, password) {
 }
 
 export async function login(username, password) {
-  const res = await fetch(`${STORAGE_URL}/auth/login`, {
+  const res = await fetch(`/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
@@ -35,7 +33,7 @@ export async function login(username, password) {
 }
 
 export async function logout() {
-  const res = await fetch(`${STORAGE_URL}/auth/logout`, {
+  const res = await fetch(`/auth/logout`, {
     method: "DELETE",
     credentials: "include",
   });
@@ -46,7 +44,7 @@ export async function logout() {
 }
 
 export async function deleteUser() {
-  const res = await fetch(`${STORAGE_URL}/auth/delete`, {
+  const res = await fetch(`/auth/delete`, {
     method: "DELETE",
     credentials: "include",
   });
@@ -57,7 +55,7 @@ export async function deleteUser() {
 }
 
 export async function getUser() {
-  const res = await fetch(`${STORAGE_URL}/auth/user`, {
+  const res = await fetch(`/auth/user`, {
     credentials: "include",
   });
 

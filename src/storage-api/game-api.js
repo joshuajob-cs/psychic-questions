@@ -1,7 +1,5 @@
-const STORAGE_URL = "http://localhost:3000";
-
 export async function checkGame(gameCode) {
-  const res = await fetch(`${STORAGE_URL}/game/${gameCode}`, {
+  const res = await fetch(`/game/${gameCode}`, {
     credentials: "include",
   });
   if (!res.ok) {
@@ -10,7 +8,7 @@ export async function checkGame(gameCode) {
 }
 
 export async function joinGame(gameCode, name) {
-  const res = await fetch(`${STORAGE_URL}/game/join`, {
+  const res = await fetch(`/game/join`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
@@ -27,7 +25,7 @@ export async function joinGame(gameCode, name) {
 }
 
 export async function addPoints(gameCode, name, delta) {
-  const res = await fetch(`${STORAGE_URL}/game/points`, {
+  const res = await fetch(`/game/points`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
@@ -44,7 +42,7 @@ export async function addPoints(gameCode, name, delta) {
 }
 
 export async function getWinner(gameCode) {
-  const res = await fetch(`${STORAGE_URL}/game/winner?gameCode=${gameCode}`, {
+  const res = await fetch(`/game/winner?gameCode=${gameCode}`, {
     credentials: "include",
   });
 
@@ -58,7 +56,7 @@ export async function getWinner(gameCode) {
 }
 
 export async function createGame() {
-  const res = await fetch(`${STORAGE_URL}/game/create`, {
+  const res = await fetch(`/game/create`, {
     method: "POST",
     credentials: "include",
   });
