@@ -7,7 +7,7 @@ export function GuessAnswers() {
   return (
     <>
       <PointHeader />
-      <main>
+      <main className="uncenter">
         <h2 className="heavy-basic">Lily's Questions</h2>
         <QuestionList />
       </main>

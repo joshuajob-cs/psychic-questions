@@ -7,7 +7,7 @@ export function Waiting() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const timer = setTimeout(() => navigate("/guess-answers"), 10000);
+    const timer = setTimeout(() => navigate("/guess-answers"), 5000);
     return () => clearTimeout(timer);
   }, []);
 
