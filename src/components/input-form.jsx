@@ -4,9 +4,8 @@ import { useNavigate } from "react-router-dom";
 export function InputForm({
   inputSpecs, // Specifications for the input field (type, placeholder, etc.)
   successRoute, // path to navigate on success
-  errorMessage, // message to show if validate fails
   buttonText, // text for submit button
-  validate, // function to validate the input
+  validate, // function to validate the input, returns true or an error string
   save, // function to save the input value
 }) {
   const [badEntry, setBadEntry] = useState(null);
@@ -30,7 +29,7 @@ export function InputForm({
       if (save) save(inputs);
       go(successRoute);
     } else {
-      setBadEntry(typeof isValid === "string" ? isValid : false);
+      setBadEntry(typeof isValid === "string" ? isValid : "Invalid input.");
     }
   };
 
@@ -50,9 +49,7 @@ export function InputForm({
           </div>
         ))}
       </div>
-      {badEntry !== null && (badEntry || errorMessage) && (
-        <p style={{ color: "red" }}>{badEntry || errorMessage}</p>
-      )}
+      {badEntry && <p style={{ color: "red" }}>{badEntry}</p>}
       <div>
         <button type="submit">{buttonText}</button>
       </div>
