@@ -1,12 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ask-questions.css";
 import { Title } from "../components/title";
 import { Footer } from "../components/shared-footer";
-import { getQuestions } from "../apis/question-api";
+import { getQuestions, addAnswer } from "../apis/question-api";
+import { Context } from "../context";
 
 export function AskQuestions() {
   const go = useNavigate();
+  const { user } = useContext(Context);
   const [questions, setQuestions] = useState([]);
   const [quesIndex, setQuesIndex] = useState(0);
   const [answer, setAnswer] = useState("");
@@ -15,8 +17,9 @@ export function AskQuestions() {
     getQuestions().then(setQuestions);
   }, []);
 
-  function handleNext(e) {
+  async function handleNext(e) {
     e.preventDefault();
+    await addAnswer(user.gameCode, user.name, answer);
     setAnswer("");
     if (quesIndex < questions.length - 1) {
       setQuesIndex((prev) => prev + 1);
