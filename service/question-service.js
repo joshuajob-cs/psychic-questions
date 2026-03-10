@@ -14,4 +14,16 @@ router.get("/", (_req, res) => {
   res.json({ questions });
 });
 
+router.post("/answer", (req, res) => {
+  const { gameCode, playerName, answer } = req.body;
+  const game = games[gameCode];
+  if (!game) return res.status(404).json({ error: "Game not found" });
+
+  const player = game.players[playerName];
+  if (!player) return res.status(404).json({ error: "Player not found" });
+
+  player.addAnswer(answer);
+  res.json({ success: true });
+});
+
 export default router;

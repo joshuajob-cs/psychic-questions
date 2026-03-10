@@ -2,11 +2,11 @@ class Player {
   constructor(name) {
     this.name = name;
     this.points = 0;
-    this.questions = [];
+    this.answers = [];
   }
 
-  addQuestion(question, answer) {
-    this.questions.push({ question, answer });
+  addAnswer(answer) {
+    this.answers.push(answer);
   }
 }
 
