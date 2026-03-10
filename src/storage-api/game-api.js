@@ -43,6 +43,20 @@ export async function addPoints(gameCode, name, delta) {
   return data;
 }
 
+export async function getWinner(gameCode) {
+  const res = await fetch(`${STORAGE_URL}/game/winner?gameCode=${gameCode}`, {
+    credentials: "include",
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.msg || "Could not get winner.");
+  }
+
+  return data;
+}
+
 export async function createGame() {
   const res = await fetch(`${STORAGE_URL}/game/create`, {
     method: "POST",
