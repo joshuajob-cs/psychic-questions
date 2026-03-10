@@ -1,13 +1,20 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Footer } from "../components/shared-footer";
 import { PointHeader } from "../guess-answers/point-header";
 import { Context } from "../context";
+import { getWinner } from "../storage-api/game-api";
 
 export function Winner() {
   const { user } = useContext(Context);
-  const isWinner = user.score > 70;
-  const winnerName = isWinner ? user.name : "Jenny";
-  const winnerPoints = isWinner ? user.score : 70;
+  const [winnerName, setWinnerName] = useState(null);
+  const [winnerPoints, setWinnerPoints] = useState(null);
+
+  useEffect(() => {
+    getWinner(user.gameCode).then((data) => {
+      setWinnerName(data.winner);
+      setWinnerPoints(data.points);
+    });
+  }, [user.gameCode]);
 
   return (
     <>
