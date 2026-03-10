@@ -13,6 +13,17 @@ class Player {
   }
 }
 
+class Game {
+  constructor(gameCode) {
+    this.gameCode = gameCode;
+    this.players = {};
+  }
+
+  addPlayer(username, name) {
+    this.players[username] = new Player(name);
+  }
+}
+
 const players = {};
 
 module.exports = router;
