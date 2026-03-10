@@ -1,6 +1,5 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
-const cors = require("cors");
 
 const authService = require("./auth-service");
 const gameService = require("./game-service");
@@ -8,7 +7,7 @@ const questionService = require("./question-service");
 
 const app = express();
 
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(express.static("../dist"));
 app.use(express.json());
 app.use(cookieParser());
 
