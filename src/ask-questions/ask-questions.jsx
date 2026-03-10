@@ -22,7 +22,7 @@ export function AskQuestions() {
     if (quesIndex < questions.length - 1) {
       setQuesIndex((prev) => prev + 1);
     } else {
-      go("/guess-answers");
+      go("/waiting");
     }
   }
 
@@ -36,7 +36,11 @@ export function AskQuestions() {
           <h2 className="basic-font">Your Questions</h2>
           <h1>{questions[quesIndex]}</h1>
           <form onSubmit={handleNext}>
-            <textarea placeholder="Enter your answer here..." value={answer} onChange={(e) => setAnswer(e.target.value)}></textarea>
+            <textarea
+              placeholder="Enter your answer here..."
+              value={answer}
+              onChange={(e) => setAnswer(e.target.value)}
+            ></textarea>
             <div>
               Q: {quesIndex + 1}/{questions.length}
             </div>

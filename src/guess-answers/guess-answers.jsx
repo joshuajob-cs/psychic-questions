@@ -9,7 +9,6 @@ export function GuessAnswers() {
       <PointHeader />
       <main>
         <h2 className="heavy-basic">Lily's Questions</h2>
-        <h3 className="basic-font">You are 50% alike</h3>
         <QuestionList />
       </main>
       <footer>
