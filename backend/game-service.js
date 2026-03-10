@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { games, Game } = require("./game-state");
-const { tokens, setSessionCookie } = require("./session-state");
+const { tokens, setSessionCookie, requireSession } = require("./session-state");
 
 router.get("/:code", (req, res) => {
   const game = games[req.params.code];
@@ -41,20 +41,15 @@ router.post("/join", (req, res) => {
   res.send({ name });
 });
 
-router.delete("/leave", (req, res) => {
+router.delete("/leave", requireSession, (req, res) => {
   const game = games[req.query.gameCode];
   if (!game) {
     res.status(404).send({ msg: "Game not found" });
     return;
   }
-  const session = tokens[req.cookies["token"]];
-  if (!session) {
-    res.status(401).send({ msg: "Not in a session" });
-    return;
-  }
-  game.removePlayer(session.name);
-  if (session.username) {
-    session.name = null;
+  game.removePlayer(req.session.name);
+  if (req.session.username) {
+    req.session.name = null;
   } else {
     delete tokens[req.cookies["token"]];
     res.clearCookie("token");

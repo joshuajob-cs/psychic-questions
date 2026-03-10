@@ -1,7 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const router = express.Router();
-const { tokens, setSessionCookie } = require("./session-state");
+const { tokens, setSessionCookie, requireSession } = require("./session-state");
 
 const users = {};
 
@@ -43,27 +43,16 @@ router.delete("/logout", (req, res) => {
   res.send({});
 });
 
-router.delete("/delete", (req, res) => {
+router.delete("/delete", requireSession, (req, res) => {
   const token = req.cookies["token"];
-  const session = tokens[token];
-  if (session) {
-    delete tokens[token];
-    delete users[session.username];
-    res.clearCookie("token");
-    res.send({});
-  } else {
-    res.status(401).send({ msg: "Unauthorized" });
-  }
+  delete tokens[token];
+  delete users[req.session.username];
+  res.clearCookie("token");
+  res.send({});
 });
 
-router.get("/user", (req, res) => {
-  const token = req.cookies["token"];
-  const session = tokens[token];
-  if (session) {
-    res.send({ username: session.username, name: session.name });
-  } else {
-    res.status(401).send({ msg: "Unauthorized" });
-  }
+router.get("/user", requireSession, (req, res) => {
+  res.send({ username: req.session.username, name: req.session.name });
 });
 
 module.exports = router;

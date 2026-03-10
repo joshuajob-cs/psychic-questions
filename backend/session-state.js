@@ -12,4 +12,10 @@ function setSessionCookie(res, session) {
   });
 }
 
-module.exports = { tokens, setSessionCookie };
+function requireSession(req, res, next) {
+  req.session = tokens[req.cookies["token"]];
+  if (!req.session) return res.status(401).send({ msg: "Unauthorized" });
+  next();
+}
+
+module.exports = { tokens, setSessionCookie, requireSession };
