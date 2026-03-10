@@ -16,8 +16,10 @@ class Game {
     this.players = {};
   }
 
-  addPlayer(username, name) {
-    this.players[username] = new Player(name);
+  addPlayer(name) {
+    if (this.players[name]) return false;
+    this.players[name] = new Player(name);
+    return true;
   }
 }
 
