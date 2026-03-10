@@ -1,6 +1,7 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../context";
+import { addPoints } from "../storage-api/game-api";
 
 export const questions = [
   "Who do you aspire to be like?",
@@ -28,7 +29,9 @@ export function QuestionList() {
 
   function checkAnswer(i) {
     if (selected === correctAnswers[i]) {
-      setUser({ ...user, score: user.score + pointValues[i] });
+      const delta = pointValues[i];
+      setUser({ ...user, score: user.score + delta });
+      addPoints(user.gameCode, user.name, delta);
     }
   }
 
