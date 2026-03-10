@@ -4,7 +4,9 @@ export async function checkGame(gameCode) {
   const res = await fetch(`${STORAGE_URL}/game/${gameCode}`, {
     credentials: "include",
   });
-  return res.ok;
+  if (!res.ok) {
+    throw new Error("Game not found.");
+  }
 }
 
 export async function createGame() {
