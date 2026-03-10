@@ -12,7 +12,11 @@ router.get("/:code", (req, res) => {
   }
 });
 
-router.post("/create", (_req, res) => {
+router.post("/create", requireSession, (req, res) => {
+  if (!req.session.username) {
+    res.status(401).send({ msg: "Unauthorized" });
+    return;
+  }
   let gameCode;
   do {
     gameCode = Math.random().toString(36).slice(2, 8).toUpperCase();
