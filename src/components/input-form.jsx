@@ -9,7 +9,7 @@ export function InputForm({
   validate, // function to validate the input
   save, // function to save the input value
 }) {
-  const [badEntry, setBadEntry] = useState(false);
+  const [badEntry, setBadEntry] = useState(null);
   const [inputs, setInputs] = useState(
     Object.fromEntries(inputSpecs.map((spec) => [spec.name, ""])),
   );
@@ -26,11 +26,11 @@ export function InputForm({
     e.preventDefault();
     const isValid = validate ? await validate(inputs) : true;
 
-    if (isValid) {
+    if (isValid === true) {
       if (save) save(inputs);
       go(successRoute);
     } else {
-      setBadEntry(true);
+      setBadEntry(typeof isValid === "string" ? isValid : false);
     }
   };
 
@@ -50,8 +50,8 @@ export function InputForm({
           </div>
         ))}
       </div>
-      {badEntry && errorMessage && (
-        <p style={{ color: "red" }}>{errorMessage}</p>
+      {badEntry !== null && (badEntry || errorMessage) && (
+        <p style={{ color: "red" }}>{badEntry || errorMessage}</p>
       )}
       <div>
         <button type="submit">{buttonText}</button>
