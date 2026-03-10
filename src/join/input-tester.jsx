@@ -25,7 +25,9 @@ export function InputTester() {
             return err.message;
           }
         }}
-        updateFrontend={(inputs) => setUser({ ...user, gameCode: inputs.joinCode, score: 0 })}
+        updateFrontend={(inputs) =>
+          setUser({ ...user, gameCode: inputs.joinCode, score: 0 })
+        }
       />
     </>
   );

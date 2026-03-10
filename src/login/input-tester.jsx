@@ -29,6 +29,7 @@ export function InputTester() {
             ...prevUser,
             username: inputs.username,
             gameCode,
+            score: 0,
           }));
         }}
       />

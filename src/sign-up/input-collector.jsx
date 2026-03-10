@@ -29,6 +29,7 @@ export function InputCollector() {
             ...prevUser,
             username: inputs.username,
             gameCode,
+            score: 0,
           }));
         }}
       />
