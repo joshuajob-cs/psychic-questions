@@ -23,7 +23,7 @@ router.post("/answer", (req, res) => {
   if (!player) return res.status(404).json({ error: "Player not found" });
 
   player.addAnswer(answer);
-  res.json({ success: true });
+  res.json({});
 });
 
 router.get("/answers", (req, res) => {
