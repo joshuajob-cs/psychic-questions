@@ -1,20 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ask-questions.css";
 import { Title } from "../components/title";
 import { Footer } from "../components/shared-footer";
-
-const questions = [
-  "Who do you aspire to be like?",
-  "What is your greatest fear?",
-  "What is something that is difficult for you to remember?",
-  "What do you think everyone should learn?",
-];
+import { getQuestions } from "../apis/question-api";
 
 export function AskQuestions() {
   const go = useNavigate();
+  const [questions, setQuestions] = useState([]);
   const [quesIndex, setQuesIndex] = useState(0);
   const [answer, setAnswer] = useState("");
+
+  useEffect(() => {
+    getQuestions().then(setQuestions);
+  }, []);
 
   function handleNext(e) {
     e.preventDefault();
