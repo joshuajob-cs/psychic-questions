@@ -12,8 +12,8 @@ router.get("/player", requireSession, (req, res) => {
   res.send({ name: player.name, points: player.points });
 });
 
-router.get("/:code/winner", requireSession, (req, res) => {
-  const game = games[req.params.code];
+router.get("/winner", requireSession, (req, res) => {
+  const game = games[req.query.gameCode];
   if (!game) return res.status(404).send({ msg: "Game not found" });
   const winner = game.getWinner();
   if (!winner) return res.status(404).send({ msg: "No players" });
