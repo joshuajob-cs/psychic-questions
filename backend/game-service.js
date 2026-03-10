@@ -41,4 +41,19 @@ router.post("/join", (req, res) => {
   res.send({ name });
 });
 
+router.delete("/leave", (req, res) => {
+  const game = games[req.query.gameCode];
+  if (!game) {
+    res.status(404).send({ msg: "Game not found" });
+    return;
+  }
+  const session = tokens[req.cookies["token"]];
+  if (!session) {
+    res.status(401).send({ msg: "Not in a session" });
+    return;
+  }
+  game.removePlayer(session.name);
+  res.send({});
+});
+
 module.exports = router;

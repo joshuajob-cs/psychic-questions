@@ -21,6 +21,10 @@ class Game {
     this.players[name] = new Player(name);
     return true;
   }
+
+  removePlayer(name) {
+    delete this.players[name];
+  }
 }
 
 const games = {};
