@@ -28,7 +28,7 @@ export function StartGame() {
 
   return (
     <>
-      <header className="screen-rotater" id="between-header">
+      <header className="screen-rotater between-header">
         <Title />
         <h5 className="basic-font"> {user.username}'s Game</h5>
       </header>

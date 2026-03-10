@@ -18,13 +18,15 @@
   align-items: center;
 }
 
-#between-header {
+.between-header {
+  display: flex;
+  align-items: center;
   gap: 1rem;
   justify-content: space-between;
 }
 
 @media (orientation: landscape) {
-  #between-header {
+  .between-header {
     align-items: center;
   }
 }
