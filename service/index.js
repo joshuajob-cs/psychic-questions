@@ -7,7 +7,7 @@ import questionService from "./question-service.js";
 
 const app = express();
 
-app.use(express.static("../dist"));
+app.use(express.static("public"));
 app.use(express.json());
 app.use(cookieParser());
 
