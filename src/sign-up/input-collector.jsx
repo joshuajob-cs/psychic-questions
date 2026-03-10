@@ -16,7 +16,14 @@ export function InputCollector() {
         successRoute="/enter-name"
         buttonText="Sign Up"
         errorMessage="John is already taken."
-        validate={(inputs) => inputs.username !== "john"}
+        validate={async (inputs) => {
+          try {
+            await signup(inputs.username, inputs.password);
+            return true;
+          } catch {
+            return false;
+          }
+        }}
         save={(inputs) => {
           const gameCode = Array.from({ length: 5 }, () =>
             String.fromCharCode(65 + Math.floor(Math.random() * 26)),
@@ -26,9 +33,6 @@ export function InputCollector() {
             username: inputs.username,
             gameCode,
           }));
-          signup(inputs.username, inputs.password).catch((err) =>
-            console.error(err.message),
-          );
         }}
       />
     </>
