@@ -12,7 +12,7 @@ function getUser(username) {
 
 async function createUser(username, password) {
   const passwordHash = await bcrypt.hash(password, 10);
-  users[username] = { username, password: passwordHash };
+  users[username] = { password: passwordHash };
 }
 
 function setAuthCookie(res, username) {
