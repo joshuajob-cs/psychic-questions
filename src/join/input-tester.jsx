@@ -25,7 +25,7 @@ export function InputTester() {
             return err.message;
           }
         }}
-        save={(inputs) => setUser({ ...user, joinCode: inputs.joinCode, score: 0 })}
+        save={(inputs) => setUser({ ...user, gameCode: inputs.joinCode, score: 0 })}
       />
     </>
   );
