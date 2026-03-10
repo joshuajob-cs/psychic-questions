@@ -36,17 +36,6 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.put("/name", (req, res) => {
-  const token = req.cookies["token"];
-  const session = tokens[token];
-  if (!session) {
-    res.status(401).send({ msg: "Unauthorized" });
-  } else {
-    session.name = req.body.name;
-    res.send({});
-  }
-});
-
 router.delete("/logout", (req, res) => {
   const token = req.cookies["token"];
   delete tokens[token];
