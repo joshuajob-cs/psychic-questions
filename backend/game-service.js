@@ -12,6 +12,15 @@ router.get("/:code", (req, res) => {
   }
 });
 
+router.post("/create", (_req, res) => {
+  let gameCode;
+  do {
+    gameCode = Math.random().toString(36).slice(2, 8).toUpperCase();
+  } while (games[gameCode]);
+  games[gameCode] = new Game(gameCode);
+  res.send({ gameCode });
+});
+
 router.post("/join", (req, res) => {
   const { gameCode, name } = req.body;
   const game = games[gameCode];
