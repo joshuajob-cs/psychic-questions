@@ -69,6 +69,16 @@ router.patch("/points", requireSession, (req, res) => {
   res.send({ points: game.players[name].points });
 });
 
+router.delete("/leave", requireSession, (req, res) => {
+  const game = games[req.query.gameCode];
+  if (!game) {
+    res.status(404).send({ msg: "Game not found" });
+    return;
+  }
+  leaveGame(game, req.cookies["token"], req.session, res);
+  res.send({});
+});
+
 router.delete("/:code", requireSession, (req, res) => {
   if (!req.session.username) {
     res.status(401).send({ msg: "Unauthorized" });
@@ -85,16 +95,6 @@ router.delete("/:code", requireSession, (req, res) => {
     }
   }
   delete games[req.params.code];
-  res.send({});
-});
-
-router.delete("/leave", requireSession, (req, res) => {
-  const game = games[req.query.gameCode];
-  if (!game) {
-    res.status(404).send({ msg: "Game not found" });
-    return;
-  }
-  leaveGame(game, req.cookies["token"], req.session, res);
   res.send({});
 });
 
