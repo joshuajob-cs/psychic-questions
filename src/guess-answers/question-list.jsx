@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { Context } from "../context";
 import { addPoints } from "../apis/game-api";
+import { AnswerChoices } from "./answer-choices";
 
 export const questions = [
   "Who do you aspire to be like?",
@@ -50,28 +51,11 @@ export function QuestionList({ onComplete }) {
           Answer: {possibleAnswers[i][correctAnswers[i]]}
         </div>
       ) : (
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleNext();
-          }}
-        >
-          <div className="answer-choices">
-            {possibleAnswers[i].map((choice, j) => (
-              <div className="choice" key={j}>
-                <input
-                  type="radio"
-                  id={`q${i}-a${j}`}
-                  name={`question-${i}`}
-                  required
-                  onChange={() => setSelected(j)}
-                />
-                <label htmlFor={`q${i}-a${j}`}>{choice}</label>
-              </div>
-            ))}
-          </div>
-          <button type="submit">Next</button>
-        </form>
+        <AnswerChoices
+          choices={possibleAnswers[i]}
+          onSelect={setSelected}
+          onSubmit={handleNext}
+        />
       )}
     </div>
   ));
