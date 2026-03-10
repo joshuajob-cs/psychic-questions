@@ -17,7 +17,7 @@ async function createUser(username, password) {
 
 function setAuthCookie(res, username) {
   const token = uuid.v4();
-  tokens[token] = username;
+  tokens[token] = { username };
   res.cookie("token", token, {
     secure: true,
     httpOnly: true,
@@ -44,6 +44,17 @@ router.post("/login", async (req, res) => {
     res.send({ username });
   } else {
     res.status(401).send({ msg: "Unauthorized" });
+  }
+});
+
+router.put("/name", (req, res) => {
+  const token = req.cookies["token"];
+  const session = tokens[token];
+  if (!session) {
+    res.status(401).send({ msg: "Unauthorized" });
+  } else {
+    session.name = req.body.name;
+    res.send({});
   }
 });
 
