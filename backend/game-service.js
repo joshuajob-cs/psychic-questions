@@ -45,6 +45,16 @@ router.post("/join", (req, res) => {
   res.send({ name });
 });
 
+function leaveGame(game, token, session, res) {
+  game.removePlayer(session.name);
+  if (session.username) {
+    session.name = null;
+  } else {
+    delete tokens[token];
+    if (res) res.clearCookie("token");
+  }
+}
+
 router.delete("/:code", requireSession, (req, res) => {
   if (!req.session.username) {
     res.status(401).send({ msg: "Unauthorized" });
@@ -54,6 +64,11 @@ router.delete("/:code", requireSession, (req, res) => {
   if (!game) {
     res.status(404).send({ msg: "Game not found" });
     return;
+  }
+  for (const [token, session] of Object.entries(tokens)) {
+    if (session.name && game.players[session.name]) {
+      leaveGame(game, token, session, null);
+    }
   }
   delete games[req.params.code];
   res.send({});
@@ -65,13 +80,7 @@ router.delete("/leave", requireSession, (req, res) => {
     res.status(404).send({ msg: "Game not found" });
     return;
   }
-  game.removePlayer(req.session.name);
-  if (req.session.username) {
-    req.session.name = null;
-  } else {
-    delete tokens[req.cookies["token"]];
-    res.clearCookie("token");
-  }
+  leaveGame(game, req.cookies["token"], req.session, res);
   res.send({});
 });
 
