@@ -1,5 +1,6 @@
-const express = require("express");
-const router = express.Router();
-const { games } = require("./game-state");
+import express from "express";
+import { games } from "./game-state.js";
 
-module.exports = router;
+const router = express.Router();
+
+export default router;

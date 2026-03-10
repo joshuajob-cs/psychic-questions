@@ -1,9 +1,9 @@
-const express = require("express");
-const cookieParser = require("cookie-parser");
+import express from "express";
+import cookieParser from "cookie-parser";
 
-const authService = require("./auth-service");
-const gameService = require("./game-service");
-const questionService = require("./question-service");
+import authService from "./auth-service.js";
+import gameService from "./game-service.js";
+import questionService from "./question-service.js";
 
 const app = express();
 

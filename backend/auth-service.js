@@ -1,12 +1,8 @@
-const express = require("express");
-const bcrypt = require("bcryptjs");
+import express from "express";
+import bcrypt from "bcryptjs";
+import { tokens, setSessionCookie, requireSession, requireLogin } from "./session-state.js";
+
 const router = express.Router();
-const {
-  tokens,
-  setSessionCookie,
-  requireSession,
-  requireLogin,
-} = require("./session-state");
 
 const users = {};
 
@@ -60,4 +56,4 @@ router.get("/user", requireSession, (req, res) => {
   res.send({ username: req.session.username, name: req.session.name });
 });
 
-module.exports = router;
+export default router;

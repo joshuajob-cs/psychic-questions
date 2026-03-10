@@ -1,7 +1,8 @@
-const express = require("express");
+import express from "express";
+import { games, Game } from "./game-state.js";
+import { tokens, setSessionCookie, requireSession, requireLogin } from "./session-state.js";
+
 const router = express.Router();
-const { games, Game } = require("./game-state");
-const { tokens, setSessionCookie, requireSession, requireLogin } = require("./session-state");
 
 router.get("/player", requireSession, (req, res) => {
   const { gameCode, name } = req.query;
@@ -111,4 +112,4 @@ router.delete("/:code", requireLogin, (req, res) => {
   res.send({});
 });
 
-module.exports = router;
+export default router;

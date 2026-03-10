@@ -1,9 +1,9 @@
-const uuid = require("uuid");
+import { v4 as uuidv4 } from "uuid";
 
 const tokens = {};
 
 function setSessionCookie(res, session) {
-  const token = uuid.v4();
+  const token = uuidv4();
   tokens[token] = session;
   res.cookie("token", token, {
     secure: true,
@@ -20,8 +20,9 @@ function requireSession(req, res, next) {
 
 function requireLogin(req, res, next) {
   req.session = tokens[req.cookies["token"]];
-  if (!req.session || !req.session.username) return res.status(401).send({ msg: "Unauthorized" });
+  if (!req.session || !req.session.username)
+    return res.status(401).send({ msg: "Unauthorized" });
   next();
 }
 
-module.exports = { tokens, setSessionCookie, requireSession, requireLogin };
+export { tokens, setSessionCookie, requireSession, requireLogin };
