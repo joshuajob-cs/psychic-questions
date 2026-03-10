@@ -1,5 +1,4 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { Context } from "../context";
 import { addPoints } from "../apis/game-api";
 
@@ -21,11 +20,10 @@ export const possibleAnswers = [
   ["How to Swim", "Be a Good Person", "Nothing", "Pay Attention and Listen"],
 ];
 
-export function QuestionList() {
+export function QuestionList({ onComplete }) {
   const [quesIndex, setQuesIndex] = useState(1);
   const [selected, setSelected] = useState(null);
   const { user, setUser } = useContext(Context);
-  const go = useNavigate();
 
   function checkAnswer(i) {
     if (selected === correctAnswers[i]) {
@@ -41,7 +39,7 @@ export function QuestionList() {
     if (quesIndex < questions.length) {
       setQuesIndex((prev) => prev + 1);
     } else {
-      go("/winner");
+      onComplete();
     }
   }
   return questions.slice(0, quesIndex).map((question, i) => (
