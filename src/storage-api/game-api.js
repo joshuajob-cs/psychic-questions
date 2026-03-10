@@ -26,6 +26,23 @@ export async function joinGame(gameCode, name) {
   return data;
 }
 
+export async function addPoints(gameCode, name, delta) {
+  const res = await fetch(`${STORAGE_URL}/game/points`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify({ gameCode, name, delta }),
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.msg || "Could not update points.");
+  }
+
+  return data;
+}
+
 export async function createGame() {
   const res = await fetch(`${STORAGE_URL}/game/create`, {
     method: "POST",
