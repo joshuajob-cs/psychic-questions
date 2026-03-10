@@ -45,6 +45,20 @@ router.post("/join", (req, res) => {
   res.send({ name });
 });
 
+router.delete("/:code", requireSession, (req, res) => {
+  if (!req.session.username) {
+    res.status(401).send({ msg: "Unauthorized" });
+    return;
+  }
+  const game = games[req.params.code];
+  if (!game) {
+    res.status(404).send({ msg: "Game not found" });
+    return;
+  }
+  delete games[req.params.code];
+  res.send({});
+});
+
 router.delete("/leave", requireSession, (req, res) => {
   const game = games[req.query.gameCode];
   if (!game) {
