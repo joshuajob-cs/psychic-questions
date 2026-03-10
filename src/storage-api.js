@@ -4,6 +4,7 @@ export async function signup(username, password) {
   const res = await fetch(`${STORAGE_URL}/auth/sign-up`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
+    credentials: "include",
     body: JSON.stringify({ username, password }),
   });
 
@@ -20,6 +21,7 @@ export async function login(username, password) {
   const res = await fetch(`${STORAGE_URL}/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
+    credentials: "include",
     body: JSON.stringify({ username, password }),
   });
 
@@ -35,6 +37,7 @@ export async function login(username, password) {
 export async function logout() {
   const res = await fetch(`${STORAGE_URL}/auth/logout`, {
     method: "DELETE",
+    credentials: "include",
   });
 
   if (!res.ok) {
@@ -45,6 +48,7 @@ export async function logout() {
 export async function deleteUser() {
   const res = await fetch(`${STORAGE_URL}/auth/delete`, {
     method: "DELETE",
+    credentials: "include",
   });
 
   if (!res.ok) {
@@ -53,7 +57,9 @@ export async function deleteUser() {
 }
 
 export async function getUser() {
-  const res = await fetch(`${STORAGE_URL}/auth/user`);
+  const res = await fetch(`${STORAGE_URL}/auth/user`, {
+    credentials: "include",
+  });
 
   const data = await res.json();
 
