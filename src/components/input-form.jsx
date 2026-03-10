@@ -22,9 +22,9 @@ export function InputForm({
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const isValid = validate ? validate(inputs) : true;
+    const isValid = validate ? await validate(inputs) : true;
 
     if (isValid) {
       if (save) save(inputs);
