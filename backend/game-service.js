@@ -53,6 +53,12 @@ router.delete("/leave", (req, res) => {
     return;
   }
   game.removePlayer(session.name);
+  if (session.username) {
+    session.name = null;
+  } else {
+    delete tokens[req.cookies["token"]];
+    res.clearCookie("token");
+  }
   res.send({});
 });
 
