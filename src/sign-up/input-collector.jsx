@@ -1,7 +1,8 @@
-import React from "react";
+import React, { use } from "react";
 import { useContext } from "react";
 import { InputForm } from "../components/input-form";
 import { Context } from "../context";
+import { signup } from "../storage-api";
 
 export function InputCollector() {
   const { setUser } = useContext(Context);
@@ -25,6 +26,9 @@ export function InputCollector() {
             username: inputs.username,
             gameCode,
           }));
+          signup(inputs.username, inputs.password).catch((err) =>
+            console.error(err.message),
+          );
         }}
       />
     </>
