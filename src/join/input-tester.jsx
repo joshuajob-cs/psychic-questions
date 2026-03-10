@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { InputForm } from "../components/input-form";
 import { Context } from "../context";
+import { checkGame } from "../storage-api/game-api";
 
 export function InputTester() {
   const { user, setUser } = useContext(Context);
@@ -15,10 +16,10 @@ export function InputTester() {
           },
         ]}
         successRoute="/enter-name"
-        errorMessage={`Invalid join code. Correct code is ${user.gameCode}.`}
+        errorMessage="Invalid join code."
         buttonText="Join"
-        validate={(inputs) => inputs.joinCode === user.gameCode}
-        save={() => setUser({ ...user, score: 0 })}
+        validate={async (inputs) => await checkGame(inputs.joinCode)}
+        save={(inputs) => setUser({ ...user, joinCode: inputs.joinCode, score: 0 })}
       />
     </>
   );
