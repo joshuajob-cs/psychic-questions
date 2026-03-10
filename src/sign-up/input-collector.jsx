@@ -15,13 +15,12 @@ export function InputCollector() {
         ]}
         successRoute="/enter-name"
         buttonText="Sign Up"
-        errorMessage="John is already taken."
         validate={async (inputs) => {
           try {
             await signup(inputs.username, inputs.password);
             return true;
-          } catch {
-            return false;
+          } catch (err) {
+            return err.message;
           }
         }}
         save={(inputs) => {
