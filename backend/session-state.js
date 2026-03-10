@@ -18,4 +18,10 @@ function requireSession(req, res, next) {
   next();
 }
 
-module.exports = { tokens, setSessionCookie, requireSession };
+function requireLogin(req, res, next) {
+  req.session = tokens[req.cookies["token"]];
+  if (!req.session || !req.session.username) return res.status(401).send({ msg: "Unauthorized" });
+  next();
+}
+
+module.exports = { tokens, setSessionCookie, requireSession, requireLogin };

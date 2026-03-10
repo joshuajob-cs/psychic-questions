@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { games, Game } = require("./game-state");
-const { tokens, setSessionCookie, requireSession } = require("./session-state");
+const { tokens, setSessionCookie, requireSession, requireLogin } = require("./session-state");
 
 router.get("/player", requireSession, (req, res) => {
   const { gameCode, name } = req.query;
@@ -29,11 +29,7 @@ router.get("/:code", (req, res) => {
   }
 });
 
-router.post("/create", requireSession, (req, res) => {
-  if (!req.session.username) {
-    res.status(401).send({ msg: "Unauthorized" });
-    return;
-  }
+router.post("/create", requireLogin, (_req, res) => {
   let gameCode;
   do {
     gameCode = Math.random().toString(36).slice(2, 8).toUpperCase();
@@ -100,11 +96,7 @@ router.delete("/leave", requireSession, (req, res) => {
   res.send({});
 });
 
-router.delete("/:code", requireSession, (req, res) => {
-  if (!req.session.username) {
-    res.status(401).send({ msg: "Unauthorized" });
-    return;
-  }
+router.delete("/:code", requireLogin, (req, res) => {
   const game = games[req.params.code];
   if (!game) {
     res.status(404).send({ msg: "Game not found" });
