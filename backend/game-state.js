@@ -41,4 +41,4 @@ class Game {
 
 const games = {};
 
-module.exports = { games, Game, Player };
+module.exports = { games, Game };
