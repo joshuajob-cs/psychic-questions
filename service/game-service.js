@@ -1,6 +1,11 @@
 import express from "express";
 import { games, Game } from "./game-state.js";
-import { tokens, setSessionCookie, requireSession, requireLogin } from "./session-state.js";
+import {
+  tokens,
+  setSessionCookie,
+  requireSession,
+  requireLogin,
+} from "./session-state.js";
 
 const router = express.Router();
 
