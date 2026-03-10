@@ -9,6 +9,23 @@ export async function checkGame(gameCode) {
   }
 }
 
+export async function joinGame(gameCode, name) {
+  const res = await fetch(`${STORAGE_URL}/game/join`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify({ gameCode, name }),
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.msg || "Could not join game.");
+  }
+
+  return data;
+}
+
 export async function createGame() {
   const res = await fetch(`${STORAGE_URL}/game/create`, {
     method: "POST",
