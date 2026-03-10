@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { InputForm } from "../components/input-form";
 import { Context } from "../context";
 import { login } from "../storage-api/auth-api";
+import { createGame } from "../storage-api/game-api";
 
 export function InputTester() {
   const { setUser } = useContext(Context);
@@ -23,8 +24,13 @@ export function InputTester() {
             return err.message;
           }
         }}
-        save={(inputs) => {
-          setUser((prevUser) => ({ ...prevUser, username: inputs.username }));
+        save={async (inputs) => {
+          const gameCode = await createGame();
+          setUser((prevUser) => ({
+            ...prevUser,
+            username: inputs.username,
+            gameCode,
+          }));
         }}
       />
     </>
