@@ -1,5 +1,12 @@
 const STORAGE_URL = "http://localhost:3000";
 
+export async function checkGame(gameCode) {
+  const res = await fetch(`${STORAGE_URL}/game/${gameCode}`, {
+    credentials: "include",
+  });
+  return res.ok;
+}
+
 export async function createGame() {
   const res = await fetch(`${STORAGE_URL}/game/create`, {
     method: "POST",
