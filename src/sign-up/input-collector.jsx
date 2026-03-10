@@ -24,10 +24,8 @@ export function InputCollector() {
             return err.message;
           }
         }}
-        save={(inputs) => {
-          const gameCode = Array.from({ length: 5 }, () =>
-            String.fromCharCode(65 + Math.floor(Math.random() * 26)),
-          ).join("");
+        save={async (inputs) => {
+          const gameCode = await createGame();
           setUser((prevUser) => ({
             ...prevUser,
             username: inputs.username,
