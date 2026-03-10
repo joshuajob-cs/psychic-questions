@@ -15,7 +15,7 @@ app.use("/auth", authService);
 app.use("/game", gameService);
 app.use("/question", questionService);
 
-const port = 4000;
+const port = process.argv.length > 2 ? process.argv[2] : 4000;
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
