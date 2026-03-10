@@ -1,10 +1,9 @@
 const express = require("express");
-const uuid = require("uuid");
 const bcrypt = require("bcryptjs");
 const router = express.Router();
+const { tokens, setSessionCookie } = require("./session-state");
 
 const users = {};
-const tokens = {};
 
 function getUser(username) {
   return users[username];
@@ -15,23 +14,13 @@ async function createUser(username, password) {
   users[username] = { password: passwordHash };
 }
 
-function setAuthCookie(res, username) {
-  const token = uuid.v4();
-  tokens[token] = { username };
-  res.cookie("token", token, {
-    secure: true,
-    httpOnly: true,
-    sameSite: "strict",
-  });
-}
-
 router.post("/sign-up", async (req, res) => {
   const { username, password } = req.body;
   if (getUser(username)) {
     res.status(409).send({ msg: "Username already taken" });
   } else {
     await createUser(username, password);
-    setAuthCookie(res, username);
+    setSessionCookie(res, { username });
     res.send({ username });
   }
 });
@@ -40,7 +29,7 @@ router.post("/login", async (req, res) => {
   const { username, password } = req.body;
   const user = getUser(username);
   if (user && (await bcrypt.compare(password, user.password))) {
-    setAuthCookie(res, username);
+    setSessionCookie(res, { username });
     res.send({ username });
   } else {
     res.status(401).send({ msg: "Unauthorized" });
