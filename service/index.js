@@ -15,6 +15,10 @@ app.use("/auth", authService);
 app.use("/game", gameService);
 app.use("/question", questionService);
 
+app.use((_req, res) => {
+  res.sendFile("index.html", { root: "public" });
+});
+
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);

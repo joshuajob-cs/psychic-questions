@@ -159,3 +159,11 @@ return players.reduce((a, b) => (a.points >= b.points ? a : b));
 ```
 
 Automatically iterates through and compares everything.
+
+```js
+app.use((_req, res) => {
+  res.sendFile("index.html", { root: "public" });
+});
+```
+
+The backend does not know what to do with the frontend http requests (i.e .../winner), so it sends it to index.html in public (where everything else in the frontend is).
