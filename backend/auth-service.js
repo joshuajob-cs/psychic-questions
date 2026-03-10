@@ -36,7 +36,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.delete("/logout", (req, res) => {
+router.delete("/logout", requireSession, (req, res) => {
   const token = req.cookies["token"];
   delete tokens[token];
   res.clearCookie("token");
