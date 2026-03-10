@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { AuthHeader } from "../components/auth-header";
 import { AuthFooter } from "../components/auth-footer";
 import { InputTester } from "./input-tester";

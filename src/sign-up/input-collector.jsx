@@ -1,4 +1,3 @@
-import React, { use } from "react";
 import { useContext } from "react";
 import { InputForm } from "../components/input-form";
 import { Context } from "../context";

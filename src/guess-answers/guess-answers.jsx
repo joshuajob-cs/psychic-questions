@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Footer } from "../components/shared-footer";
 import { QuestionList } from "./question-list";
 import { PointHeader } from "./point-header";
