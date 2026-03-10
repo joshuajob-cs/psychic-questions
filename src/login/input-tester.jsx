@@ -2,6 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { InputForm } from "../components/input-form";
 import { Context } from "../context";
+import { login } from "../storage-api";
 
 export function InputTester() {
   const { setUser } = useContext(Context);
@@ -14,15 +15,12 @@ export function InputTester() {
         ]}
         successRoute="/enter-name"
         buttonText="Login"
-        errorMessage='Invalid username or password. (Hint: username "john", password "doe")'
-        validate={(inputs) =>
-          inputs.username === "john" && inputs.password === "doe"
-        }
+        errorMessage="Invalid username or password."
         save={(inputs) => {
-          const gameCode = Array.from({ length: 5 }, () =>
-            String.fromCharCode(65 + Math.floor(Math.random() * 26))
-          ).join("");
-          setUser((prevUser) => ({ ...prevUser, username: inputs.username, gameCode }));
+          setUser((prevUser) => ({ ...prevUser, username: inputs.username }));
+          login(inputs.username, inputs.password).catch((err) =>
+            console.error(err.message)
+          );
         }}
       />
     </>
