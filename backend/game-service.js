@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { games, Game } = require("./game-state");
-const { setSessionCookie } = require("./session-state");
+const { tokens, setSessionCookie } = require("./session-state");
 
 router.get("/:code", (req, res) => {
   const game = games[req.params.code];
@@ -22,6 +22,26 @@ router.post("/create", (_req, res) => {
 });
 
 router.post("/join", (req, res) => {
+  const { gameCode, name } = req.body;
+  const game = games[gameCode];
+  if (!game) {
+    res.status(404).send({ msg: "Game not found" });
+    return;
+  }
+  if (!game.addPlayer(name)) {
+    res.status(409).send({ msg: "Name already taken in this game" });
+    return;
+  }
+  const session = tokens[req.cookies["token"]];
+  if (session) {
+    session.name = name;
+  } else {
+    setSessionCookie(res, { username: null, name });
+  }
+  res.send({ name });
+});
+
+router.post("/guest", (req, res) => {
   const { gameCode, name } = req.body;
   const game = games[gameCode];
   if (!game) {
