@@ -1,9 +1,3 @@
-#between-header {
-  display: flex;
-  gap: 1rem;
-  justify-content: space-between;
-  align-items: center;
-}
 #points-container {
   display: flex;
   flex-direction: column;

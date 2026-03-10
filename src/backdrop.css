@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Playwrite+NZ+Basic:wght@100..400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playwrite+NZ+Basic&display=swap");
 
+body,
 .body {
   margin: 0;
   min-height: 100vh;
@@ -80,6 +81,19 @@ h3 {
   .screen-rotater {
     flex-direction: row;
   }
+}
+
+button {
+  background-color: royalblue;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: navy;
 }
 
 input {
