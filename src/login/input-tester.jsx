@@ -2,7 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { InputForm } from "../components/input-form";
 import { Context } from "../context";
-import { login } from "../storage-api";
+import { login } from "../storage-api/auth-api";
 
 export function InputTester() {
   const { setUser } = useContext(Context);

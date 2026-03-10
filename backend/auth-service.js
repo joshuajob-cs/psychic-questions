@@ -1,7 +1,12 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const router = express.Router();
-const { tokens, setSessionCookie, requireSession, requireLogin } = require("./session-state");
+const {
+  tokens,
+  setSessionCookie,
+  requireSession,
+  requireLogin,
+} = require("./session-state");
 
 const users = {};
 
