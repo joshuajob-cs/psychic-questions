@@ -7,34 +7,40 @@ import { getAnswers } from "../apis/question-api";
 import { Context } from "../context";
 import "./guess-answers.css";
 
-const TOTAL_ROUNDS = 3;
-
 export function GuessAnswers() {
-  const [round, setRound] = useState(1);
-  const [players, setPlayers] = useState([]);
+  const [playerIndex, setPlayerIndex] = useState(0);
+  const [otherPlayers, setOtherPlayers] = useState([]);
   const { user } = useContext(Context);
   const go = useNavigate();
 
   useEffect(() => {
-    getAnswers(user.gameCode).then((data) =>
-      setPlayers(data.allAnswers.map((p) => p.playerName))
-    );
+    getAnswers(user.gameCode).then((data) => {
+      const others = data.allAnswers
+        .map((p) => p.playerName)
+        .filter((name) => name !== user.name);
+      setOtherPlayers(others);
+    });
   }, []);
 
   function handleRoundComplete() {
-    if (round < TOTAL_ROUNDS) {
-      setRound((prev) => prev + 1);
+    if (playerIndex < otherPlayers.length - 1) {
+      setPlayerIndex((prev) => prev + 1);
     } else {
       go("/winner");
     }
   }
 
+  const currentPlayer = otherPlayers[playerIndex] ?? "...";
+  const totalRounds = otherPlayers.length;
+
   return (
     <>
       <PointHeader />
       <main className="uncenter">
-        <h2 className="heavy-basic">Lily's Questions ({round}/{TOTAL_ROUNDS})</h2>
-        <QuestionList key={round} onComplete={handleRoundComplete} />
+        <h2 className="heavy-basic">
+          {currentPlayer}'s Questions ({playerIndex + 1}/{totalRounds})
+        </h2>
+        <QuestionList key={playerIndex} onComplete={handleRoundComplete} />
       </main>
       <footer>
         <Footer />
