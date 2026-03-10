@@ -134,7 +134,7 @@ For debugging I needed to Ctrl + Shift + k (open dev tools), and then manually d
 
 ## Service
 
-- Do `node backend/auth-service.js` to run server
+- Do `node backend/server.js` to run server
 
 Then I can type in the URL: http://localhost:3000/
 

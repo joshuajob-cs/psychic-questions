@@ -1,4 +1,3 @@
-import React from "react";
 import { Title } from "../components/title";
 import { useContext } from "react";
 import { Context } from "../context";
