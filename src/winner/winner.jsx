@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Footer } from "../components/shared-footer";
 import { PointHeader } from "../guess-answers/point-header";
 import { Context } from "../context";
-import { getWinner } from "../storage-api/game-api";
+import { getWinner } from "../apis/game-api";
 
 export function Winner() {
   const { user } = useContext(Context);

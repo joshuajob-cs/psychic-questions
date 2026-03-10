@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { InputForm } from "../components/input-form";
 import { Context } from "../context";
-import { checkGame } from "../storage-api/game-api";
+import { checkGame } from "../apis/game-api";
 
 export function InputTester() {
   const { user, setUser } = useContext(Context);

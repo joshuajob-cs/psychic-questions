@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../context";
-import { addPoints } from "../storage-api/game-api";
+import { addPoints } from "../apis/game-api";
 
 export const questions = [
   "Who do you aspire to be like?",

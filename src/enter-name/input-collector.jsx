@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { InputForm } from "../components/input-form";
 import { Context } from "../context";
-import { joinGame } from "../storage-api/game-api";
+import { joinGame } from "../apis/game-api";
 
 export function InputCollector() {
   const { user, setUser } = useContext(Context);
