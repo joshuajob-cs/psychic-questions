@@ -15,13 +15,12 @@ export function InputTester() {
         ]}
         successRoute="/enter-name"
         buttonText="Login"
-        errorMessage="Invalid username or password."
         validate={async (inputs) => {
           try {
             await login(inputs.username, inputs.password);
             return true;
-          } catch {
-            return false;
+          } catch (err) {
+            return err.message;
           }
         }}
         save={(inputs) => {
