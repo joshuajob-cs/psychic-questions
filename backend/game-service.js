@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const { games, Game } = require("./game-state");
-const { tokens, setSessionCookie } = require("./session-store");
+const { setSessionCookie } = require("./session-state");
 
-router.get("/check-code", (req, res) => {
+router.get("/:code", (req, res) => {
   const game = games[req.params.code];
   if (game) {
     res.send({});
