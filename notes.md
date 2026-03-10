@@ -153,3 +153,9 @@ router.get("/:code", (req, res) => {});
 ```
 
 Apparently, it is convention for a get request to not have a body, so you would send in a value as code/IDNAME instead.
+
+```js
+return players.reduce((a, b) => (a.points >= b.points ? a : b));
+```
+
+Automatically iterates through and compares everything.

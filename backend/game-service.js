@@ -3,6 +3,15 @@ const router = express.Router();
 const { games, Game } = require("./game-state");
 const { tokens, setSessionCookie, requireSession } = require("./session-state");
 
+router.get("/player", (req, res) => {
+  const { gameCode, name } = req.query;
+  const game = games[gameCode];
+  if (!game) return res.status(404).send({ msg: "Game not found" });
+  const player = game.players[name];
+  if (!player) return res.status(404).send({ msg: "Player not found" });
+  res.send({ name: player.name, points: player.points });
+});
+
 router.get("/:code/winner", (req, res) => {
   const game = games[req.params.code];
   if (!game) return res.status(404).send({ msg: "Game not found" });
