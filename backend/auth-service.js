@@ -67,10 +67,10 @@ router.delete("/logout", (req, res) => {
 
 router.delete("/delete", (req, res) => {
   const token = req.cookies["token"];
-  const username = tokens[token];
-  if (username) {
+  const session = tokens[token];
+  if (session) {
     delete tokens[token];
-    delete users[username];
+    delete users[session.username];
     res.clearCookie("token");
     res.send({});
   } else {
@@ -80,9 +80,9 @@ router.delete("/delete", (req, res) => {
 
 router.get("/user", (req, res) => {
   const token = req.cookies["token"];
-  const username = tokens[token];
-  if (username) {
-    res.send({ username });
+  const session = tokens[token];
+  if (session) {
+    res.send({ username: session.username, name: session.name });
   } else {
     res.status(401).send({ msg: "Unauthorized" });
   }
