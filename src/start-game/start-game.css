@@ -1,3 +1,7 @@
+#uncenter {
+  align-items: stretch;
+}
+
 .player {
   padding: 10px;
   background-color: silver;

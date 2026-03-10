@@ -26,6 +26,7 @@ main {
   background: linear-gradient(to bottom, yellow, lavender);
   padding: 1rem;
   text-align: center;
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -32,7 +32,7 @@ export function StartGame() {
         <Title />
         <h5 className="basic-font"> {user.username}'s Game</h5>
       </header>
-      <main>
+      <main id="uncenter">
         <div>
           <h1>Game Code</h1>
           <h2 className="basic-font">
