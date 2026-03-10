@@ -8,7 +8,7 @@ class Player {
     this.questions = [];
   }
 
-  addQuestion(text, answer) {
+  addQuestion(question, answer) {
     this.questions.push({ question, answer });
   }
 }
@@ -24,6 +24,6 @@ class Game {
   }
 }
 
-const players = {};
+const games = {};
 
 module.exports = router;
