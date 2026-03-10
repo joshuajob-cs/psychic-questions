@@ -134,9 +134,9 @@ For debugging I needed to Ctrl + Shift + k (open dev tools), and then manually d
 
 ## Service
 
-- Do `node backend/server.js` to run server
+- Do `node service/server.js` to run server
 
-Then I can type in the URL: http://localhost:3000/
+Then I can type in the URL: http://localhost:4000/
 
 When I go to the website it will automatically send a GET/ request to my server, which I can process with:
 
