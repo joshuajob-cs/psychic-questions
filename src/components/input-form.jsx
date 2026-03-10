@@ -5,8 +5,8 @@ export function InputForm({
   inputSpecs, // Specifications for the input field (type, placeholder, etc.)
   successRoute, // path to navigate on success
   buttonText, // text for submit button
-  validate, // function to validate the input, returns true or an error string
-  save, // function to save the input value
+  updateBackend, // validates input, updates database, and returns true or an error string
+  updateFrontend, // updates the browser state
 }) {
   const [badEntry, setBadEntry] = useState(null);
   const [inputs, setInputs] = useState(
@@ -23,10 +23,10 @@ export function InputForm({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const isValid = validate ? await validate(inputs) : true;
+    const isValid = updateBackend ? await updateBackend(inputs) : true;
 
     if (isValid === true) {
-      if (save) save(inputs);
+      if (updateFrontend) updateFrontend(inputs);
       go(successRoute);
     } else {
       setBadEntry(typeof isValid === "string" ? isValid : "Invalid input.");

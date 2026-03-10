@@ -17,7 +17,7 @@ export function InputTester() {
         ]}
         successRoute="/enter-name"
         buttonText="Join"
-        validate={async (inputs) => {
+        updateBackend={async (inputs) => {
           try {
             await checkGame(inputs.joinCode);
             return true;
@@ -25,7 +25,7 @@ export function InputTester() {
             return err.message;
           }
         }}
-        save={(inputs) => setUser({ ...user, gameCode: inputs.joinCode, score: 0 })}
+        updateFrontend={(inputs) => setUser({ ...user, gameCode: inputs.joinCode, score: 0 })}
       />
     </>
   );

@@ -13,7 +13,7 @@ export function InputCollector() {
         inputSpecs={[{ name: "name", type: "text", placeholder: "" }]}
         successRoute="/start-game"
         buttonText="Submit"
-        validate={async (inputs) => {
+        updateBackend={async (inputs) => {
           try {
             await joinGame(user.gameCode, inputs.name);
             return true;
@@ -21,7 +21,7 @@ export function InputCollector() {
             return err.message;
           }
         }}
-        save={(inputs) =>
+        updateFrontend={(inputs) =>
           setUser((prevUser) => ({ ...prevUser, name: inputs.name }))
         }
       />

@@ -16,7 +16,7 @@ export function InputCollector() {
         ]}
         successRoute="/enter-name"
         buttonText="Sign Up"
-        validate={async (inputs) => {
+        updateBackend={async (inputs) => {
           try {
             await signup(inputs.username, inputs.password);
             return true;
@@ -24,7 +24,7 @@ export function InputCollector() {
             return err.message;
           }
         }}
-        save={async (inputs) => {
+        updateFrontend={async (inputs) => {
           const gameCode = await createGame();
           setUser((prevUser) => ({
             ...prevUser,

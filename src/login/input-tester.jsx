@@ -16,7 +16,7 @@ export function InputTester() {
         ]}
         successRoute="/enter-name"
         buttonText="Login"
-        validate={async (inputs) => {
+        updateBackend={async (inputs) => {
           try {
             await login(inputs.username, inputs.password);
             return true;
@@ -24,7 +24,7 @@ export function InputTester() {
             return err.message;
           }
         }}
-        save={async (inputs) => {
+        updateFrontend={async (inputs) => {
           const gameCode = await createGame();
           setUser((prevUser) => ({
             ...prevUser,
