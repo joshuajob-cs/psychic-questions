@@ -25,6 +25,12 @@ class Game {
   removePlayer(name) {
     delete this.players[name];
   }
+
+  adjustPoints(name, change) {
+    if (!this.players[name]) return false;
+    this.players[name].points += change;
+    return true;
+  }
 }
 
 const games = {};

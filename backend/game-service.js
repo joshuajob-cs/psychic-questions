@@ -55,6 +55,20 @@ function leaveGame(game, token, session, res) {
   }
 }
 
+router.patch("/points", requireSession, (req, res) => {
+  const { gameCode, name, delta } = req.body;
+  const game = games[gameCode];
+  if (!game) {
+    res.status(404).send({ msg: "Game not found" });
+    return;
+  }
+  if (!game.adjustPoints(name, delta)) {
+    res.status(404).send({ msg: "Player not found" });
+    return;
+  }
+  res.send({ points: game.players[name].points });
+});
+
 router.delete("/:code", requireSession, (req, res) => {
   if (!req.session.username) {
     res.status(401).send({ msg: "Unauthorized" });
