@@ -26,9 +26,9 @@ class Game {
     delete this.players[name];
   }
 
-  adjustPoints(name, change) {
+  adjustPoints(name, delta) {
     if (!this.players[name]) return false;
-    this.players[name].points += change;
+    this.players[name].points += delta;
     return true;
   }
 }

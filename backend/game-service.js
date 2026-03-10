@@ -57,6 +57,10 @@ function leaveGame(game, token, session, res) {
 
 router.patch("/points", requireSession, (req, res) => {
   const { gameCode, name, delta } = req.body;
+  if (typeof delta !== "number") {
+    res.status(400).send({ msg: "delta must be a number" });
+    return;
+  }
   const game = games[gameCode];
   if (!game) {
     res.status(404).send({ msg: "Game not found" });
