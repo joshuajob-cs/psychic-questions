@@ -1,7 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const router = express.Router();
-const { tokens, setSessionCookie, requireSession } = require("./session-state");
+const { tokens, setSessionCookie, requireSession, requireLogin } = require("./session-state");
 
 const users = {};
 
@@ -36,14 +36,14 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.delete("/logout", requireSession, (req, res) => {
+router.delete("/logout", requireLogin, (req, res) => {
   const token = req.cookies["token"];
   delete tokens[token];
   res.clearCookie("token");
   res.send({});
 });
 
-router.delete("/delete", requireSession, (req, res) => {
+router.delete("/delete", requireLogin, (req, res) => {
   const token = req.cookies["token"];
   delete tokens[token];
   delete users[req.session.username];
