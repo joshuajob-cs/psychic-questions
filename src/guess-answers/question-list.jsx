@@ -3,16 +3,14 @@ import { Context } from "../context";
 import { addPoints } from "../apis/game-api";
 import { AnswerChoices } from "./answer-choices";
 
-export const questions = [
-  "Who do you aspire to be like?",
-  "What is your greatest fear?",
-  "What is something that is difficult for you to remember?",
-  "What do you think everyone should learn?",
-];
-
 const pointValues = [5, 10, 25, 50];
 
-export function QuestionList({ onComplete, allAnswers, currentPlayer }) {
+export function QuestionList({
+  onComplete,
+  allAnswers,
+  currentPlayer,
+  questions,
+}) {
   const [quesIndex, setQuesIndex] = useState(1);
   const [selected, setSelected] = useState(null);
   const { user, setUser } = useContext(Context);
