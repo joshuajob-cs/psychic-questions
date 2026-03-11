@@ -132,12 +132,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Supports registration, login, logout, and restricted endpoint** - I did not complete this part of the deliverable.
+- [x] **Node.js/Express HTTP service** - Uses node.js and express.
+- [x] **Static middleware for frontend** - app.use(express.static("public")); puts frontend on same port as backend.
+- [x] **Calls to third party endpoints** - Random facts at the bottom of the waiting page.
+- [x] **Backend service endpoints** - Endpoints for authentication, game data, and player responses.
+- [x] **Frontend calls service endpoints** - API for authentication, game data, and player responses called by frontend.
+- [x] **Supports registration, login, logout, and restricted endpoint** - All of these are supported and requireSession middleware creates restricted endpoints.
 
 ## 🚀 DB deliverable
 
