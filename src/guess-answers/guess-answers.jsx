@@ -42,7 +42,12 @@ export function GuessAnswers() {
         <h2 className="heavy-basic">
           {currentPlayer}'s Questions ({playerIndex + 1}/{totalRounds})
         </h2>
-        <QuestionList key={playerIndex} onComplete={handleRoundComplete} />
+        <QuestionList
+          key={playerIndex}
+          onComplete={handleRoundComplete}
+          allAnswers={allAnswers}
+          currentPlayer={currentPlayer}
+        />
       </main>
       <footer>
         <Footer />
