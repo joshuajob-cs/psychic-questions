@@ -10,11 +10,13 @@ import "./guess-answers.css";
 export function GuessAnswers() {
   const [playerIndex, setPlayerIndex] = useState(0);
   const [otherPlayers, setOtherPlayers] = useState([]);
+  const [allAnswers, setAllAnswers] = useState([]);
   const { user } = useContext(Context);
   const go = useNavigate();
 
   useEffect(() => {
     getAnswers(user.gameCode).then((data) => {
+      setAllAnswers(data.allAnswers);
       const others = data.allAnswers
         .map((p) => p.playerName)
         .filter((name) => name !== user.name);
