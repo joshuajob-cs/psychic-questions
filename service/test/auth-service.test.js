@@ -26,4 +26,16 @@ describe("Auth Service", () => {
     expect(res.status).toBe(200);
     expect(res.body.username).toBe("testuser");
   });
+
+  test("duplicate signup", async () => {
+    await request(app)
+      .post("/auth/sign-up")
+      .send({ username: "dupuser", password: "testpass" });
+
+    const res = await request(app)
+      .post("/auth/sign-up")
+      .send({ username: "dupuser", password: "testpass" });
+
+    expect(res.status).toBe(409);
+  });
 });
