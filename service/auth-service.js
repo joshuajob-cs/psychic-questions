@@ -16,7 +16,7 @@ async function createUser(username, password) {
 
 router.post("/sign-up", async (req, res) => {
   const { username, password } = req.body;
-  if (getUser(username)) {
+  if (await getUser(username)) {
     res.status(409).send({ msg: "Username already taken" });
   } else {
     await createUser(username, password);
@@ -27,7 +27,7 @@ router.post("/sign-up", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
-  const user = getUser(username);
+  const user = await getUser(username);
   if (user && (await bcrypt.compare(password, user.password))) {
     setSessionCookie(res, { username });
     res.send({ username });
@@ -43,10 +43,10 @@ router.delete("/logout", requireLogin, (req, res) => {
   res.send({});
 });
 
-router.delete("/delete", requireLogin, (req, res) => {
+router.delete("/delete", requireLogin, async (req, res) => {
   const token = req.cookies["token"];
   delete tokens[token];
-  delete users[req.session.username];
+  await userCollection.deleteOne({ username: req.session.username });
   res.clearCookie("token");
   res.send({});
 });
