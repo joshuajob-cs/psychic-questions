@@ -2,7 +2,7 @@ import request from "supertest";
 import express from "express";
 import cookieParser from "cookie-parser";
 import authService from "../auth-service.js";
-import { client } from "../database/database.js";
+import { client, userCollection } from "../database/database.js";
 
 const app = express();
 app.use(express.json());
@@ -11,6 +11,10 @@ app.use("/auth", authService);
 
 afterAll(async () => {
   await client.close();
+});
+
+beforeAll(async () => {
+  await userCollection.deleteMany({});
 });
 
 describe("Auth Service", () => {
