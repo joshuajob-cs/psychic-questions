@@ -51,4 +51,16 @@ describe("Auth Service", () => {
     expect(res.status).toBe(200);
     expect(res.body.username).toBe("loginuser");
   });
+
+  test("login with wrong password", async () => {
+    await request(app)
+      .post("/auth/sign-up")
+      .send({ username: "wrongpassuser", password: "testpass" });
+
+    const res = await request(app)
+      .post("/auth/login")
+      .send({ username: "wrongpassuser", password: "wrongpass" });
+
+    expect(res.status).toBe(401);
+  });
 });
