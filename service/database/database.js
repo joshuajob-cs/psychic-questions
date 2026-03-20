@@ -4,7 +4,8 @@ import config from "./dbConfig.json" assert { type: "json" };
 const url = `mongodb+srv://${config.userName}:${encodeURIComponent(config.password)}@${config.hostname}`;
 
 const client = new MongoClient(url);
-const db = client.db("psychic-questions");
+const dbName = process.env.NODE_ENV === "test" ? "psychic-questions-test" : "psychic-questions";
+const db = client.db(dbName);
 
 const userCollection = db.collection("users");
 const gameCollection = db.collection("games");
