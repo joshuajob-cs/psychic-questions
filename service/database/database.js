@@ -1,5 +1,7 @@
 import { MongoClient } from "mongodb";
-import config from "./dbConfig.json" assert { type: "json" };
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const config = require("./dbConfig.json");
 
 const url = `mongodb+srv://${config.userName}:${encodeURIComponent(config.password)}@${config.hostname}`;
 
@@ -11,7 +13,7 @@ const userCollection = db.collection("users");
 const gameCollection = db.collection("games");
 const questionCollection = db.collection("questions");
 
-export { userCollection, gameCollection, questionCollection };
+export { userCollection, gameCollection, questionCollection, client };
 
 async function main() {
   try {
