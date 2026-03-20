@@ -1,18 +1,17 @@
 import express from "express";
 import bcrypt from "bcryptjs";
 import { tokens, setSessionCookie, requireSession, requireLogin } from "./session-state.js";
+import { userCollection } from "./database/database.js";
 
 const router = express.Router();
 
-const users = {};
-
-function getUser(username) {
-  return users[username];
+async function getUser(username) {
+  return userCollection.findOne({ username });
 }
 
 async function createUser(username, password) {
   const passwordHash = await bcrypt.hash(password, 10);
-  users[username] = { password: passwordHash };
+  await userCollection.insertOne({ username, password: passwordHash });
 }
 
 router.post("/sign-up", async (req, res) => {
