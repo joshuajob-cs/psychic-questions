@@ -2,3 +2,4 @@ node_modules/
 .idea/
 dist/
 service/public/
+service/dbConfig.json
