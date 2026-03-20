@@ -14,15 +14,11 @@ export { userCollection, gameCollection, questionCollection };
 
 async function main() {
   try {
-    try {
-      await db.command({ ping: 1 });
-      console.log(`DB connected to ${config.hostname}`);
-    } catch (ex) {
-      console.log(`Error with ${url} because ${ex.message}`);
-      process.exit(1);
-    }
-  } finally {
-    client.close();
+    await db.command({ ping: 1 });
+    console.log(`DB connected to ${config.hostname}`);
+  } catch (ex) {
+    console.log(`Error with ${url} because ${ex.message}`);
+    process.exit(1);
   }
 }
 

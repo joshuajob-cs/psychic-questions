@@ -1,5 +1,6 @@
 import express from "express";
 import cookieParser from "cookie-parser";
+import "./database/database.js";
 
 import authService from "./auth-service.js";
 import gameService from "./game-service.js";
