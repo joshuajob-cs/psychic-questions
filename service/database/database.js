@@ -11,9 +11,8 @@ const db = client.db(dbName);
 
 const userCollection = db.collection("users");
 const gameCollection = db.collection("games");
-const questionCollection = db.collection("questions");
 
-export { userCollection, gameCollection, questionCollection, client };
+export { userCollection, gameCollection, client };
 
 async function main() {
   try {
