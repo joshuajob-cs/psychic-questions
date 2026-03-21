@@ -14,14 +14,6 @@ async function getGame(gameCode) {
   return games[gameCode] ?? (await loadGame(gameCode));
 }
 
-router.get("/player", requireSession, async (req, res) => {
-  const { gameCode, name } = req.query;
-  const game = await getGame(gameCode);
-  if (!game) return res.status(404).send({ msg: "Game not found" });
-  const player = game.players[name];
-  if (!player) return res.status(404).send({ msg: "Player not found" });
-  res.send({ name: player.name, points: player.points });
-});
 
 router.get("/winner", requireSession, async (req, res) => {
   const game = await getGame(req.query.gameCode);
