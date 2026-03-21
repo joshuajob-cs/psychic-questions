@@ -47,9 +47,9 @@ router.post("/create", requireLogin, async (_req, res) => {
   res.send({ gameCode });
 });
 
-router.post("/join", (req, res) => {
+router.post("/join", async (req, res) => {
   const { gameCode, name } = req.body;
-  const game = games[gameCode];
+  const game = games[gameCode] ?? await loadGame(gameCode);
   if (!game) {
     res.status(404).send({ msg: "Game not found" });
     return;
@@ -58,6 +58,7 @@ router.post("/join", (req, res) => {
     res.status(409).send({ msg: "Name already taken in this game" });
     return;
   }
+  await saveGame(game);
   const session = tokens[req.cookies["token"]];
   if (session) {
     session.name = name;
