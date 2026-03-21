@@ -1,6 +1,11 @@
 import express from "express";
 import { games } from "./game-state.js";
+import { loadGame, saveGame } from "./database/game-db.js";
 import { requireSession } from "./session-state.js";
+
+async function getGame(gameCode) {
+  return games[gameCode] ?? (await loadGame(gameCode));
+}
 
 const router = express.Router();
 
@@ -15,21 +20,22 @@ router.get("/", requireSession, (_req, res) => {
   res.json({ questions });
 });
 
-router.post("/answer", requireSession, (req, res) => {
+router.post("/answer", requireSession, async (req, res) => {
   const { gameCode, playerName, answer } = req.body;
-  const game = games[gameCode];
+  const game = await getGame(gameCode);
   if (!game) return res.status(404).json({ error: "Game not found" });
 
   const player = game.players[playerName];
   if (!player) return res.status(404).json({ error: "Player not found" });
 
   player.addAnswer(answer);
+  await saveGame(game);
   res.json({});
 });
 
-router.get("/answers", requireSession, (req, res) => {
+router.get("/answers", requireSession, async (req, res) => {
   const { gameCode, playerName } = req.query;
-  const game = games[gameCode];
+  const game = await getGame(gameCode);
   if (!game) return res.status(404).json({ error: "Game not found" });
 
   if (playerName) {
