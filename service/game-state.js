@@ -64,8 +64,16 @@ async function saveGame(game) {
   });
 }
 
+async function loadGame(gameCode) {
+  const data = await gameCollection.findOne({ gameCode });
+  if (!data) return null;
+  const game = Game.fromMongo(data);
+  games[gameCode] = game;
+  return game;
+}
+
 async function deleteGame(gameCode) {
   await gameCollection.deleteOne({ gameCode });
 }
 
-export { games, Game, saveGame, deleteGame };
+export { games, Game, saveGame, loadGame, deleteGame };
