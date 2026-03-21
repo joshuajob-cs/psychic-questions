@@ -1,6 +1,6 @@
 import express from "express";
 import { games, Game } from "./game-state.js";
-import { loadGame } from "./database/game-db.js";
+import { loadGame, saveGame } from "./database/game-db.js";
 import {
   tokens,
   setSessionCookie,
@@ -36,12 +36,14 @@ router.get("/:code", async (req, res) => {
   }
 });
 
-router.post("/create", requireLogin, (_req, res) => {
+router.post("/create", requireLogin, async (_req, res) => {
   let gameCode;
   do {
     gameCode = Math.random().toString(36).slice(2, 8).toUpperCase();
   } while (games[gameCode]);
-  games[gameCode] = new Game(gameCode);
+  const game = new Game(gameCode);
+  games[gameCode] = game;
+  await saveGame(game);
   res.send({ gameCode });
 });
 
