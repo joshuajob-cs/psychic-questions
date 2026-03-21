@@ -8,6 +8,13 @@ class Player {
   addAnswer(answer) {
     this.answers.push(answer);
   }
+
+  static fromMongo(data) {
+    const player = new Player(data.name);
+    player.points = data.points;
+    player.answers = data.answers;
+    return player;
+  }
 }
 
 class Game {
@@ -36,6 +43,14 @@ class Game {
     const players = Object.values(this.players);
     if (players.length === 0) return null;
     return players.reduce((a, b) => (a.points >= b.points ? a : b));
+  }
+
+  static fromMongo(data) {
+    const game = new Game(data.gameCode);
+    for (const [name, p] of Object.entries(data.players)) {
+      game.players[name] = Player.fromMongo(p);
+    }
+    return game;
   }
 }
 
