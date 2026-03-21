@@ -1,10 +1,19 @@
 import { Title } from "../components/title";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Context } from "../context";
+import { getPlayer } from "../apis/game-api";
 import "./point-header.css";
 
 export function PointHeader() {
-  const { user } = useContext(Context);
+  const { user, setUser } = useContext(Context);
+
+  useEffect(() => {
+    if (user.score == null) {
+      getPlayer(user.gameCode, user.name).then((data) => {
+        setUser({ ...user, score: data.points });
+      });
+    }
+  }, []);
 
   return (
     <header className="between-header">

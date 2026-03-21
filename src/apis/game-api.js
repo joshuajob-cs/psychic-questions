@@ -55,6 +55,20 @@ export async function getWinner(gameCode) {
   return data;
 }
 
+export async function getPlayer(gameCode, name) {
+  const res = await fetch(`/game/player?gameCode=${gameCode}&name=${name}`, {
+    credentials: "include",
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.msg || "Could not get player.");
+  }
+
+  return data;
+}
+
 export async function createGame() {
   const res = await fetch(`/game/create`, {
     method: "POST",
