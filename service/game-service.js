@@ -78,13 +78,13 @@ function leaveGame(game, token, session, res) {
   }
 }
 
-router.patch("/points", requireSession, (req, res) => {
+router.patch("/points", requireSession, async (req, res) => {
   const { gameCode, name, delta } = req.body;
   if (typeof delta !== "number") {
     res.status(400).send({ msg: "delta must be a number" });
     return;
   }
-  const game = games[gameCode];
+  const game = games[gameCode] ?? await loadGame(gameCode);
   if (!game) {
     res.status(404).send({ msg: "Game not found" });
     return;
@@ -93,6 +93,7 @@ router.patch("/points", requireSession, (req, res) => {
     res.status(404).send({ msg: "Player not found" });
     return;
   }
+  await saveGame(game);
   res.send({ points: game.players[name].points });
 });
 
