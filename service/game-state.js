@@ -56,4 +56,16 @@ class Game {
 
 const games = {};
 
-export { games, Game };
+import { gameCollection } from "./database/database.js";
+
+async function saveGame(game) {
+  await gameCollection.replaceOne({ gameCode: game.gameCode }, game, {
+    upsert: true,
+  });
+}
+
+async function deleteGame(gameCode) {
+  await gameCollection.deleteOne({ gameCode });
+}
+
+export { games, Game, saveGame, deleteGame };
