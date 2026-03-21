@@ -175,3 +175,7 @@ Promise.all();
 ```
 
 Runs multiple functions in parellel. Quicker then waiting for them sequentially which is the default for useEffect (useEffect takes it out of the normal Reactivity flow like await).
+
+## Mongo DB
+
+I needed to make some interesting design decisions with the database for the game info. The username and password is stored on the database layer, so this is hit on login, signup, logout, etc. but the auth token is stored only on the server level. We probably would not need the authToken to persist after a server shutdown anyway. The user could just login again. All of the clients on the frontend share the same server, so it is important to back everything up to the database in case the server shuts down, but really I do not need to grab the game data from the server except for when the server is starting up for the first time. It is interesting figuring out which endpoints should hit the database and what circumstances they would only need to hit the server.

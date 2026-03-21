@@ -1,5 +1,6 @@
 import express from "express";
 import { games, Game } from "./game-state.js";
+import { loadGame } from "./database/game-db.js";
 import {
   tokens,
   setSessionCookie,
@@ -9,9 +10,9 @@ import {
 
 const router = express.Router();
 
-router.get("/player", requireSession, (req, res) => {
+router.get("/player", requireSession, async (req, res) => {
   const { gameCode, name } = req.query;
-  const game = games[gameCode];
+  const game = games[gameCode] ?? await loadGame(gameCode);
   if (!game) return res.status(404).send({ msg: "Game not found" });
   const player = game.players[name];
   if (!player) return res.status(404).send({ msg: "Player not found" });
