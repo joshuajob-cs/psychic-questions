@@ -1,6 +1,6 @@
 import express from "express";
 import { games, Game } from "./game-state.js";
-import { loadGame, saveGame } from "./database/game-db.js";
+import { loadGame, saveGame, deleteGame } from "./database/game-db.js";
 import {
   tokens,
   setSessionCookie,
@@ -97,18 +97,19 @@ router.patch("/points", requireSession, async (req, res) => {
   res.send({ points: game.players[name].points });
 });
 
-router.delete("/leave", requireSession, (req, res) => {
-  const game = games[req.query.gameCode];
+router.delete("/leave", requireSession, async (req, res) => {
+  const game = games[req.query.gameCode] ?? await loadGame(req.query.gameCode);
   if (!game) {
     res.status(404).send({ msg: "Game not found" });
     return;
   }
   leaveGame(game, req.cookies["token"], req.session, res);
+  await saveGame(game);
   res.send({});
 });
 
-router.delete("/:code", requireLogin, (req, res) => {
-  const game = games[req.params.code];
+router.delete("/:code", requireLogin, async (req, res) => {
+  const game = games[req.params.code] ?? await loadGame(req.params.code);
   if (!game) {
     res.status(404).send({ msg: "Game not found" });
     return;
@@ -119,6 +120,7 @@ router.delete("/:code", requireLogin, (req, res) => {
     }
   }
   delete games[req.params.code];
+  await deleteGame(req.params.code);
   res.send({});
 });
 
