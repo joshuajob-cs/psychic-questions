@@ -10,9 +10,13 @@ import {
 
 const router = express.Router();
 
+async function getGame(gameCode) {
+  return games[gameCode] ?? (await loadGame(gameCode));
+}
+
 router.get("/player", requireSession, async (req, res) => {
   const { gameCode, name } = req.query;
-  const game = games[gameCode] ?? await loadGame(gameCode);
+  const game = await getGame(gameCode);
   if (!game) return res.status(404).send({ msg: "Game not found" });
   const player = game.players[name];
   if (!player) return res.status(404).send({ msg: "Player not found" });
@@ -20,15 +24,16 @@ router.get("/player", requireSession, async (req, res) => {
 });
 
 router.get("/winner", requireSession, async (req, res) => {
-  const game = games[req.query.gameCode] ?? await loadGame(req.query.gameCode);
+  const game = await getGame(req.query.gameCode);
   if (!game) return res.status(404).send({ msg: "Game not found" });
   const winner = game.getWinner();
   if (!winner) return res.status(404).send({ msg: "No players" });
   res.send({ winner: winner.name, points: winner.points });
 });
 
+// Checks if game exists without returning game data (for guests Start-Game -> Join-Game flow)
 router.get("/:code", async (req, res) => {
-  const game = games[req.params.code] ?? await loadGame(req.params.code);
+  const game = await getGame(req.params.code);
   if (game) {
     res.send({});
   } else {
@@ -49,7 +54,7 @@ router.post("/create", requireLogin, async (_req, res) => {
 
 router.post("/join", async (req, res) => {
   const { gameCode, name } = req.body;
-  const game = games[gameCode] ?? await loadGame(gameCode);
+  const game = await getGame(gameCode);
   if (!game) {
     res.status(404).send({ msg: "Game not found" });
     return;
@@ -84,7 +89,7 @@ router.patch("/points", requireSession, async (req, res) => {
     res.status(400).send({ msg: "delta must be a number" });
     return;
   }
-  const game = games[gameCode] ?? await loadGame(gameCode);
+  const game = await getGame(gameCode);
   if (!game) {
     res.status(404).send({ msg: "Game not found" });
     return;
@@ -98,7 +103,7 @@ router.patch("/points", requireSession, async (req, res) => {
 });
 
 router.delete("/leave", requireSession, async (req, res) => {
-  const game = games[req.query.gameCode] ?? await loadGame(req.query.gameCode);
+  const game = await getGame(req.query.gameCode);
   if (!game) {
     res.status(404).send({ msg: "Game not found" });
     return;
@@ -109,7 +114,7 @@ router.delete("/leave", requireSession, async (req, res) => {
 });
 
 router.delete("/:code", requireLogin, async (req, res) => {
-  const game = games[req.params.code] ?? await loadGame(req.params.code);
+  const game = await getGame(req.params.code);
   if (!game) {
     res.status(404).send({ msg: "Game not found" });
     return;
