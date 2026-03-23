@@ -143,8 +143,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Stores data in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Stores credentials in MongoDB** - I did not complete this part of the deliverable.
+- [x] **Stores data in MongoDB** - Stores game data in MongoDB, uses debouncing to keep database up to date with server
+- [x] **Stores credentials in MongoDB** - Username and password are stored persistently after server shut down
 
 ## 🚀 WebSocket deliverable
 
