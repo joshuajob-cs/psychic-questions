@@ -53,7 +53,9 @@ export function GuessAnswers() {
             <QuestionList
               key={playerIndex}
               onComplete={handleRoundComplete}
-              allAnswers={allAnswers}
+              allAnswers={allAnswers.filter(
+                (player) => player.playerName !== user.name,
+              )}
               currentPlayer={currentPlayer}
               questions={questions}
             />
