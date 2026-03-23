@@ -55,7 +55,8 @@ router.post("/join", async (req, res) => {
     res.status(409).send({ msg: "Name already taken in this game" });
     return;
   }
-  await saveGame(game);
+  clearTimeout(game._saveTimer);
+  game._saveTimer = setTimeout(() => saveGame(game), 10_000);
   const session = tokens[req.cookies["token"]];
   if (session) {
     session.name = name;
@@ -102,7 +103,8 @@ router.delete("/leave", requireSession, async (req, res) => {
     return;
   }
   leaveGame(game, req.cookies["token"], req.session, res);
-  await saveGame(game);
+  clearTimeout(game._saveTimer);
+  game._saveTimer = setTimeout(() => saveGame(game), 10_000);
   res.send({});
 });
 
