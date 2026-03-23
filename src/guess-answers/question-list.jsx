@@ -38,7 +38,7 @@ export function QuestionList({
   }
 
   return questions.slice(0, quesIndex).map((question, i) => {
-    const choices = allAnswers.map((p) => p.answers[i]);
+    const choices = allAnswers.map((player) => player.answers[i]);
     const correctAnswerText = allAnswers[correctIndex]?.answers[i];
     return (
       <div className="question" key={i}>
