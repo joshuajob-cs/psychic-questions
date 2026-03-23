@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useMemo } from "react";
 import { Context } from "../context";
 import { addPoints } from "../apis/game-api";
 import { AnswerChoices } from "./answer-choices";
@@ -30,8 +30,13 @@ export function QuestionList({
     (p) => p.playerName === currentPlayer,
   );
 
+  const shuffledQuestions = useMemo(
+    () => questions.map((_, i) => selectRandomAnswers(allAnswers, correctIndex, i)),
+    [allAnswers, correctIndex, questions]
+  );
+
   async function checkAnswer(i) {
-    if (selected === correctIndex) {
+    if (selected === shuffledQuestions[i].correctChoiceIndex) {
       const delta = pointValues[i];
       const data = await addPoints(user.gameCode, user.name, delta);
       setUser({ ...user, score: data.points });
@@ -49,7 +54,7 @@ export function QuestionList({
   }
 
   return questions.slice(0, quesIndex).map((question, i) => {
-    const choices = allAnswers.map((player) => player.answers[i]);
+    const { choices } = shuffledQuestions[i];
     const correctAnswerText = allAnswers[correctIndex]?.answers[i];
     return (
       <div className="question" key={i}>
