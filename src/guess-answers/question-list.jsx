@@ -27,12 +27,13 @@ export function QuestionList({
   const { user, setUser } = useContext(Context);
 
   const correctIndex = allAnswers.findIndex(
-    (p) => p.playerName === currentPlayer,
+    (player) => player.playerName === currentPlayer,
   );
 
   const shuffledQuestions = useMemo(
-    () => questions.map((_, i) => selectRandomAnswers(allAnswers, correctIndex, i)),
-    [allAnswers, correctIndex, questions]
+    () =>
+      questions.map((_, i) => selectRandomAnswers(allAnswers, correctIndex, i)),
+    [allAnswers, correctIndex, questions],
   );
 
   async function checkAnswer(i) {
@@ -54,8 +55,8 @@ export function QuestionList({
   }
 
   return questions.slice(0, quesIndex).map((question, i) => {
-    const { choices } = shuffledQuestions[i];
-    const correctAnswerText = allAnswers[correctIndex]?.answers[i];
+    const { choices, correctChoiceIndex } = shuffledQuestions[i];
+    const correctAnswerText = choices[correctChoiceIndex];
     return (
       <div className="question" key={i}>
         <div className="fancy-font">{question}</div>
