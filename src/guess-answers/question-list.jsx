@@ -5,6 +5,17 @@ import { AnswerChoices } from "./answer-choices";
 
 const pointValues = [5, 10, 25, 50];
 
+function selectRandomAnswers(allAnswers, correctPlayerIndex, questionIndex) {
+  const correctAnswer = allAnswers[correctPlayerIndex].answers[questionIndex];
+  const others = allAnswers
+    .filter((_, i) => i !== correctPlayerIndex)
+    .map((p) => p.answers[questionIndex])
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 3);
+  const pool = [...others, correctAnswer].sort(() => Math.random() - 0.5);
+  return { choices: pool, correctChoiceIndex: pool.indexOf(correctAnswer) };
+}
+
 export function QuestionList({
   onComplete,
   allAnswers,
