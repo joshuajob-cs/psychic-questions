@@ -1,7 +1,7 @@
 import express from "express";
 import bcrypt from "bcryptjs";
 import { tokens, setSessionCookie, requireSession, requireLogin } from "./session-state.js";
-import { userCollection } from "./database/database.js";
+import { userCollection } from "./database.js";
 
 const router = express.Router();
 

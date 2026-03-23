@@ -1,6 +1,6 @@
 import express from "express";
 import { games, Game } from "./game-state.js";
-import { loadGame, saveGame, deleteGame } from "./database/game-db.js";
+import { loadGame, saveGame, deleteGame } from "./game-db.js";
 import {
   tokens,
   setSessionCookie,

@@ -1,6 +1,6 @@
 import express from "express";
 import { games } from "./game-state.js";
-import { loadGame, saveGame } from "./database/game-db.js";
+import { loadGame, saveGame } from "./game-db.js";
 import { requireSession } from "./session-state.js";
 
 async function getGame(gameCode) {

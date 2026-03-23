@@ -3,3 +3,4 @@ node_modules/
 dist/
 service/public/
 service/database/dbConfig.json
+service/dbConfig.json
