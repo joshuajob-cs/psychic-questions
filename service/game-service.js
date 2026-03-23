@@ -90,7 +90,8 @@ router.patch("/points", requireSession, async (req, res) => {
     res.status(404).send({ msg: "Player not found" });
     return;
   }
-  await saveGame(game);
+  clearTimeout(game._saveTimer);
+  game._saveTimer = setTimeout(() => saveGame(game), 10_000);
   res.send({ points: game.players[name].points });
 });
 
@@ -116,6 +117,7 @@ router.delete("/:code", requireLogin, async (req, res) => {
       leaveGame(game, token, session, null);
     }
   }
+  clearTimeout(game._saveTimer);
   delete games[req.params.code];
   await deleteGame(req.params.code);
   res.send({});
