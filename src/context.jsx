@@ -5,10 +5,10 @@ export const Context = createContext();
 
 export const ShareVars = ({ children }) => {
   const [user, setUser] = useLocalStorage("user", {
-    name: "josh",
-    username: "jjob",
-    score: 10,
-    gameCode: "ABCDE",
+    name: "",
+    username: "",
+    score: 0,
+    gameCode: "",
   });
 
   return (
