@@ -19,16 +19,16 @@ export function QuestionList({
     (p) => p.playerName === currentPlayer,
   );
 
-  function checkAnswer(i) {
+  async function checkAnswer(i) {
     if (selected === correctIndex) {
       const delta = pointValues[i];
-      setUser({ ...user, score: user.score + delta });
-      addPoints(user.gameCode, user.name, delta);
+      const data = await addPoints(user.gameCode, user.name, delta);
+      setUser({ ...user, score: data.points });
     }
   }
 
-  function handleNext() {
-    checkAnswer(quesIndex - 1);
+  async function handleNext() {
+    await checkAnswer(quesIndex - 1);
     setSelected(null);
     if (quesIndex < questions.length) {
       setQuesIndex((prev) => prev + 1);
