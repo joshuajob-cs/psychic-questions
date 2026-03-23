@@ -24,7 +24,8 @@ export function GuessAnswers() {
           .filter((name) => name !== user.name);
         setOtherPlayers(others);
         setQuestions(questionsData);
-      }
+        if (others.length === 0) go("/winner");
+      },
     );
   }, []);
 
@@ -46,13 +47,17 @@ export function GuessAnswers() {
         <h2 className="heavy-basic">
           {currentPlayer}'s Questions ({playerIndex + 1}/{totalRounds})
         </h2>
-        <QuestionList
-          key={playerIndex}
-          onComplete={handleRoundComplete}
-          allAnswers={allAnswers}
-          currentPlayer={currentPlayer}
-          questions={questions}
-        />
+        {allAnswers.length > 0 &&
+          questions.length > 0 &&
+          otherPlayers.length > 0 && (
+            <QuestionList
+              key={playerIndex}
+              onComplete={handleRoundComplete}
+              allAnswers={allAnswers}
+              currentPlayer={currentPlayer}
+              questions={questions}
+            />
+          )}
       </main>
       <footer>
         <Footer />
