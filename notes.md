@@ -181,3 +181,13 @@ Runs multiple functions in parellel. Quicker then waiting for them sequentially 
 I needed to make some interesting design decisions with the database for the game info. The username and password is stored on the database layer, so this is hit on login, signup, logout, etc. but the auth token is stored only on the server level. We probably would not need the authToken to persist after a server shutdown anyway. The user could just login again. All of the clients on the frontend share the same server, so it is important to back everything up to the database in case the server shuts down, but really I do not need to grab the game data from the server except for when the server is starting up for the first time. It is interesting figuring out which endpoints should hit the database and what circumstances they would only need to hit the server.
 
 I also learned debouncing. It doesn't make sense to update the database every single time someone recieves points when it already stores everything in the server.
+
+## Websocket
+
+```jsx
+return () => {
+  namesClient.observers = namesClient.observers.filter((o) => o !== observer);
+};
+```
+
+useEffect() happens when component mounts and then its return happens when component dismounts. In this case a component should stop observing the websocket when it dismounts.

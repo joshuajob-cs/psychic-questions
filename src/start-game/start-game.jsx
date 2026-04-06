@@ -3,27 +3,24 @@ import { NavLink } from "react-router-dom";
 import { Title } from "../components/title";
 import { Footer } from "../components/shared-footer";
 import { Context } from "../context";
+import { namesClient } from "../apis/websocket";
 import "./start-game.css";
 
 export function StartGame() {
   const { user } = useContext(Context);
-  const [players, setPlayers] = useState([
-    "Charles",
-    "Jenny",
-    "Tasha",
-    "Bob",
-    "Skyler",
-    "Robin",
-  ]);
+  const [players, setPlayers] = useState([]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      // This will be replaced with WebSocket messages
-      const userName = `User-${Math.floor(Math.random() * 100)}`;
-      setPlayers((prev) => [...prev, userName]);
-    }, 1000);
+    const observer = ({ event, from }) => {
+      if (event === "received") {
+        setPlayers((prev) => [...prev, from]);
+      }
+    };
+    namesClient.addObserver(observer);
 
-    return () => clearInterval(interval);
+    return () => {
+      namesClient.observers = namesClient.observers.filter((o) => o !== observer);
+    };
   }, []);
 
   return (
