@@ -8,19 +8,19 @@ class NamesClient {
 
     // Display that we have opened the webSocket
     this.socket.onopen = () => {
-      this.notifyObservers("system", "websocket", "connected");
+      this.notifyObservers("system", "connected");
       this.connected = true;
     };
 
     // Display messages we receive from elsewhere to the client
     this.socket.onmessage = (event) => {
-      const chat = JSON.parse(event.data);
-      this.notifyObservers("received", chat.name, chat.msg);
+      const { name } = JSON.parse(event.data);
+      this.notifyObservers("received", name);
     };
 
     // If the webSocket is closed then disable the interface
     this.socket.onclose = () => {
-      this.notifyObservers("system", "websocket", "disconnected");
+      this.notifyObservers("system", "disconnected");
       this.connected = false;
     };
   }
@@ -33,8 +33,8 @@ class NamesClient {
     this.observers.push(observer);
   }
 
-  notifyObservers(event, from, msg) {
-    this.observers.forEach((h) => h({ event, from, msg }));
+  notifyObservers(event, name) {
+    this.observers.forEach((h) => h({ event, name }));
   }
 }
 

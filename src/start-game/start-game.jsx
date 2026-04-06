@@ -16,9 +16,9 @@ export function StartGame() {
       .then(setPlayers)
       .catch(() => {});
 
-    const observer = ({ event, from }) => {
+    const observer = ({ event, name }) => {
       if (event === "received") {
-        setPlayers((prev) => [...prev, from]);
+        setPlayers((prev) => [...prev, name]);
       }
     };
     namesClient.addObserver(observer);
