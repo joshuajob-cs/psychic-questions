@@ -14,13 +14,18 @@ async function getGame(gameCode) {
   return games[gameCode] ?? (await loadGame(gameCode));
 }
 
-
 router.get("/winner", requireSession, async (req, res) => {
   const game = await getGame(req.query.gameCode);
   if (!game) return res.status(404).send({ msg: "Game not found" });
   const winner = game.getWinner();
   if (!winner) return res.status(404).send({ msg: "No players" });
   res.send({ winner: winner.name, points: winner.points });
+});
+
+router.get("/players", requireSession, async (req, res) => {
+  const game = await getGame(req.query.gameCode);
+  if (!game) return res.status(404).send({ msg: "Game not found" });
+  res.send({ players: Object.keys(game.players) });
 });
 
 // Checks if game exists without returning game data (for guests Start-Game -> Join-Game flow)
