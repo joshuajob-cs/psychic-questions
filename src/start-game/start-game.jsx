@@ -4,6 +4,7 @@ import { Title } from "../components/title";
 import { Footer } from "../components/shared-footer";
 import { Context } from "../context";
 import { namesClient } from "../apis/websocket";
+import { getPlayers } from "../apis/game-api";
 import "./start-game.css";
 
 export function StartGame() {
@@ -11,6 +12,8 @@ export function StartGame() {
   const [players, setPlayers] = useState([]);
 
   useEffect(() => {
+    getPlayers(user.gameCode).then(setPlayers).catch(() => {});
+
     const observer = ({ event, from }) => {
       if (event === "received") {
         setPlayers((prev) => [...prev, from]);
