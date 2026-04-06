@@ -26,10 +26,8 @@ class NamesClient {
     };
   }
 
-  // Send a message over the webSocket
-  sendMessage(name, msg) {
-    this.notifyObservers("sent", "me", msg);
-    this.socket.send(JSON.stringify({ name, msg }));
+  sendName(name) {
+    this.socket.send(JSON.stringify({ name }));
   }
 
   addObserver(observer) {
