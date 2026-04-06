@@ -5,7 +5,11 @@ export function startWebSocket(httpServer) {
 
   wss.on("connection", (ws) => {
     ws.on("message", (data) => {
-      console.log("received: %s", data);
+      wss.clients.forEach((client) => {
+        if (client.readyState === ws.OPEN) {
+          client.send(data);
+        }
+      });
     });
   });
 }
