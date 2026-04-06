@@ -1,3 +1,12 @@
+export async function getPlayers(gameCode) {
+  const res = await fetch(`/game/players?gameCode=${gameCode}`, {
+    credentials: "include",
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.msg || "Could not get players.");
+  return data.players;
+}
+
 export async function checkGame(gameCode) {
   const res = await fetch(`/game/${gameCode}`, {
     credentials: "include",
