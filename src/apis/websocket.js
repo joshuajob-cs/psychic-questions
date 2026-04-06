@@ -13,9 +13,8 @@ class NamesClient {
     };
 
     // Display messages we receive from elsewhere to the client
-    this.socket.onmessage = async (event) => {
-      const text = await event.data.text();
-      const chat = JSON.parse(text);
+    this.socket.onmessage = (event) => {
+      const chat = JSON.parse(event.data);
       this.notifyObservers("received", chat.name, chat.msg);
     };
 

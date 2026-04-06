@@ -12,7 +12,9 @@ export function StartGame() {
   const [players, setPlayers] = useState([]);
 
   useEffect(() => {
-    getPlayers(user.gameCode).then(setPlayers).catch(() => {});
+    getPlayers(user.gameCode)
+      .then(setPlayers)
+      .catch(() => {});
 
     const observer = ({ event, from }) => {
       if (event === "received") {
@@ -22,7 +24,9 @@ export function StartGame() {
     namesClient.addObserver(observer);
 
     return () => {
-      namesClient.observers = namesClient.observers.filter((o) => o !== observer);
+      namesClient.observers = namesClient.observers.filter(
+        (o) => o !== observer,
+      );
     };
   }, []);
 
