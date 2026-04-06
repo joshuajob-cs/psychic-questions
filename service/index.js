@@ -1,7 +1,8 @@
+import { createServer } from "http";
 import express from "express";
 import cookieParser from "cookie-parser";
 import "./database.js";
-
+import { startWebSocket } from "./websocket.js";
 import authService from "./auth-service.js";
 import gameService from "./game-service.js";
 import questionService from "./question-service.js";
@@ -21,6 +22,8 @@ app.use((_req, res) => {
 });
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
-app.listen(port, () => {
+const httpServer = createServer(app);
+startWebSocket(httpServer);
+httpServer.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
