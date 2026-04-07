@@ -5,6 +5,7 @@ import { Footer } from "../components/shared-footer";
 import { Context } from "../context";
 import { usePhaseChange } from "../hooks/usePhaseChange";
 import { getPlayers, advancePhase } from "../apis/game-api";
+import { namesClient } from "../apis/websocket";
 import "./start-game.css";
 
 export function StartGame() {

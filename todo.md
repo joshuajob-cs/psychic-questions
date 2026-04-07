@@ -1,7 +1,5 @@
 Hello list to do:
 
-There should be a way to move forward if a player accidentially exits
-
 Test websocket and submit.
 
 Before ask questions: It should choose from a list of 100+ questions. It should assign a question to a group of 4-8 players. If there are 8 players you would choose a random question, assign it to 4-8 players and keep going.
