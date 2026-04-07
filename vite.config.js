@@ -8,6 +8,7 @@ export default defineConfig({
       "/auth": "http://localhost:4000",
       "/game": "http://localhost:4000",
       "/question": "http://localhost:4000",
+      "/ws": { target: "ws://localhost:4000", ws: true },
     },
   },
 });
