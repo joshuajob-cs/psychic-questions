@@ -17,16 +17,3 @@
   align-content: start;
   align-items: center;
 }
-
-.between-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  justify-content: space-between;
-}
-
-@media (orientation: landscape) {
-  .between-header {
-    align-items: center;
-  }
-}
