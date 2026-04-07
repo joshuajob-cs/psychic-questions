@@ -64,6 +64,17 @@ export async function getWinner(gameCode) {
   return data;
 }
 
+export async function startGame(gameCode) {
+  const res = await fetch(`/game/start`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify({ gameCode }),
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.msg || "Could not start game.");
+}
+
 export async function createGame() {
   const res = await fetch(`/game/create`, {
     method: "POST",

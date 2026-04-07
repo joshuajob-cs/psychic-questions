@@ -50,7 +50,7 @@ router.post("/create", requireLogin, async (_req, res) => {
   res.send({ gameCode });
 });
 
-router.post("/start", requireSession, async (req, res) => {
+router.post("/start", requireLogin, async (req, res) => {
   const { gameCode } = req.body;
   const game = await getGame(gameCode);
   if (!game) return res.status(404).send({ msg: "Game not found" });
