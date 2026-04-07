@@ -4,7 +4,7 @@ import { Title } from "../components/title";
 import { Footer } from "../components/shared-footer";
 import { Context } from "../context";
 import { namesClient } from "../apis/websocket";
-import { getPlayers, startGame } from "../apis/game-api";
+import { getPlayers, advancePhase } from "../apis/game-api";
 import "./start-game.css";
 
 export function StartGame() {
@@ -34,7 +34,7 @@ export function StartGame() {
   }, []);
 
   async function handleStart() {
-    await startGame(user.gameCode);
+    await advancePhase(user.gameCode, "answering");
   }
 
   return (

@@ -65,15 +65,15 @@ export async function getWinner(gameCode) {
 }
 
 
-export async function startGame(gameCode) {
-  const res = await fetch(`/game/start`, {
+export async function advancePhase(gameCode, phase) {
+  const res = await fetch(`/game/phase?phase=${phase}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
     body: JSON.stringify({ gameCode }),
   });
   const data = await res.json();
-  if (!res.ok) throw new Error(data.msg || "Could not start game.");
+  if (!res.ok) throw new Error(data.msg || "Could not advance phase.");
 }
 
 export async function createGame() {

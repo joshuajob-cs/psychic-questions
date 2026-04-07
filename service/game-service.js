@@ -61,11 +61,13 @@ router.post("/create", requireLogin, async (_req, res) => {
   res.send({ gameCode });
 });
 
-router.post("/start", requireLogin, async (req, res) => {
+router.post("/phase", requireLogin, async (req, res) => {
   const { gameCode } = req.body;
+  const { phase } = req.query;
+  if (!Object.values(GamePhase).includes(phase)) return res.status(400).send({ msg: "Invalid phase" });
   const game = await getGame(gameCode);
   if (!game) return res.status(404).send({ msg: "Game not found" });
-  await advancePhase(game, GamePhase.ANSWERING);
+  await advancePhase(game, phase);
   res.send({});
 });
 
