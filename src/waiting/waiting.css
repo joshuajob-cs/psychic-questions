@@ -1,3 +1,10 @@
+#waiting-rotater {
+  justify-content: center;
+  align-items: center;
+  column-gap: 3rem;
+  row-gap: 1rem;
+}
+
 .poem-box {
   border: 1px solid #ccc;
   border-radius: 8px;

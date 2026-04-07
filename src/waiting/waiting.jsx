@@ -35,17 +35,19 @@ export function Waiting() {
       </header>
       <main>
         <h1>Waiting...</h1>
-        <img
-          src="MysteriousWalking.jpg"
-          width="400"
-          alt="A person walking into a foggy, mysterious mist"
-        />
-        {poem && (
-          <details className="poem-box">
-            <summary><strong><em>{poem.title}</em></strong> — {poem.author}</summary>
-            <p className="poem-lines">{poem.lines.join("\n")}</p>
-          </details>
-        )}
+        <div className="screen-rotater" id="waiting-rotater">
+          <img
+            src="MysteriousWalking.jpg"
+            width="400"
+            alt="A person walking into a foggy, mysterious mist"
+          />
+          {poem && (
+            <details className="poem-box">
+              <summary><strong><em>{poem.title}</em></strong> — {poem.author}</summary>
+              <p className="poem-lines">{poem.lines.join("\n")}</p>
+            </details>
+          )}
+        </div>
       </main>
       <footer>
         <Footer />
