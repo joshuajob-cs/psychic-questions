@@ -4,6 +4,7 @@ import { Title } from "../components/title";
 import { Footer } from "../components/shared-footer";
 import { getRandomPoem } from "../apis/outsource-api";
 import { namesClient } from "../apis/websocket";
+import "./waiting.css";
 
 export function Waiting() {
   const navigate = useNavigate();
@@ -40,12 +41,10 @@ export function Waiting() {
           alt="A person walking into a foggy, mysterious mist"
         />
         {poem && (
-          <div>
-            <p>
-              <em>{poem.title}</em> — {poem.author}
-            </p>
-            <p>{poem.lines.slice(0, 4).join("\n")}</p>
-          </div>
+          <details>
+            <summary><em>{poem.title}</em> — {poem.author}</summary>
+            <p className="poem-lines">{poem.lines.join("\n")}</p>
+          </details>
         )}
       </main>
       <footer>
