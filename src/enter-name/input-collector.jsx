@@ -16,6 +16,7 @@ export function InputCollector() {
         updateBackend={async (inputs) => {
           try {
             await joinGame(user.gameCode, inputs.name);
+            await namesClient.connect(user.gameCode);
             namesClient.sendName(inputs.name);
             return true;
           } catch (err) {
