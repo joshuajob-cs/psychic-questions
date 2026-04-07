@@ -2,6 +2,7 @@ import express from "express";
 import { games } from "./game-state.js";
 import { loadGame, saveGame } from "./game-db.js";
 import { requireSession } from "./session-state.js";
+import { broadcastToGame } from "./websocket.js";
 
 async function getGame(gameCode) {
   return games[gameCode] ?? (await loadGame(gameCode));
@@ -30,6 +31,14 @@ router.post("/answer", requireSession, async (req, res) => {
 
   player.addAnswer(answer);
   await saveGame(game);
+
+  const askingDone = Object.values(game.players).every(
+    (p) => p.answers.length >= questions.length
+  );
+  if (askingDone) {
+    broadcastToGame(game.gameCode, { type: "phase_change", phase: "guessing" });
+  }
+
   res.json({});
 });
 
