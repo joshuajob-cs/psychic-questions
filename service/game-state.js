@@ -43,12 +43,6 @@ class Game {
     delete this.players[name];
   }
 
-  adjustPoints(name, delta) {
-    if (!this.players[name]) return false;
-    this.players[name].points += delta;
-    return true;
-  }
-
   getWinner() {
     const players = Object.values(this.players);
     if (players.length === 0) return null;

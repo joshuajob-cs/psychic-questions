@@ -116,22 +116,14 @@ router.post("/done-guessing", requireSession, async (req, res) => {
 
 router.patch("/points", requireSession, async (req, res) => {
   const { gameCode, name, delta } = req.body;
-  if (typeof delta !== "number") {
-    res.status(400).send({ msg: "delta must be a number" });
-    return;
-  }
-  const game = await getGame(gameCode);
-  if (!game) {
-    res.status(404).send({ msg: "Game not found" });
-    return;
-  }
-  if (!game.adjustPoints(name, delta)) {
-    res.status(404).send({ msg: "Player not found" });
-    return;
-  }
+  if (typeof delta !== "number") return res.status(400).send({ msg: "delta must be a number" });
+  const { game, player } = await getPlayer(gameCode, name);
+  if (!game) return res.status(404).send({ msg: "Game not found" });
+  if (!player) return res.status(404).send({ msg: "Player not found" });
+  player.points += delta;
   clearTimeout(game._saveTimer);
   game._saveTimer = setTimeout(() => saveGame(game), 10_000);
-  res.send({ points: game.players[name].points });
+  res.send({ points: player.points });
 });
 
 router.delete("/leave", requireSession, async (req, res) => {
