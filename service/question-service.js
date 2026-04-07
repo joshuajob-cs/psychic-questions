@@ -2,7 +2,8 @@ import express from "express";
 import { games, GamePhase } from "./game-state.js";
 import { loadGame, saveGame } from "./game-db.js";
 import { requireSession } from "./session-state.js";
-import { broadcastToGame } from "./websocket.js";
+
+import { advancePhase } from "./game-service.js";
 
 async function getGame(gameCode) {
   return games[gameCode] ?? (await loadGame(gameCode));
@@ -21,6 +22,7 @@ router.get("/", requireSession, (_req, res) => {
   res.json({ questions });
 });
 
+// When posting an answer, check if all players have submitted answers
 router.post("/answer", requireSession, async (req, res) => {
   const { gameCode, playerName, answer } = req.body;
   const game = await getGame(gameCode);
@@ -33,15 +35,33 @@ router.post("/answer", requireSession, async (req, res) => {
   await saveGame(game);
 
   const askingDone = Object.values(game.players).every(
-    (p) => p.answers.length >= questions.length
+    (p) => p.answers.length >= questions.length,
   );
   if (askingDone) {
-    game.phase = GamePhase.GUESSING;
-    await saveGame(game);
-    broadcastToGame(game.gameCode, { type: "phase_change", phase: GamePhase.GUESSING });
+    await advancePhase(game, GamePhase.GUESSING);
   }
 
   res.json({ askingDone });
+});
+
+// When one player is done guessing, check if all players are done guessing
+router.post("/done-guessing", requireSession, async (req, res) => {
+  const { gameCode, name } = req.body;
+  const game = await getGame(gameCode);
+  if (!game) return res.status(404).json({ error: "Game not found" });
+
+  const player = game.players[name];
+  if (!player) return res.status(404).json({ error: "Player not found" });
+
+  player.doneGuessing = true;
+  await saveGame(game);
+
+  const guessingDone = Object.values(game.players).every((p) => p.doneGuessing);
+  if (guessingDone) {
+    await advancePhase(game, GamePhase.WINNER);
+  }
+
+  res.json({ guessingDone });
 });
 
 router.get("/answers", requireSession, async (req, res) => {

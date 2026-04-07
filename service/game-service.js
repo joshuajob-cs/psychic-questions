@@ -15,6 +15,12 @@ async function getGame(gameCode) {
   return games[gameCode] ?? (await loadGame(gameCode));
 }
 
+export async function advancePhase(game, phase) {
+  game.phase = phase;
+  await saveGame(game);
+  broadcastToGame(game.gameCode, { type: "phase_change", phase });
+}
+
 async function getPlayer(gameCode, name) {
   const game = await getGame(gameCode);
   return { game, player: game?.players[name] ?? null };
@@ -59,9 +65,7 @@ router.post("/start", requireLogin, async (req, res) => {
   const { gameCode } = req.body;
   const game = await getGame(gameCode);
   if (!game) return res.status(404).send({ msg: "Game not found" });
-  game.phase = GamePhase.ANSWERING;
-  await saveGame(game);
-  broadcastToGame(gameCode, { type: "phase_change", phase: GamePhase.ANSWERING });
+  await advancePhase(game, GamePhase.ANSWERING);
   res.send({});
 });
 
@@ -97,24 +101,6 @@ function leaveGame(game, token, session, res) {
   }
 }
 
-router.post("/done-guessing", requireSession, async (req, res) => {
-  const { gameCode, name } = req.body;
-  const { game, player } = await getPlayer(gameCode, name);
-  if (!game) return res.status(404).send({ msg: "Game not found" });
-  if (!player) return res.status(404).send({ msg: "Player not found" });
-
-  player.doneGuessing = true;
-  await saveGame(game);
-
-  const guessingDone = Object.values(game.players).every((p) => p.doneGuessing);
-  if (guessingDone) {
-    game.phase = GamePhase.WINNER;
-    await saveGame(game);
-    broadcastToGame(gameCode, { type: "phase_change", phase: GamePhase.WINNER });
-  }
-
-  res.send({ guessingDone });
-});
 
 router.patch("/points", requireSession, async (req, res) => {
   const { gameCode, name, delta } = req.body;

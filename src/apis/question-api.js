@@ -25,6 +25,18 @@ export async function getAnswers(gameCode, playerName) {
   return data;
 }
 
+export async function doneGuessing(gameCode, name) {
+  const res = await fetch(`/question/done-guessing`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify({ gameCode, name }),
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || "Could not mark guessing done.");
+  return data;
+}
+
 export async function getQuestions() {
   const res = await fetch("/question");
 

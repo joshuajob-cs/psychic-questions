@@ -64,17 +64,6 @@ export async function getWinner(gameCode) {
   return data;
 }
 
-export async function doneGuessing(gameCode, name) {
-  const res = await fetch(`/game/done-guessing`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    credentials: "include",
-    body: JSON.stringify({ gameCode, name }),
-  });
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.msg || "Could not mark guessing done.");
-  return data;
-}
 
 export async function startGame(gameCode) {
   const res = await fetch(`/game/start`, {

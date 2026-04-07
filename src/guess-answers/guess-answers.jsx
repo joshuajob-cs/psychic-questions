@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Footer } from "../components/shared-footer";
 import { QuestionList } from "./question-list";
 import { PointHeader } from "./point-header";
-import { getAnswers, getQuestions } from "../apis/question-api";
-import { doneGuessing } from "../apis/game-api";
+import { getAnswers, getQuestions, doneGuessing } from "../apis/question-api";
 import { Context } from "../context";
 import "./guess-answers.css";
 
