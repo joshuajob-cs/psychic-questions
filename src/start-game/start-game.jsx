@@ -58,7 +58,11 @@ export function StartGame() {
             </div>
           ))}
         </div>
-        <button onClick={handleStart}>Start</button>
+        {user.isHost && (
+          <div>
+            <button onClick={handleStart}>Start</button>
+          </div>
+        )}
       </main>
       <footer>
         <Footer />

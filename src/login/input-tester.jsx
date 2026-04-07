@@ -30,6 +30,7 @@ export function InputTester() {
             username: inputs.username,
             gameCode,
             score: 0,
+            isHost: true,
           }));
         }}
       />

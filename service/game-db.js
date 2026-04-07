@@ -2,7 +2,8 @@ import { gameCollection } from "./database.js";
 import { games, Game } from "./game-state.js";
 
 async function saveGame(game) {
-  await gameCollection.replaceOne({ gameCode: game.gameCode }, game, {
+  const { _saveTimer, ...data } = game;
+  await gameCollection.replaceOne({ gameCode: game.gameCode }, data, {
     upsert: true,
   });
 }
