@@ -37,8 +37,9 @@ export async function doneGuessing(gameCode, name) {
   return data;
 }
 
-export async function getQuestions() {
-  const res = await fetch("/question");
+export async function getQuestions(gameCode, playerName) {
+  const params = new URLSearchParams({ gameCode, playerName });
+  const res = await fetch(`/question?${params}`);
 
   const data = await res.json();
 

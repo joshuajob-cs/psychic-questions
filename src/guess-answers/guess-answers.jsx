@@ -19,7 +19,7 @@ export function GuessAnswers() {
   usePhaseChange(() => go("/winner"));
 
   useEffect(() => {
-    Promise.all([getAnswers(user.gameCode), getQuestions()]).then(
+    Promise.all([getAnswers(user.gameCode), getQuestions(user.gameCode, user.name)]).then(
       ([answersData, questionsData]) => {
         setAllAnswers(answersData.allAnswers);
         const others = answersData.allAnswers

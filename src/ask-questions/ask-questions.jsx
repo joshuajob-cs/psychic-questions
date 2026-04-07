@@ -15,7 +15,7 @@ export function AskQuestions() {
   const [answer, setAnswer] = useState("");
 
   useEffect(() => {
-    getQuestions().then(setQuestions);
+    getQuestions(user.gameCode, user.name).then(setQuestions);
   }, []);
 
   usePhaseChange(() => go("/guess-answers"));
