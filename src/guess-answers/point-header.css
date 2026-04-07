@@ -2,26 +2,30 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: darkmagenta;
-  padding: 0.7rem;
+  background-color: slateblue;
+  padding: 0.5rem 1rem;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 #points {
-  background-color: indigo;
-  padding: 0.3rem;
-  border-radius: 8px;
+  background-color: #4a3db5;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
 }
 #player-name {
-  font-size: 24px;
+  font-size: 16px;
   font-weight: bold;
-}
-#points-label {
-  font-size: 14px;
   color: white;
 }
+#points-label {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
 #points-value {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: bold;
-  color: whitesmoke;
+  color: white;
+  text-align: center;
 }
