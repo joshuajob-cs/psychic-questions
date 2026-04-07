@@ -1,5 +1,5 @@
 import express from "express";
-import { games } from "./game-state.js";
+import { games, GamePhase } from "./game-state.js";
 import { loadGame, saveGame } from "./game-db.js";
 import { requireSession } from "./session-state.js";
 import { broadcastToGame } from "./websocket.js";
@@ -36,7 +36,9 @@ router.post("/answer", requireSession, async (req, res) => {
     (p) => p.answers.length >= questions.length
   );
   if (askingDone) {
-    broadcastToGame(game.gameCode, { type: "phase_change", phase: "guessing" });
+    game.phase = GamePhase.GUESSING;
+    await saveGame(game);
+    broadcastToGame(game.gameCode, { type: "phase_change", phase: GamePhase.GUESSING });
   }
 
   res.json({ askingDone });

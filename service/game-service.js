@@ -108,6 +108,8 @@ router.post("/done-guessing", requireSession, async (req, res) => {
 
   const guessingDone = Object.values(game.players).every((p) => p.doneGuessing);
   if (guessingDone) {
+    game.phase = GamePhase.WINNER;
+    await saveGame(game);
     broadcastToGame(gameCode, { type: "phase_change", phase: GamePhase.WINNER });
   }
 
