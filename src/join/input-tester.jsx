@@ -26,7 +26,7 @@ export function InputTester() {
           }
         }}
         updateFrontend={(inputs) =>
-          setUser({ ...user, gameCode: inputs.joinCode, score: 0, isHost: false })
+          setUser({ ...user, gameCode: inputs.joinCode, score: 0 })
         }
       />
     </>

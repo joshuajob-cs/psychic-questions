@@ -3,15 +3,26 @@ import { useNavigate } from "react-router-dom";
 import { Title } from "../components/title";
 import { Footer } from "../components/shared-footer";
 import { getRandomFact } from "../apis/outsource-api";
+import { namesClient } from "../apis/websocket";
 
 export function Waiting() {
   const navigate = useNavigate();
   const [fact, setFact] = useState(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => navigate("/guess-answers"), 5000);
     getRandomFact().then(setFact);
-    return () => clearTimeout(timer);
+
+    const observer = ({ event, name: phase }) => {
+      if (event === "phase_change") {
+        if (phase === "guessing") navigate("/guess-answers");
+        else if (phase === "winner") navigate("/winner");
+      }
+    };
+    namesClient.addObserver(observer);
+
+    return () => {
+      namesClient.observers = namesClient.observers.filter((o) => o !== observer);
+    };
   }, []);
 
   return (
