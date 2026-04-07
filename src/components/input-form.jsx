@@ -51,7 +51,7 @@ export function InputForm({
       </div>
       {badEntry && <p style={{ color: "red" }}>{badEntry}</p>}
       <div>
-        <button type="submit">{buttonText}</button>
+        <button className="btn btn-primary mt-2" type="submit">{buttonText}</button>
       </div>
     </form>
   );
