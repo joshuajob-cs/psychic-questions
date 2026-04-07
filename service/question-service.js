@@ -39,7 +39,7 @@ router.post("/answer", requireSession, async (req, res) => {
     broadcastToGame(game.gameCode, { type: "phase_change", phase: "guessing" });
   }
 
-  res.json({});
+  res.json({ askingDone });
 });
 
 router.get("/answers", requireSession, async (req, res) => {

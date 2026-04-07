@@ -5,10 +5,9 @@ export async function addAnswer(gameCode, playerName, answer) {
     body: JSON.stringify({ gameCode, playerName, answer }),
   });
 
-  if (!res.ok) {
-    const data = await res.json();
-    throw new Error(data.error || "Could not add answer.");
-  }
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || "Could not add answer.");
+  return data;
 }
 
 export async function getAnswers(gameCode, playerName) {

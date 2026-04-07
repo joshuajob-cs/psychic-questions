@@ -19,10 +19,12 @@ export function AskQuestions() {
 
   async function handleNext(e) {
     e.preventDefault();
-    await addAnswer(user.gameCode, user.name, answer);
+    const { askingDone } = await addAnswer(user.gameCode, user.name, answer);
     setAnswer("");
     if (quesIndex < questions.length - 1) {
       setQuesIndex((prev) => prev + 1);
+    } else if (askingDone) {
+      go("/guess-answers");
     } else {
       go("/waiting");
     }
