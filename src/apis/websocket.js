@@ -14,7 +14,7 @@ class NamesClient {
     this.socket.onmessage = (event) => {
       const msg = JSON.parse(event.data);
       if (msg.type === "name") {
-        this.notifyObservers("received", msg.name);
+        this.notifyObservers("new_name", msg.name);
       } else if (msg.type === "phase_change") {
         this.notifyObservers("phase_change", msg.phase);
       }
@@ -35,7 +35,7 @@ class NamesClient {
   }
 
   sendName(name) {
-    this.socket.send(JSON.stringify({ name }));
+    this.socket.send(JSON.stringify({ type: "name", name }));
   }
 
   addObserver(observer) {
