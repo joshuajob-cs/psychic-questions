@@ -8,11 +8,14 @@ import {
   requireSession,
   requireLogin,
 } from "./session-state.js";
+import { assignQuestionsToPlayers } from "./question-assigner.js";
 
 const router = express.Router();
 
-
 export async function advancePhase(game, phase) {
+  if (phase === GamePhase.ANSWERING) {
+    assignQuestionsToPlayers(game.players);
+  }
   game.phase = phase;
   await saveGame(game);
   broadcastToGame(game.gameCode, { type: "phase_change", phase });
