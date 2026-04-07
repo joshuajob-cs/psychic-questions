@@ -10,6 +10,7 @@ class Player {
     this.name = name;
     this.points = 0;
     this.answers = [];
+    this.doneGuessing = false;
   }
 
   addAnswer(answer) {
@@ -20,6 +21,7 @@ class Player {
     const player = new Player(data.name);
     player.points = data.points;
     player.answers = data.answers;
+    player.doneGuessing = data.doneGuessing ?? false;
     return player;
   }
 }

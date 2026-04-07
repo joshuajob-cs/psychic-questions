@@ -15,6 +15,11 @@ async function getGame(gameCode) {
   return games[gameCode] ?? (await loadGame(gameCode));
 }
 
+async function getPlayer(gameCode, name) {
+  const game = await getGame(gameCode);
+  return { game, player: game?.players[name] ?? null };
+}
+
 router.get("/winner", requireSession, async (req, res) => {
   const game = await getGame(req.query.gameCode);
   if (!game) return res.status(404).send({ msg: "Game not found" });
@@ -91,6 +96,23 @@ function leaveGame(game, token, session, res) {
     if (res) res.clearCookie("token");
   }
 }
+
+router.post("/done-guessing", requireSession, async (req, res) => {
+  const { gameCode, name } = req.body;
+  const { game, player } = await getPlayer(gameCode, name);
+  if (!game) return res.status(404).send({ msg: "Game not found" });
+  if (!player) return res.status(404).send({ msg: "Player not found" });
+
+  player.doneGuessing = true;
+  await saveGame(game);
+
+  const guessingDone = Object.values(game.players).every((p) => p.doneGuessing);
+  if (guessingDone) {
+    broadcastToGame(gameCode, { type: "phase_change", phase: GamePhase.WINNER });
+  }
+
+  res.send({});
+});
 
 router.patch("/points", requireSession, async (req, res) => {
   const { gameCode, name, delta } = req.body;
