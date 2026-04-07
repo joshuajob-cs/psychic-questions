@@ -6,6 +6,14 @@ async function serverFetch(url, options) {
   }
 }
 
+async function parseJSON(res) {
+  try {
+    return await res.json();
+  } catch {
+    throw new Error("Could not connect to server.");
+  }
+}
+
 export async function signup(username, password) {
   const res = await serverFetch(`/auth/sign-up`, {
     method: "POST",
@@ -14,7 +22,7 @@ export async function signup(username, password) {
     body: JSON.stringify({ username, password }),
   });
 
-  const data = await res.json();
+  const data = await parseJSON(res);
 
   if (!res.ok) {
     throw new Error(data.msg || "Something went wrong during sign-up.");
@@ -31,7 +39,7 @@ export async function login(username, password) {
     body: JSON.stringify({ username, password }),
   });
 
-  const data = await res.json();
+  const data = await parseJSON(res);
 
   if (!res.ok) {
     throw new Error(data.msg || "Something went wrong during login.");
@@ -67,7 +75,7 @@ export async function getUser() {
     credentials: "include",
   });
 
-  const data = await res.json();
+  const data = await parseJSON(res);
 
   if (!res.ok) {
     throw new Error(data.msg || "Could not get user :(");
