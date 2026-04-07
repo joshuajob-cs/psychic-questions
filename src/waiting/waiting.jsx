@@ -34,7 +34,7 @@ export function Waiting() {
         <Title />
       </header>
       <main>
-        <h1>Waiting...</h1>
+        <h1 id="waiting-title">Waiting...</h1>
         <div className="screen-rotater" id="waiting-rotater">
           <img
             src="MysteriousWalking.jpg"
