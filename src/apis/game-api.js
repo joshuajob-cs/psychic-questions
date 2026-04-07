@@ -73,6 +73,7 @@ export async function doneGuessing(gameCode, name) {
   });
   const data = await res.json();
   if (!res.ok) throw new Error(data.msg || "Could not mark guessing done.");
+  return data;
 }
 
 export async function startGame(gameCode) {

@@ -27,18 +27,18 @@ export function GuessAnswers() {
         setQuestions(questionsData);
         if (others.length === 0) {
           doneGuessing(user.gameCode, user.name).catch(() => {});
-          go("/waiting");
+          go("/winner");
         }
       },
     );
   }, []);
 
-  function handleRoundComplete() {
+  async function handleRoundComplete() {
     if (playerIndex < otherPlayers.length - 1) {
       setPlayerIndex((prev) => prev + 1);
     } else {
-      doneGuessing(user.gameCode, user.name).catch(() => {});
-      go("/waiting");
+      const { guessingDone } = await doneGuessing(user.gameCode, user.name);
+      go(guessingDone ? "/winner" : "/waiting");
     }
   }
 

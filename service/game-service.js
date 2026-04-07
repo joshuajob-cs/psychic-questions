@@ -111,7 +111,7 @@ router.post("/done-guessing", requireSession, async (req, res) => {
     broadcastToGame(gameCode, { type: "phase_change", phase: GamePhase.WINNER });
   }
 
-  res.send({});
+  res.send({ guessingDone });
 });
 
 router.patch("/points", requireSession, async (req, res) => {
