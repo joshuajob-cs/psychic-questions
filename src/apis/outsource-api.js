@@ -1,10 +1,10 @@
-export async function getRandomFact() {
-  const res = await fetch("https://uselessfacts.jsph.pl/api/v2/facts/random");
+export async function getRandomPoem() {
+  const res = await fetch("https://poetrydb.org/random");
 
   if (!res.ok) {
-    throw new Error("Could not fetch useless fact.");
+    throw new Error("Could not fetch poem.");
   }
 
   const data = await res.json();
-  return data.text;
+  return data[0];
 }
