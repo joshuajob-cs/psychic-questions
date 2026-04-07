@@ -41,8 +41,8 @@ export function Waiting() {
           alt="A person walking into a foggy, mysterious mist"
         />
         {poem && (
-          <details>
-            <summary><em>{poem.title}</em> — {poem.author}</summary>
+          <details className="poem-box">
+            <summary><strong><em>{poem.title}</em></strong> — {poem.author}</summary>
             <p className="poem-lines">{poem.lines.join("\n")}</p>
           </details>
         )}
