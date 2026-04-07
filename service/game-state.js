@@ -1,3 +1,10 @@
+const GamePhase = Object.freeze({
+  LOBBY: 'lobby',
+  ANSWERING: 'answering',
+  GUESSING: 'guessing',
+  WINNER: 'winner',
+});
+
 class Player {
   constructor(name) {
     this.name = name;
@@ -21,6 +28,7 @@ class Game {
   constructor(gameCode) {
     this.gameCode = gameCode;
     this.players = {};
+    this.phase = GamePhase.LOBBY;
   }
 
   addPlayer(name) {
@@ -50,10 +58,11 @@ class Game {
     for (const [name, p] of Object.entries(data.players)) {
       game.players[name] = Player.fromMongo(p);
     }
+    game.phase = data.phase ?? GamePhase.LOBBY;
     return game;
   }
 }
 
 const games = {};
 
-export { games, Game };
+export { games, Game, GamePhase };
