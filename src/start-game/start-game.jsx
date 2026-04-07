@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Title } from "../components/title";
 import { Footer } from "../components/shared-footer";
 import { Context } from "../context";
 import { namesClient } from "../apis/websocket";
-import { getPlayers } from "../apis/game-api";
+import { getPlayers, startGame } from "../apis/game-api";
 import "./start-game.css";
 
 export function StartGame() {
   const { user } = useContext(Context);
   const [players, setPlayers] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getPlayers(user.gameCode)
@@ -19,6 +20,8 @@ export function StartGame() {
     const observer = ({ event, name }) => {
       if (event === "new_name") {
         setPlayers((prev) => [...prev, name]);
+      } else if (event === "phase_change") {
+        navigate("/ask-questions");
       }
     };
     namesClient.addObserver(observer);
@@ -29,6 +32,10 @@ export function StartGame() {
       );
     };
   }, []);
+
+  async function handleStart() {
+    await startGame(user.gameCode);
+  }
 
   return (
     <>
@@ -51,9 +58,7 @@ export function StartGame() {
             </div>
           ))}
         </div>
-        <NavLink to="/ask-questions">
-          <button>Start</button>
-        </NavLink>
+        <button onClick={handleStart}>Start</button>
       </main>
       <footer>
         <Footer />
