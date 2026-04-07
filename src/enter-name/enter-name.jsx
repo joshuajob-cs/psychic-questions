@@ -19,12 +19,16 @@ export function EnterName() {
   return (
     <>
       <header>
-        <Title />
-        {user?.username && (
-          <button className="btn btn-outline-secondary" onClick={handleLogout}>
-            Logout
-          </button>
-        )}
+        <div className="screen-rotater header-rotater">
+          <Title />
+          {user?.username && (
+            <nav>
+              <button className="btn btn-outline-primary" onClick={handleLogout}>
+                Logout
+              </button>
+            </nav>
+          )}
+        </div>
       </header>
       <main>
         <h1>Name</h1>

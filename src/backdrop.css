@@ -71,6 +71,10 @@ h3 {
   display: flex;
 }
 
+.header-rotater {
+  gap: 1rem;
+}
+
 @media (orientation: portrait) {
   .screen-rotater {
     flex-direction: column;
