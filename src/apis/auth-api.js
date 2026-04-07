@@ -1,5 +1,13 @@
+async function serverFetch(url, options) {
+  try {
+    return await fetch(url, options);
+  } catch {
+    throw new Error("Cannot connect to server.");
+  }
+}
+
 export async function signup(username, password) {
-  const res = await fetch(`/auth/sign-up`, {
+  const res = await serverFetch(`/auth/sign-up`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
@@ -16,7 +24,7 @@ export async function signup(username, password) {
 }
 
 export async function login(username, password) {
-  const res = await fetch(`/auth/login`, {
+  const res = await serverFetch(`/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
@@ -33,7 +41,7 @@ export async function login(username, password) {
 }
 
 export async function logout() {
-  const res = await fetch(`/auth/logout`, {
+  const res = await serverFetch(`/auth/logout`, {
     method: "DELETE",
     credentials: "include",
   });
@@ -44,7 +52,7 @@ export async function logout() {
 }
 
 export async function deleteUser() {
-  const res = await fetch(`/auth/delete`, {
+  const res = await serverFetch(`/auth/delete`, {
     method: "DELETE",
     credentials: "include",
   });
@@ -55,7 +63,7 @@ export async function deleteUser() {
 }
 
 export async function getUser() {
-  const res = await fetch(`/auth/user`, {
+  const res = await serverFetch(`/auth/user`, {
     credentials: "include",
   });
 
