@@ -43,14 +43,13 @@ export function StartGame() {
             <strong>{user.gameCode}</strong>
           </h2>
         </div>
-        <h3 className="basic-font">Players: {players.length + 1}</h3>
+        <h3 className="basic-font">Players: {players.length}</h3>
         <div className="grid">
           {players.map((name) => (
             <div className="player" key={name}>
               {name}
             </div>
           ))}
-          <div className="player">{user.name}</div>
         </div>
         <NavLink to="/ask-questions">
           <button>Start</button>
