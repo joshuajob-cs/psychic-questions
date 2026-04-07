@@ -1,14 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Title } from "../components/title";
 import { Footer } from "../components/shared-footer";
 import { getRandomPoem } from "../apis/outsource-api";
 import { namesClient } from "../apis/websocket";
+import { advancePhase } from "../apis/game-api";
+import { Context } from "../context";
 import "./waiting.css";
 
 export function Waiting() {
   const navigate = useNavigate();
+  const { user } = useContext(Context);
   const [poem, setPoem] = useState(null);
+
+  async function handleSkip() {
+    await advancePhase(user.gameCode, "guessing");
+    navigate("/guess-answers");
+  }
 
   useEffect(() => {
     getRandomPoem().then(setPoem);
@@ -31,7 +39,16 @@ export function Waiting() {
   return (
     <>
       <header>
-        <Title />
+        <div className="screen-rotater header-rotater">
+          <Title />
+          {user?.isHost && (
+            <nav>
+              <button className="btn btn-outline-primary" onClick={handleSkip}>
+                Skip
+              </button>
+            </nav>
+          )}
+        </div>
       </header>
       <main>
         <h1 id="waiting-title">Waiting...</h1>
