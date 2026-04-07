@@ -65,6 +65,15 @@ export async function getWinner(gameCode) {
 }
 
 
+export async function getPhase(gameCode) {
+  const res = await fetch(`/game/phase?gameCode=${gameCode}`, {
+    credentials: "include",
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.msg || "Could not get phase.");
+  return data.phase;
+}
+
 export async function advancePhase(gameCode, phase) {
   const res = await fetch(`/game/phase?phase=${phase}`, {
     method: "POST",

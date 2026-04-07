@@ -4,7 +4,7 @@ import { Title } from "../components/title";
 import { Footer } from "../components/shared-footer";
 import { getRandomPoem } from "../apis/outsource-api";
 import { namesClient } from "../apis/websocket";
-import { advancePhase } from "../apis/game-api";
+import { advancePhase, getPhase } from "../apis/game-api";
 import { Context } from "../context";
 import "./waiting.css";
 
@@ -12,14 +12,21 @@ export function Waiting() {
   const navigate = useNavigate();
   const { user } = useContext(Context);
   const [poem, setPoem] = useState(null);
+  const [phase, setPhase] = useState(null);
 
   async function handleSkip() {
-    await advancePhase(user.gameCode, "guessing");
-    navigate("/guess-answers");
+    if (phase === "answering") {
+      await advancePhase(user.gameCode, "guessing");
+      navigate("/guess-answers");
+    } else if (phase === "guessing") {
+      await advancePhase(user.gameCode, "winner");
+      navigate("/winner");
+    }
   }
 
   useEffect(() => {
     getRandomPoem().then(setPoem);
+    getPhase(user.gameCode).then(setPhase);
 
     const observer = ({ event, name: phase }) => {
       if (event === "phase_change") {
