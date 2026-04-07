@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Title } from "../components/title";
 import { Footer } from "../components/shared-footer";
 import { getRandomPoem } from "../apis/outsource-api";
-import { namesClient } from "../apis/websocket";
+import { usePhaseChange } from "../hooks/usePhaseChange";
 import { advancePhase, getPhase } from "../apis/game-api";
 import { Context } from "../context";
 import "./waiting.css";
@@ -28,20 +28,12 @@ export function Waiting() {
     getRandomPoem().then(setPoem);
     getPhase(user.gameCode).then(setPhase);
 
-    const observer = ({ event, name: phase }) => {
-      if (event === "phase_change") {
-        if (phase === "guessing") navigate("/guess-answers");
-        else if (phase === "winner") navigate("/winner");
-      }
-    };
-    namesClient.addObserver(observer);
-
-    return () => {
-      namesClient.observers = namesClient.observers.filter(
-        (o) => o !== observer,
-      );
-    };
   }, []);
+
+  usePhaseChange((phase) => {
+    if (phase === "guessing") navigate("/guess-answers");
+    else if (phase === "winner") navigate("/winner");
+  });
 
   return (
     <>

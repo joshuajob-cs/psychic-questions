@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Title } from "../components/title";
 import { Footer } from "../components/shared-footer";
 import { Context } from "../context";
-import { namesClient } from "../apis/websocket";
+import { usePhaseChange } from "../hooks/usePhaseChange";
 import { getPlayers, advancePhase } from "../apis/game-api";
 import "./start-game.css";
 
@@ -18,11 +18,7 @@ export function StartGame() {
       .catch(() => {});
 
     const observer = ({ event, name }) => {
-      if (event === "new_name") {
-        setPlayers((prev) => [...prev, name]);
-      } else if (event === "phase_change") {
-        navigate("/ask-questions");
-      }
+      if (event === "new_name") setPlayers((prev) => [...prev, name]);
     };
     namesClient.addObserver(observer);
 
@@ -32,6 +28,8 @@ export function StartGame() {
       );
     };
   }, []);
+
+  usePhaseChange(() => navigate("/ask-questions"));
 
   async function handleStart() {
     await advancePhase(user.gameCode, "answering");

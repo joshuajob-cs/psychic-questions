@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import { usePhaseChange } from "../hooks/usePhaseChange";
 import { useNavigate } from "react-router-dom";
 import { Footer } from "../components/shared-footer";
 import { QuestionList } from "./question-list";
@@ -14,6 +15,8 @@ export function GuessAnswers() {
   const [questions, setQuestions] = useState([]);
   const { user } = useContext(Context);
   const go = useNavigate();
+
+  usePhaseChange(() => go("/winner"));
 
   useEffect(() => {
     Promise.all([getAnswers(user.gameCode), getQuestions()]).then(

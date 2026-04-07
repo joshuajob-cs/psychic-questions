@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import { usePhaseChange } from "../hooks/usePhaseChange";
 import { useNavigate } from "react-router-dom";
 import "./ask-questions.css";
 import { Title } from "../components/title";
@@ -16,6 +17,8 @@ export function AskQuestions() {
   useEffect(() => {
     getQuestions().then(setQuestions);
   }, []);
+
+  usePhaseChange(() => go("/guess-answers"));
 
   async function handleNext(e) {
     e.preventDefault();
