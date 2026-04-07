@@ -50,6 +50,16 @@ router.post("/create", requireLogin, async (_req, res) => {
   res.send({ gameCode });
 });
 
+router.post("/start", requireSession, async (req, res) => {
+  const { gameCode } = req.body;
+  const game = await getGame(gameCode);
+  if (!game) return res.status(404).send({ msg: "Game not found" });
+  game.phase = GamePhase.ANSWERING;
+  await saveGame(game);
+  broadcastToGame(gameCode, { type: "phase_change", phase: GamePhase.ANSWERING });
+  res.send({});
+});
+
 router.post("/join", async (req, res) => {
   const { gameCode, name } = req.body;
   const game = await getGame(gameCode);
