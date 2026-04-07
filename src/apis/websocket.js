@@ -1,28 +1,33 @@
 class NamesClient {
   observers = [];
   connected = false;
+  socket = null;
 
-  constructor() {
+  connect(gameCode) {
+    if (this.socket) this.socket.close();
+
     const protocol = window.location.protocol === "http:" ? "ws" : "wss";
-    this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+    this.socket = new WebSocket(
+      `${protocol}://${window.location.host}/ws?gameCode=${gameCode}`,
+    );
 
-    // Display that we have opened the webSocket
-    this.socket.onopen = () => {
-      this.notifyObservers("system", "connected");
-      this.connected = true;
-    };
-
-    // Display messages we receive from elsewhere to the client
     this.socket.onmessage = (event) => {
       const { name } = JSON.parse(event.data);
       this.notifyObservers("received", name);
     };
 
-    // If the webSocket is closed then disable the interface
     this.socket.onclose = () => {
       this.notifyObservers("system", "disconnected");
       this.connected = false;
     };
+
+    return new Promise((resolve) => {
+      this.socket.onopen = () => {
+        this.notifyObservers("system", "connected");
+        this.connected = true;
+        resolve();
+      };
+    });
   }
 
   sendName(name) {
