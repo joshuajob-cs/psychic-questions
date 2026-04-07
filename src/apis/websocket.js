@@ -12,8 +12,12 @@ class NamesClient {
     );
 
     this.socket.onmessage = (event) => {
-      const { name } = JSON.parse(event.data);
-      this.notifyObservers("received", name);
+      const msg = JSON.parse(event.data);
+      if (msg.type === "name") {
+        this.notifyObservers("received", msg.name);
+      } else if (msg.type === "phase_change") {
+        this.notifyObservers("phase_change", msg.phase);
+      }
     };
 
     this.socket.onclose = () => {
