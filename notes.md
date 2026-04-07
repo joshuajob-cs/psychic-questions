@@ -191,3 +191,22 @@ return () => {
 ```
 
 useEffect() happens when component mounts and then its return happens when component dismounts. In this case a component should stop observing the websocket when it dismounts.
+
+```jsx
+return new Promise((resolve) => {
+  this.socket.onopen = () => {
+    this.notifyObservers("system", "connected");
+    this.connected = true;
+    resolve();
+  };
+});
+```
+
+A promise can take a function as a parameter. The promise will pause and the thread will do work elsewhere until the function is called (resolve) then it will continue as normal.
+
+```jsx
+await namesClient.connect(user.gameCode);
+namesClient.sendName(inputs.name);
+```
+
+Connect returns a promise, so await can wait until promise is resolved. It will not send the name until websocket is connected and its promise calls resolve.
