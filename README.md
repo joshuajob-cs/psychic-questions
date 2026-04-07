@@ -150,10 +150,10 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+- [x] **Backend listens for WebSocket connection** - service/websocket.js listens for names from a client and then sends them to all other clients in the game
+- [x] **Frontend makes WebSocket connection** - apis/websocket.js send names from the client
+- [x] **Data sent over WebSocket connection** - Names are sent over websocket connection
+- [x] **WebSocket data displayed** - Names are displayed on the screen
+- [x] **Application is fully functional** - Application looks great!
 
 *Except where otherwise noted, this project is licensed under the MIT License. The Elephant.png file is not covered under the MIT license. I want to reserve the rights of the Elephant.png for my own logos/branding.*
