@@ -20,4 +20,8 @@ async function deleteGame(gameCode) {
   await gameCollection.deleteOne({ gameCode });
 }
 
-export { saveGame, loadGame, deleteGame };
+async function getGame(gameCode) {
+  return games[gameCode] ?? (await loadGame(gameCode));
+}
+
+export { saveGame, loadGame, deleteGame, getGame };

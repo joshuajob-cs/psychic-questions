@@ -1,13 +1,10 @@
 import express from "express";
-import { games, GamePhase } from "./game-state.js";
-import { loadGame, saveGame } from "./game-db.js";
+import { GamePhase } from "./game-state.js";
+import { saveGame, getGame } from "./game-db.js";
 import { requireSession } from "./session-state.js";
 
 import { advancePhase } from "./game-service.js";
 
-async function getGame(gameCode) {
-  return games[gameCode] ?? (await loadGame(gameCode));
-}
 
 const router = express.Router();
 

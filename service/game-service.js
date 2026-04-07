@@ -1,6 +1,6 @@
 import express from "express";
 import { games, Game, GamePhase } from "./game-state.js";
-import { loadGame, saveGame, deleteGame } from "./game-db.js";
+import { saveGame, deleteGame, getGame } from "./game-db.js";
 import { broadcastToGame } from "./websocket.js";
 import {
   tokens,
@@ -11,9 +11,6 @@ import {
 
 const router = express.Router();
 
-async function getGame(gameCode) {
-  return games[gameCode] ?? (await loadGame(gameCode));
-}
 
 export async function advancePhase(game, phase) {
   game.phase = phase;
