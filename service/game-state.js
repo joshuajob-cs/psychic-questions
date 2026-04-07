@@ -9,6 +9,7 @@ class Player {
   constructor(name) {
     this.name = name;
     this.points = 0;
+    this.assignedQuestions = [];
     this.answers = [];
     this.doneGuessing = false;
   }
@@ -20,7 +21,8 @@ class Player {
   static fromMongo(data) {
     const player = new Player(data.name);
     player.points = data.points;
-    player.answers = data.answers;
+    player.assignedQuestions = data.assignedQuestions ?? [];
+    player.answers = data.answers ?? [];
     player.doneGuessing = data.doneGuessing ?? false;
     return player;
   }
