@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
+    "clear-db": "node clear-db.js",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "jest": {
