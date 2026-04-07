@@ -4,6 +4,7 @@ import { Footer } from "../components/shared-footer";
 import { QuestionList } from "./question-list";
 import { PointHeader } from "./point-header";
 import { getAnswers, getQuestions } from "../apis/question-api";
+import { doneGuessing } from "../apis/game-api";
 import { Context } from "../context";
 import "./guess-answers.css";
 
@@ -24,7 +25,10 @@ export function GuessAnswers() {
           .filter((name) => name !== user.name);
         setOtherPlayers(others);
         setQuestions(questionsData);
-        if (others.length === 0) go("/winner");
+        if (others.length === 0) {
+          doneGuessing(user.gameCode, user.name).catch(() => {});
+          go("/waiting");
+        }
       },
     );
   }, []);
@@ -33,7 +37,8 @@ export function GuessAnswers() {
     if (playerIndex < otherPlayers.length - 1) {
       setPlayerIndex((prev) => prev + 1);
     } else {
-      go("/winner");
+      doneGuessing(user.gameCode, user.name).catch(() => {});
+      go("/waiting");
     }
   }
 
