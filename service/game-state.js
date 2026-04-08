@@ -1,9 +1,4 @@
-const GamePhase = Object.freeze({
-  LOBBY: 'lobby',
-  ANSWERING: 'answering',
-  GUESSING: 'guessing',
-  WINNER: 'winner',
-});
+import { GamePhase } from '../shared/constants.js';
 
 class Player {
   constructor(name) {

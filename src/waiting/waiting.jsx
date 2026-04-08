@@ -6,6 +6,7 @@ import { getRandomPoem } from "../apis/outsource-api";
 import { usePhaseChange } from "../hooks/usePhaseChange";
 import { advancePhase, getPhase } from "../apis/game-api";
 import { Context } from "../context";
+import { GamePhase } from "../../shared/constants.js";
 import "./waiting.css";
 
 export function Waiting() {
@@ -15,11 +16,11 @@ export function Waiting() {
   const [phase, setPhase] = useState(null);
 
   async function handleSkip() {
-    if (phase === "answering") {
-      await advancePhase(user.gameCode, "guessing");
+    if (phase === GamePhase.ANSWERING) {
+      await advancePhase(user.gameCode, GamePhase.GUESSING);
       navigate("/guess-answers");
-    } else if (phase === "guessing") {
-      await advancePhase(user.gameCode, "winner");
+    } else if (phase === GamePhase.GUESSING) {
+      await advancePhase(user.gameCode, GamePhase.WINNER);
       navigate("/winner");
     }
   }
@@ -31,8 +32,8 @@ export function Waiting() {
   }, []);
 
   usePhaseChange((phase) => {
-    if (phase === "guessing") navigate("/guess-answers");
-    else if (phase === "winner") navigate("/winner");
+    if (phase === GamePhase.GUESSING) navigate("/guess-answers");
+    else if (phase === GamePhase.WINNER) navigate("/winner");
   });
 
   return (

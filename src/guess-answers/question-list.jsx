@@ -2,6 +2,7 @@ import { useState, useContext, useMemo } from "react";
 import { Context } from "../context";
 import { addPoints } from "../apis/game-api";
 import { AnswerChoices } from "./answer-choices";
+import { CHOICES_PER_QUESTION } from "../../shared/constants.js";
 
 const pointValues = [5, 10, 25, 50];
 
@@ -11,7 +12,7 @@ function selectRandomAnswers(answersForQuestion, currentPlayer, guessingPlayer) 
     .filter(([name]) => name !== currentPlayer && name !== guessingPlayer)
     .map(([, answer]) => answer)
     .sort(() => Math.random() - 0.5)
-    .slice(0, 3);
+    .slice(0, CHOICES_PER_QUESTION - 1);
   const pool = [...others, correctAnswer].sort(() => Math.random() - 0.5);
   return { choices: pool, correctChoiceIndex: pool.indexOf(correctAnswer) };
 }

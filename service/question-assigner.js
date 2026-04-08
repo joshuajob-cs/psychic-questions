@@ -1,7 +1,5 @@
 import questions from "./questions.js";
-
-const QUESTIONS_PER_PLAYER = 4;
-const CHOICES_PER_QUESTION = 4;
+import { QUESTIONS_PER_PLAYER, CHOICES_PER_QUESTION } from "../shared/constants.js";
 
 function shuffle(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
