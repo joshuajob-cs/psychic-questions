@@ -7,6 +7,7 @@ import { PointHeader } from "./point-header";
 import { getAnswers, getQuestions, doneGuessing } from "../apis/question-api";
 import { getPlayers } from "../apis/game-api";
 import { Context } from "../context";
+import { PLAYERS_PER_GUESSER } from "../../shared/constants.js";
 import "./guess-answers.css";
 
 export function GuessAnswers() {
@@ -22,7 +23,10 @@ export function GuessAnswers() {
   // Run once per mount
   useEffect(() => {
     getPlayers(user.gameCode).then((players) => {
-      const others = players.filter((name) => name !== user.name);
+      const others = players
+        .filter((name) => name !== user.name)
+        .sort(() => Math.random() - 0.5)
+        .slice(0, PLAYERS_PER_GUESSER);
       if (others.length === 0) {
         doneGuessing(user.gameCode, user.name).catch(() => {});
         go("/winner");
