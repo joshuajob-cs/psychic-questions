@@ -5,11 +5,12 @@ import { Footer } from "../components/shared-footer";
 import { QuestionList } from "./question-list";
 import { PointHeader } from "./point-header";
 import { getAnswers, getQuestions, doneGuessing } from "../apis/question-api";
+import { getPlayers } from "../apis/game-api";
 import { Context } from "../context";
 import "./guess-answers.css";
 
 export function GuessAnswers() {
-  const [playerIndex, setPlayerIndex] = useState(0);
+  const [playerIndex, setPlayerIndex] = useState(-1);
   const [otherPlayers, setOtherPlayers] = useState([]);
   const [allAnswers, setAllAnswers] = useState([]);
   const [questions, setQuestions] = useState([]);
@@ -18,22 +19,32 @@ export function GuessAnswers() {
 
   usePhaseChange(() => go("/winner"));
 
+  // Run once per mount
   useEffect(() => {
-    Promise.all([getAnswers(user.gameCode), getQuestions(user.gameCode, user.name)]).then(
-      ([answersData, questionsData]) => {
-        setAllAnswers(answersData.allAnswers);
-        const others = answersData.allAnswers
-          .map((p) => p.playerName)
-          .filter((name) => name !== user.name);
+    getPlayers(user.gameCode).then((players) => {
+      const others = players.filter((name) => name !== user.name);
+      if (others.length === 0) {
+        doneGuessing(user.gameCode, user.name).catch(() => {});
+        go("/winner");
+      } else {
         setOtherPlayers(others);
-        setQuestions(questionsData);
-        if (others.length === 0) {
-          doneGuessing(user.gameCode, user.name).catch(() => {});
-          go("/winner");
-        }
-      },
-    );
+        setPlayerIndex(0);
+      }
+    });
   }, []);
+
+  // Run whenever playerIndex changes
+  useEffect(() => {
+    if (playerIndex < 0) return;
+    const currentName = otherPlayers[playerIndex];
+    Promise.all([
+      getAnswers(user.gameCode, currentName),
+      getQuestions(user.gameCode, currentName),
+    ]).then(([answersData, questionsData]) => {
+      setAllAnswers(answersData.allAnswers);
+      setQuestions(questionsData);
+    });
+  }, [playerIndex]);
 
   async function handleRoundComplete() {
     if (playerIndex < otherPlayers.length - 1) {
@@ -60,9 +71,7 @@ export function GuessAnswers() {
             <QuestionList
               key={playerIndex}
               onComplete={handleRoundComplete}
-              allAnswers={allAnswers.filter(
-                (player) => player.playerName !== user.name,
-              )}
+              allAnswers={allAnswers}
               currentPlayer={currentPlayer}
               questions={questions}
             />
