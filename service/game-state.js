@@ -1,4 +1,4 @@
-import { GamePhase } from '../shared/constants.js';
+import { GamePhase } from './constants.js';
 
 class Player {
   constructor(name) {
