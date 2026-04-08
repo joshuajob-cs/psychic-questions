@@ -5,11 +5,11 @@ import { AnswerChoices } from "./answer-choices";
 
 const pointValues = [5, 10, 25, 50];
 
-function selectRandomAnswers(allAnswers, correctPlayerIndex, questionIndex) {
-  const correctAnswer = allAnswers[correctPlayerIndex].answers[questionIndex];
-  const others = allAnswers
-    .filter((_, i) => i !== correctPlayerIndex)
-    .map((p) => p.answers[questionIndex])
+function selectRandomAnswers(answersForQuestion, currentPlayer, guessingPlayer) {
+  const correctAnswer = answersForQuestion[currentPlayer];
+  const others = Object.entries(answersForQuestion)
+    .filter(([name]) => name !== currentPlayer && name !== guessingPlayer)
+    .map(([, answer]) => answer)
     .sort(() => Math.random() - 0.5)
     .slice(0, 3);
   const pool = [...others, correctAnswer].sort(() => Math.random() - 0.5);
@@ -26,14 +26,12 @@ export function QuestionList({
   const [selected, setSelected] = useState(null);
   const { user, setUser } = useContext(Context);
 
-  const correctIndex = allAnswers.findIndex(
-    (player) => player.playerName === currentPlayer,
-  );
-
   const shuffledQuestions = useMemo(
     () =>
-      questions.map((_, i) => selectRandomAnswers(allAnswers, correctIndex, i)),
-    [allAnswers, correctIndex, questions],
+      questions.map((_, i) =>
+        selectRandomAnswers(allAnswers[i], currentPlayer, user.name),
+      ),
+    [allAnswers, currentPlayer, user.name, questions],
   );
 
   async function checkAnswer(i) {
