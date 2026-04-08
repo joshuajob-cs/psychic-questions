@@ -65,16 +65,12 @@ router.get("/answers", requireSession, async (req, res) => {
   const game = await getGame(gameCode);
   if (!game) return res.status(404).json({ error: "Game not found" });
 
-  if (playerName) {
-    const player = game.players[playerName];
-    if (!player) return res.status(404).json({ error: "Player not found" });
-    return res.json({ playerName, answers: player.answers });
-  }
+  const player = game.players[playerName];
+  if (!player) return res.status(404).json({ error: "Player not found" });
 
-  const allAnswers = Object.values(game.players).map((p) => ({
-    playerName: p.name,
-    answers: p.answers,
-  }));
+  const allAnswers = player.assignedQuestions.map(
+    (qi) => game.questionAnswerMap[qi] ?? {},
+  );
   res.json({ allAnswers });
 });
 

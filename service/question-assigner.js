@@ -10,6 +10,7 @@ function shuffle(arr) {
   return arr;
 }
 
+// Each question is mapped to a dict of playerName -> answer
 export function buildQuestionAnswerMap(players) {
   const map = {};
   for (const p of Object.values(players)) {
