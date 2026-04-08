@@ -8,13 +8,19 @@ import {
   requireSession,
   requireLogin,
 } from "./session-state.js";
-import { assignQuestionsToPlayers } from "./question-assigner.js";
+import {
+  assignQuestionsToPlayers,
+  buildQuestionAnswerMap,
+} from "./question-assigner.js";
 
 const router = express.Router();
 
 export async function advancePhase(game, phase) {
   if (phase === GamePhase.ANSWERING) {
     assignQuestionsToPlayers(game.players);
+  }
+  if (phase === GamePhase.GUESSING) {
+    game.questionAnswerMap = buildQuestionAnswerMap(game.players);
   }
   game.phase = phase;
   await saveGame(game);
@@ -70,7 +76,8 @@ router.post("/create", requireLogin, async (_req, res) => {
 router.post("/phase", requireLogin, async (req, res) => {
   const { gameCode } = req.body;
   const { phase } = req.query;
-  if (!Object.values(GamePhase).includes(phase)) return res.status(400).send({ msg: "Invalid phase" });
+  if (!Object.values(GamePhase).includes(phase))
+    return res.status(400).send({ msg: "Invalid phase" });
   const game = await getGame(gameCode);
   if (!game) return res.status(404).send({ msg: "Game not found" });
   await advancePhase(game, phase);
@@ -109,10 +116,10 @@ function leaveGame(game, token, session, res) {
   }
 }
 
-
 router.patch("/points", requireSession, async (req, res) => {
   const { gameCode, name, delta } = req.body;
-  if (typeof delta !== "number") return res.status(400).send({ msg: "delta must be a number" });
+  if (typeof delta !== "number")
+    return res.status(400).send({ msg: "delta must be a number" });
   const { game, player } = await getPlayer(gameCode, name);
   if (!game) return res.status(404).send({ msg: "Game not found" });
   if (!player) return res.status(404).send({ msg: "Player not found" });

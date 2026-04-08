@@ -33,6 +33,7 @@ class Game {
     this.gameCode = gameCode;
     this.players = {};
     this.phase = GamePhase.LOBBY;
+    this.questionAnswerMap = {};
   }
 
   addPlayer(name) {
@@ -57,6 +58,7 @@ class Game {
       game.players[name] = Player.fromMongo(p);
     }
     game.phase = data.phase ?? GamePhase.LOBBY;
+    game.questionAnswerMap = data.questionAnswerMap ?? {};
     return game;
   }
 }
