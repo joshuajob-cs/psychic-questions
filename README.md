@@ -16,7 +16,7 @@ For this deliverable I did the following:
 
 ### Elevator pitch
 
-Psychic questions is a sensational get-to-know-you game that you can play with your friends or classmates on any device. Is your friend a nerd? A jock? An actor? Some weird mesh of all 3? Everything you learn about them gets you deeper into their head, strengthening your psychic powers! Now you know everything about them! Or *do* you...
+Psychic questions is a sensational get-to-know-you game that you can play with your friends or classmates on any device. Is your friend a nerd? A jock? An actor? Some weird mesh of all 3? Everything you learn about them gets you deeper into their head, strengthening your psychic powers! Now you know everything about them! Or _do_ you...
 
 ### Design
 
@@ -33,7 +33,7 @@ Each player will recieve the same questions as another player and try to guess w
 Question 1: 5 points  
 Question 2: 10 points  
 Question 3: 25 points  
-Question 4: 50 points  
+Question 4: 50 points
 
 <img src=Drawings/GuessOthersAnswers.jpg alt="On this screen a player is trying to guess how Jake responded to a question. The player has four possible answer choices. The player's points are displayed in the upper right corner. The screen is scrollable after the player has answered their first question, so that they can look at the questions they have already answered.]" height="400"/> <img src=Drawings/GuessOthersAnswers2.jpg alt="On this screen, a player has guessed how Jake responded to a question, and the correct answer is displayed." height="400"/>
 
@@ -125,8 +125,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [x] **All functionality implemented or mocked out** - Storage is mocked out. Checks if you have the correct join code. The username and name you type in are stored for the rest of the app. Your score is stored. Websocket is mocked out with players being added and the jsx handling it correctly. Questions page correctly switches between questions, and answers page correctly adds new answers. Checks if your answer is correct and gives you points accordingly. Compares your points to anotehr player to see if you won. 
-- [x] **Hooks** - I added a lot of useState hooks for all of the UI componemts that change. I added effectState hooks for things that need to be done asynchronously. The effectState hooks are used with storage and Websocket mock ups. 
+- [x] **All functionality implemented or mocked out** - Storage is mocked out. Checks if you have the correct join code. The username and name you type in are stored for the rest of the app. Your score is stored. Websocket is mocked out with players being added and the jsx handling it correctly. Questions page correctly switches between questions, and answers page correctly adds new answers. Checks if your answer is correct and gives you points accordingly. Compares your points to anotehr player to see if you won.
+- [x] **Hooks** - I added a lot of useState hooks for all of the UI componemts that change. I added effectState hooks for things that need to be done asynchronously. The effectState hooks are used with storage and Websocket mock ups.
 
 ## 🚀 Service deliverable
 
@@ -156,4 +156,4 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **WebSocket data displayed** - Names are displayed on the screen
 - [x] **Application is fully functional** - Application looks great!
 
-*Except where otherwise noted, this project is licensed under the MIT License. The Elephant.png file is not covered under the MIT license. I want to reserve the rights of the Elephant.png for my own logos/branding.*
+_Except where otherwise noted, this project is licensed under the MIT License. The Elephant.png and favicon.ico files are not covered under the MIT license. I want to reserve the rights of the elephant I drew for my own logos/branding._
