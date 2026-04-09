@@ -15,7 +15,7 @@ export function Join() {
           </div>
           <img
             id="shrinkable"
-            src="Brain.png"
+            src="Brain.webp"
             alt="You climb up a latter to reach a brain"
           />
         </div>
