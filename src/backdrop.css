@@ -57,13 +57,13 @@ h3 {
 
 @media (orientation: landscape) {
   header h3 {
-    font-size: clamp(1rem, 5cqw, 1.75rem);
+    font-size: clamp(0.9rem, 5cqw, 1.75rem);
   }
 }
 
 @media (orientation: portrait) {
   header h3 {
-    font-size: clamp(1rem, 8cqw, 1.75rem);
+    font-size: clamp(0.9rem, 8cqw, 1.75rem);
   }
 }
 
