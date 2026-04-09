@@ -91,6 +91,21 @@ Allows you to stack elements (higher z index on top)
 
 All CSS elements are global when you route everything to the same page.
 
+320 px is a standard minimum width that the app should support
+
+```css
+h1,
+h2 {
+  color: red;
+}
+
+h1 h2 {
+  color: red;
+}
+```
+
+Comma = applies to each selector independently. No comma = nesting (must be a decendant).
+
 ## React Part 1: Routing
 
 1. Copy over
