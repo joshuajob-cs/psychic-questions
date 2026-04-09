@@ -58,8 +58,10 @@ h3 {
   container-type: inline-size;
 }
 
-.header-shrinker h3 {
-  font-size: clamp(1rem, 5cqw, 1.75rem);
+@media (orientation: landscape) {
+  .header-shrinker h3 {
+    font-size: clamp(1rem, 5cqw, 1.75rem);
+  }
 }
 
 .basic-font {
@@ -81,7 +83,6 @@ h3 {
 
 .screen-rotater {
   display: flex;
-  align-items: center;
 }
 
 .rotater-gap {
@@ -90,7 +91,6 @@ h3 {
 
 .between-header {
   display: flex;
-  align-items: center;
   gap: 1rem;
   justify-content: space-between;
 }
@@ -110,6 +110,7 @@ h3 {
 @media (orientation: landscape) {
   .screen-rotater {
     flex-direction: row;
+    align-items: center;
   }
 }
 
