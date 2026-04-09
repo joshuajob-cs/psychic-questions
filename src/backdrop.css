@@ -59,7 +59,7 @@ h3 {
 }
 
 .header-shrinker h3 {
-  font-size: clamp(1rem, 6cqw, 1.75rem);
+  font-size: clamp(1rem, 5cqw, 1.75rem);
 }
 
 .basic-font {
@@ -81,6 +81,7 @@ h3 {
 
 .screen-rotater {
   display: flex;
+  align-items: center;
 }
 
 .rotater-gap {
