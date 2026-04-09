@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 import { Title } from "./title";
-import "../join/join.css";
 
 export function AuthHeader() {
   return (
