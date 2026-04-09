@@ -1,16 +1,14 @@
 Extra stuff I will do if I get the time:
 
-1. IMPORTANT: Brain needs to shrink on login page. Something I did broke that. On phones you can't log in becaus ethe brain gets in the way
-2. Might as well might Psychic Questions Shrink as well, it would look better than wrapping.
-3. Make it a progressive web application that I can download on my phone!
-4. I changed my mind about data persistence. The only thing that needs to be persisted is answers and questions (so that logged in users can look at what people answered in past games), people will not really care about any of the other game settings.
-5. When a user exits and enters a webpage again they should automatically be directed back to the correct page they were on. They should not be able to refresh and reanswer questions that they have already answered.
-6. Players need a way to quit the game when they are done. If the host disconnects while on the last screen, they are probably done, and so their auth token can be removed. If the host starts a new game, their auth token is removed. Once the host's auth Token is removed the game ends. For non-host I don't ahve to worry about removing their auth Token as much, they will get a different on eanytway if they start a new game.
-7. When a game is done it can be removed from the server.
-8. Look at AWS and get a cheaper server that I can keep for the duration of eternity, even after I run out of credits
-9. I want joshuajob-cs to link directly to my web page instead of to the 260 page. Instead of having a "simon" and a "startup" I should have a "me" which displays my personal website.
-10. Famous Mode! The host selects players to be famous. Famous players only answer questions. Everyone else only guesses answers.
-11. Memories! When someone logs in, it can be assumed that if they were in the middle of a game (not at the end of the game) in the last 30-60 mintutes, they probably want to resume the game. If not, then they probably want to start a game and a new game can be started for them. But there should be an option if instead of starting a new game, they want to look at past games, and they can scroll through the past games and see what everone responded (why only questions and answers are stored persistently).
+1. Make it a progressive web application that I can download on my phone!
+2. I changed my mind about data persistence. The only thing that needs to be persisted is answers and questions (so that logged in users can look at what people answered in past games), people will not really care about any of the other game settings.
+3. When a user exits and enters a webpage again they should automatically be directed back to the correct page they were on. They should not be able to refresh and reanswer questions that they have already answered.
+4. Players need a way to quit the game when they are done. If the host disconnects while on the last screen, they are probably done, and so their authtoken is removed. If the host starts a new game, their auth token is removed. Once the host's auth Token is removed AND nobody else is still connected to the server, the game ends. For non-host I don't have to worry about removing their auth Token as much, they will get a different one anyway if they start a new game.
+5. When a game is done it can be removed from the server.
+6. Look at AWS and get a cheaper server that I can keep for the duration of eternity, even after I run out of credits
+7. I want joshuajob-cs to link directly to my web page instead of to the 260 page. Instead of having a "simon" and a "startup" I should have a "me" which displays my personal website.
+8. Famous Mode! The host selects players to be famous. Famous players only answer questions. Everyone else only guesses answers.
+9. Memories! When someone logs in, it can be assumed that if they were in the middle of a game (not at the end of the game) in the last 30-60 mintutes, they probably want to resume the game. If not, then they probably want to start a game and a new game can be started for them. But there should be an option if instead of starting a new game, they want to look at past games, and they can scroll through the past games and see what everone responded (why only questions and answers are stored persistently).
 
 - You can have someone join at any point in the game, but special precautions would need to be taken to not mess anything up. For example if they join while asking questions, they can only be asked questions that other people are already being asked. If they join during guess answers it is fine to just pick 4 players to guess the answer to, they have the solace of knowing that they will not ever be asked the same question thye answered (as they did not answer).
 
