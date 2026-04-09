@@ -64,6 +64,12 @@ h3 {
   }
 }
 
+@media (orientation: portrait) {
+  .header-shrinker h3 {
+    font-size: clamp(1rem, 8cqw, 1.75rem);
+  }
+}
+
 .basic-font {
   font-family: "Inter", sans-serif;
   font-weight: 300;
