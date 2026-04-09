@@ -9,7 +9,7 @@
   min-width: 100px;
 }
 
-@media (orientation: landscape) and (max-width: 400px) {
+@media (orientation: landscape) and (max-width: 425px) {
   #shrinkable {
     display: none;
   }
