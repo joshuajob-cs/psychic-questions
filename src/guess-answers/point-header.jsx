@@ -7,7 +7,7 @@ export function PointHeader() {
   const { user } = useContext(Context);
 
   return (
-    <header className="between-header header-shrinker point-header">
+    <header className="between-header point-header">
       <Title />
       <div id="points-container">
         <div id="player-name">{user.name}</div>

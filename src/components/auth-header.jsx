@@ -4,7 +4,7 @@ import { Title } from "./title";
 export function AuthHeader() {
   return (
     <header>
-      <div className="screen-rotater rotater-gap header-shrinker">
+      <div className="screen-rotater rotater-gap">
         <Title />
         <nav>
           <div className="dropdown">

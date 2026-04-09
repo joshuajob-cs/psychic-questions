@@ -2,6 +2,10 @@
   align-items: center;
 }
 
+.point-header h3 {
+  font-size: clamp(0.75rem, 5cqw, 1.75rem);
+}
+
 #points-container {
   display: flex;
   flex-direction: column;
