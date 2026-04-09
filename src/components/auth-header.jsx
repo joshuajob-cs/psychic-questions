@@ -5,7 +5,7 @@ import "../join/join.css";
 export function AuthHeader() {
   return (
     <header>
-      <div className="screen-rotater header-rotater">
+      <div className="screen-rotater rotater-gap header-shrinker">
         <Title />
         <nav>
           <div className="dropdown">

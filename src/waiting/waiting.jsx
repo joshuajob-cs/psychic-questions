@@ -39,7 +39,7 @@ export function Waiting() {
   return (
     <>
       <header>
-        <div className="screen-rotater header-rotater">
+        <div className="screen-rotater rotater-gap">
           <Title />
           {user?.isHost && (
             <nav>

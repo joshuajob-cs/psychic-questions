@@ -50,6 +50,18 @@ h3 {
   font-weight: 400;
 }
 
+h3 {
+  white-space: nowrap;
+}
+
+.header-shrinker {
+  container-type: inline-size;
+}
+
+.header-shrinker h3 {
+  font-size: clamp(1rem, 6cqw, 1.75rem);
+}
+
 .basic-font {
   font-family: "Inter", sans-serif;
   font-weight: 300;
@@ -71,7 +83,7 @@ h3 {
   display: flex;
 }
 
-.header-rotater {
+.rotater-gap {
   gap: 1rem;
 }
 

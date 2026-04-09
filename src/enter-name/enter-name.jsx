@@ -19,7 +19,7 @@ export function EnterName() {
   return (
     <>
       <header>
-        <div className="screen-rotater header-rotater">
+        <div className="screen-rotater rotater-gap">
           <Title />
           {user?.username && (
             <nav>
