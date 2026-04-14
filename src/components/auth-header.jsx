@@ -1,6 +1,12 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { Title } from "./title";
 
+const NAV_ITEMS = [
+  { to: "/", label: "Join" },
+  { to: "/login", label: "Login" },
+  { to: "/sign-up", label: "Sign Up" },
+];
+
 export function AuthHeader() {
   const { pathname } = useLocation();
   const buttonLabel = pathname === "/" ? "New Game" : "Options";
@@ -21,27 +27,13 @@ export function AuthHeader() {
               {buttonLabel}
             </button>
             <ul className="dropdown-menu" aria-labelledby="accountDropdown">
-              {pathname !== "/" && (
-                <li>
-                  <NavLink className="dropdown-item" to="/">
-                    Join
+              {NAV_ITEMS.filter((item) => item.to !== pathname).map((item) => (
+                <li key={item.to}>
+                  <NavLink className="dropdown-item" to={item.to}>
+                    {item.label}
                   </NavLink>
                 </li>
-              )}
-              {pathname !== "/login" && (
-                <li>
-                  <NavLink className="dropdown-item" to="/login">
-                    Login
-                  </NavLink>
-                </li>
-              )}
-              {pathname !== "/sign-up" && (
-                <li>
-                  <NavLink className="dropdown-item" to="/sign-up">
-                    Sign Up
-                  </NavLink>
-                </li>
-              )}
+              ))}
             </ul>
           </div>
         </nav>
