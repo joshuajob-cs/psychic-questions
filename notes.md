@@ -4,6 +4,7 @@
 
 ## Helpful links
 
+- [Mastery LS](https://masteryls.com/course/1a8c01d0-5e9c-4a7c-8597-55bd5159967e/topic/bf3c5698-c3e7-4978-89c1-e590e642987b)
 - [Course instruction](https://github.com/webprogramming260)
 - [Canvas](https://byu.instructure.com)
 - [MDN](https://developer.mozilla.org)
