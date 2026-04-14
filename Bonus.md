@@ -8,6 +8,7 @@ _April 14, 2026 — Tested with my CS 260 class. The host skipped the answer que
 2. Add a counter that tells you how many players there are total and how many of them have answered
 3. Add a button to reset the game from the beginning if the host messes up
 4. If not enough players answer then there will be not enough distractors. Each user should have the opportunity to fill out one distractor for each question while they are waiting.
+
 **Extra stuff I will do if I get the time:**
 
 1. Make it a progressive web application that I can download on my phone!
