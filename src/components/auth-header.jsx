@@ -3,6 +3,7 @@ import { Title } from "./title";
 
 export function AuthHeader() {
   const { pathname } = useLocation();
+  const buttonLabel = pathname === "/" ? "New Game" : "Options";
 
   return (
     <header>
@@ -17,7 +18,7 @@ export function AuthHeader() {
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              New Game
+              {buttonLabel}
             </button>
             <ul className="dropdown-menu" aria-labelledby="accountDropdown">
               {pathname !== "/" && (
