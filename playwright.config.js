@@ -1,19 +1,20 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
-  testDir: './tests',
+  testDir: "./tests",
   use: {
-    baseURL: 'http://localhost:5173',
+    baseURL: "http://localhost:5173",
   },
   projects: [
     {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      name: "firefox",
+      use: { ...devices["Desktop Firefox"] },
     },
   ],
   webServer: {
-    command: 'npm run dev',
-    url: 'http://localhost:5173',
-    reuseExistingServer: !process.env.CI,
+    command: "npm run dev",
+    cwd: "./client",
+    url: "http://localhost:5173",
+    reuseExistingServer: true,
   },
 });
