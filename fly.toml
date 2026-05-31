@@ -1,10 +1,10 @@
-# fly.toml app configuration file generated for psychic-questions on 2026-05-31T03:30:45Z
+# fly.toml app configuration file generated for psychic-questions on 2026-05-31T04:29:02Z
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
 app = 'psychic-questions'
-primary_region = 'iad'
+primary_region = 'lax'
 
 [build]
 
