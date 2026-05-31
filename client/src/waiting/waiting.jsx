@@ -6,7 +6,7 @@ import { getRandomPoem } from "../apis/outsource-api";
 import { usePhaseChange } from "../hooks/usePhaseChange";
 import { advancePhase, getPhase } from "../apis/game-api";
 import { Context } from "../context";
-import { GamePhase } from "../../shared/constants.js";
+import { GamePhase } from "@shared/constants.js";
 import "./waiting.css";
 
 export function Waiting() {
@@ -28,7 +28,6 @@ export function Waiting() {
   useEffect(() => {
     getRandomPoem().then(setPoem);
     getPhase(user.gameCode).then(setPhase);
-
   }, []);
 
   usePhaseChange((phase) => {
@@ -60,7 +59,12 @@ export function Waiting() {
           />
           {poem && (
             <details className="poem-box">
-              <summary><strong><em>{poem.title}</em></strong> — {poem.author}</summary>
+              <summary>
+                <strong>
+                  <em>{poem.title}</em>
+                </strong>{" "}
+                — {poem.author}
+              </summary>
               <p className="poem-lines">{poem.lines.join("\n")}</p>
             </details>
           )}

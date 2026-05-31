@@ -7,7 +7,7 @@ import { PointHeader } from "./point-header";
 import { getAnswers, getQuestions, doneGuessing } from "../apis/question-api";
 import { getPlayers } from "../apis/game-api";
 import { Context } from "../context";
-import { PLAYERS_PER_GUESSER } from "../../shared/constants.js";
+import { PLAYERS_PER_GUESSER } from "@shared/constants.js";
 import "./guess-answers.css";
 
 export function GuessAnswers() {
