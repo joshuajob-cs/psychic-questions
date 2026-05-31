@@ -1,6 +1,7 @@
 {
   "name": "startup-monorepo",
   "private": true,
+  "type": "module",
   "workspaces": [
     "client",
     "service"
