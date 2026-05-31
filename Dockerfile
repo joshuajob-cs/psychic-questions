@@ -3,7 +3,6 @@ WORKDIR /app
 COPY package.json ./
 COPY client/package.json ./client/
 COPY service/package.json ./service/
-COPY shared/package.json ./shared/
 RUN npm install
 
 FROM deps AS build-frontend
