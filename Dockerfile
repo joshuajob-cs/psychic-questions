@@ -13,8 +13,6 @@ RUN npm --workspace=client run build
 
 FROM node:20 AS runtime
 WORKDIR /app
-COPY service/package-lock.json ./service/
-COPY service/package.json ./service/
 WORKDIR /app/service
 RUN npm ci --production
 COPY service ./service
