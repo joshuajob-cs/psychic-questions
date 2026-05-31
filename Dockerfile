@@ -10,7 +10,6 @@ FROM deps AS build-frontend
 WORKDIR /app
 COPY client ./client
 COPY shared ./shared
-COPY Drawings ./Drawings
 
 RUN npm --workspace=client run build
 
@@ -24,4 +23,4 @@ COPY --from=build-frontend /app/client/dist ./service/public
 WORKDIR /app/service
 ENV PORT=8080
 EXPOSE 8080
-CMD ["node","service/index.js"]
+CMD ["node","index.js"]
