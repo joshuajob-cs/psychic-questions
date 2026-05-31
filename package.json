@@ -3,11 +3,11 @@
   "private": true,
   "workspaces": [
     "client",
-    "server"
+    "service"
   ],
   "scripts": {
-    "dev": "npm run dev --workspace=client & npm run start --workspace=server",
-    "test": "npm run test --workspace=server && npm run test --workspace=client",
+    "dev": "npm run dev --workspace=client & npm run start --workspace=service",
+    "test": "npm run test --workspace=service && npm run test --workspace=client",
     "build": "npm -w client run build"
   }
 }
