@@ -1,32 +1,33 @@
-# ---- Build frontend ----
+# ---- Build React frontend (Vite) ----
 FROM node:20 AS frontend
 
-WORKDIR /app/client
-COPY client/package*.json ./
+WORKDIR /app
+
+COPY package*.json ./
 RUN npm install
 
-COPY client/ .
+COPY . .
+
+# builds from /src → /dist
 RUN npm run build
 
 
-# ---- Build backend ----
+# ---- Backend runtime ----
 FROM node:20
 
 WORKDIR /app
 
-COPY server/package*.json ./server/
-RUN cd server && npm install
+# install backend deps
+COPY package*.json ./
+RUN npm install
 
-COPY server ./server
+# copy backend code
+COPY service ./service
 
-# move frontend build into Express public folder
-COPY --from=frontend /app/client/dist ./server/public
+# copy built frontend into express public folder
+COPY --from=frontend /app/dist ./public
 
-WORKDIR /app/server
-
-ENV NODE_ENV=production
 ENV PORT=8080
-
 EXPOSE 8080
 
-CMD ["node", "index.js"]
+CMD ["node", "service/index.js"]
